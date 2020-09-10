@@ -233,7 +233,7 @@ All buttons with a defined URL will have a small arrow icon to indicate that pre
 
 When the button is pressed, the app will display next menu referenced within that button. This function is a great help for designing browsing menus and offline menus.
 
-## API Manual: IncomingMessages
+# API Manual: IncomingMessages
 
 Your bot must be connected and authenticated over the WebSocket session to receive incoming messages. The Bot Server does not store any messages for bots for later retrieval.
 
@@ -241,7 +241,7 @@ The following table lists the different incoming JSON messages for the bot.
 
 ## Incoming Messages
 
-### Message
+## Message
 
 Incoming message represent new incoming, edited or deleted message from server
 
@@ -250,7 +250,7 @@ Incoming message represent new incoming, edited or deleted message from server
 | method  | String              | Yes      | "message"                                    |
 | message | [Message](#_nmf14n) | Yes      | Object represents the content of the message |
 
-### User Details
+## User Details
 
 Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#_2nusc19) .
 
@@ -259,7 +259,7 @@ Incoming message represent new or updated user or bot profile. This inbound mess
 | method | String            | Yes      | "userDetails"                                   |
 | user   | [User](#_3tbugp1) | Yes      | Object represents a nandbox user or bot account |
 
-### Chat Details
+## Chat Details
 
 Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#_1302m92)
 
@@ -268,7 +268,7 @@ Incoming message represent new or updated Group or Channel profile This inbound 
 | method | String            | Yes      | "chatDetails"                                                 |
 | chat   | [Chat](#_28h4qwu) | Yes      | This object represents a nandbox group or channel information |
 
-### Chat Menu Callback
+## Chat Menu Callback
 
 Incoming message represents information about a clicked button associated with a normal keypad menu.
 
@@ -277,7 +277,7 @@ Incoming message represents information about a clicked button associated with a
 | method           | String                        | Yes      | "chatMenuCallback"                                                                                       |
 | chatMenuCallback | [ChatMenuCallback](#_2dlolyb) | Yes      | object represents an incoming callback query from a callback button associated with a normal keypad menu |
 
-### Inline Message Callback
+## Inline Message Callback
 
 Incoming message represents information about a clicked button within an inline keypad menu associated with a specific message
 
@@ -286,7 +286,7 @@ Incoming message represents information about a clicked button within an inline 
 | method                | String                            | Yes      | "inlineMessageCallback"                                                                                                             |
 | inlineMessageCallback | [inlineMessageCallback](#_sqyw64) | Yes      | object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message |
 
-### Chat Member
+## Chat Member
 
 Incoming message represents information about group or channel member returned as a reply to [getChatMember](#_3mzq4wv) , [banChatMember](#_haapch), [unbanChatMember](#_319y80a), [removeChatMember](#_1gf8i83) and when user join or leaves the chat.
 
@@ -295,7 +295,7 @@ Incoming message represents information about group or channel member returned a
 | method     | String                  | Yes      | "chatMember"                          |
 | chatMember | [ChatMemebr](#_1rvwp1q) | Yes      | object represents a chat member user. |
 
-### Chat Administrators
+## Chat Administrators
 
 Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#_2250f4o).
 
@@ -304,7 +304,7 @@ Incoming message represents information about group or channel administrators re
 | method             | String                          | Yes      | "chatAdministrators"                                    |
 | chatAdministrators | [ChatAdministrators](#_4bvk7pj) | Yes      | object represents channel or group administrator users. |
 
-### My Profile
+## My Profile
 
 Incoming message represents Bot profile details , this will be come as a reply to [getMyProfiles](#_3ep43zb) outgoing message
 
@@ -355,7 +355,7 @@ Incoming message represents Bot profile details , this will be come as a reply t
 }
 ```
 
-### Message Ack
+## Message Ack
 
 Incoming message represents outbound message acknowledge.
 
@@ -383,7 +383,7 @@ Incoming message represents outbound message acknowledge.
 
 }
 ```
-## Types
+# Types
 
 Capitalized types are data structures represented as JSON objects. The different types in incoming messages are listed below.
 
@@ -394,8 +394,8 @@ It is safe to use 32-bit signed integers for storing all **Integer** fields unle
 **Long** fields are sent as Strings to avoid problems with JavaScript based clients.
 
 **Optional** fields may be not returned when not relevant.
-### User
-### User
+
+## User
 
 This object represents a nandbox user or bot account.
 
@@ -415,7 +415,7 @@ This object represents a nandbox user or bot account.
 |
 |
 
-### Chat
+## Chat
 
 This object represents a nandbox group or channel information
 
@@ -434,7 +434,7 @@ This object represents a nandbox group or channel information
 | invite_link    | String                                     | Optional    | Chat invite link. Returned only in getChat.                                                                               |
 | tagsDefinition | Array of [TagDefinition](#_Tag_Defination) | Conditional | List of "tag definition"                                                                                                  |
 
-### Message
+## Message
 
 The main message method defines all parameters for all incoming messages to the bot.
 
@@ -547,7 +547,7 @@ The main message method defines all parameters for all incoming messages to the 
 }
 ```
 
-### Text
+## Text
 
 This object represents Text entry.
 
@@ -558,7 +558,7 @@ This object represents Text entry.
 | bg_color                                             | String | Optional | Text message Background color name in hexadecimal format (Hex triplet ) or according to its common English name . |
 | Example : Red color can be set as "RED" or "#FF0000" |
 
-### Photo
+## Photo
 
 This object represents one size of a photo and/or thumbnail.
 
@@ -570,7 +570,7 @@ This object represents one size of a photo and/or thumbnail.
 | size      | Integer | Optional | Photo size                      |
 | thumbnail | Photo   | Optional | Thumbnail of the photo          |
 
-### GIF
+## GIF
 
 This object represents GIF image.
 
@@ -582,7 +582,7 @@ This object represents GIF image.
 | size      | Integer | Optional | GIF size                        |
 | thumbnail | Photo   | Optional | Thumbnail of the photo          |
 
-### Sticker
+## Sticker
 
 This object represents Sticker Photo.
 
@@ -594,7 +594,7 @@ This object represents Sticker Photo.
 | size      | Integer | Optional | Sticker size                       |
 | thumbnail | Photo   | Optional | Thumbnail of the photo             |
 
-### Video
+## Video
 
 This object represents a video file.
 
@@ -607,7 +607,7 @@ This object represents a video file.
 | size      | Integer | Yes      | Video size                        |
 | thumbnail | Photo   | Optional | Video thumbnail                   |
 
-### Audio
+## Audio
 
 This object represents a audio file.
 
@@ -619,7 +619,7 @@ This object represents a audio file.
 | title     | String  | Optional | Title of the audio of the audio as defined by sender or by audio tags |
 | size      | Integer | Yes      | Audio file size                                                       |
 
-### Voice
+## Voice
 
 This object represents a voice note.
 
@@ -629,7 +629,7 @@ This object represents a voice note.
 | duration | Integer | Yes      | Duration of the voice note.     |
 | size     | Integer | Yes      | Voice file size.                |
 
-### Document
+## Document
 
 This object represents a general file (as opposed to photos, voice messages and audio files).
 
@@ -639,7 +639,7 @@ This object represents a general file (as opposed to photos, voice messages and 
 | name  | Integer | Optional | Document name as defined by Sender. |
 | size  | Integer | Yes      | Document file size.                 |
 
-### Text_File
+## Text_File
 
 This object represents a text file.
 
@@ -651,7 +651,7 @@ This object represents a text file.
 | size |
 | Integer | Yes | File size. |
 
-### Location
+## Location
 
 This object represents a point on the map.
 
@@ -662,7 +662,7 @@ This object represents a point on the map.
 | name      | String | Optional | Location name    |
 | details   | String | Optional | Location details |
 
-### Contact
+## Contact
 
 This object represents a phone contact.
 
@@ -671,7 +671,7 @@ This object represents a phone contact.
 | phone_number | String | Yes      | Contact&#39;s phone number |
 | Name         | String | Yes      | Contact full name          |
 
-### ChatMenuCallback
+## ChatMenuCallback
 
 This object represents an incoming callback query from a callback button associated with a normal keypad menu.
 
@@ -685,7 +685,7 @@ This object represents an incoming callback query from a callback button associa
 | next_menu           | IntegerString     | Optional | The menu to navigate to it when the button pressed.                                                                                                                                          |
 | button_query_result | ButtonQueryResult | Optional | Returned inquiry information from app. The field either will return "Location" in form of longitude and latitude respectively as comma separated. "Phone number" depends on the buttonQuery. |
 
-### InlineMessageCallback
+## InlineMessageCallback
 
 This object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message. If the button that originated the query was attached to a message sent by the bot, the field message_id will be present.
 
@@ -702,7 +702,7 @@ This object represents an incoming callback query from a callback button within 
 | button_query_result | ButtonQueryResult | Optional | Returned inquiry information from app. The field either will return "Location" in form of longitude and latitude respectively as comma separated. "Phone number" depends on the buttonQuery. |
 | button_label        | String            | Optional | Button label                                                                                                                                                                                 |
 
-### InlineSearch
+## InlineSearch
 
 This object represents InlineSearch
 
@@ -715,7 +715,7 @@ This object represents InlineSearch
 | search_id | Integer | Yes      | Unique search id for this message    |
 | offset    | String  | Optional | Offset of the results to be returned |
 
-### Results
+## Results
 
 | Field       | Type   | Required | Description                                                             |
 | ----------- | ------ | -------- | ----------------------------------------------------------------------- |
@@ -728,7 +728,7 @@ This object represents InlineSearch
 | width       | Long   | Optional | Width of thumbnail image                                                |
 | height      | Long   | Optional | Height if thumbnail image                                               |
 
-### Tag Defination
+## Tag Defination
 
 | Field       | Type    | Required | Description              |
 | ----------- | ------- | -------- | ------------------------ |
@@ -737,21 +737,21 @@ This object represents InlineSearch
 | id          | String  | yes      | Id of tag                |
 | isPrivate   | Integer | yes      | 1= private 0= no private |
 
-### Users
+## Users
 
 | Field       | Type            | Required | Description      |
 | ----------- | --------------- | -------- | ---------------- |
 | signup_user | String          | yes      | Add signup user  |
 | tags        | Array of String | Optional | Add list of tags |
 
-### Data
+## Data
 
 | Field   | Type   | Required | Description                         |
 | ------- | ------ | -------- | ----------------------------------- |
 | pattern | String | yes      | Add pattern for black or white list |
 | example | String | yes      | Add example of pattern              |
 
-### Signup User
+## Signup User
 
 | Field       | Type            | Required | Description                          |
 | ----------- | --------------- | -------- | ------------------------------------ |
@@ -759,7 +759,7 @@ This object represents InlineSearch
 | signup_user | String          | yes      | Signup user (mobile number or email) |
 | tags        | Array of String | Optional | Only when you have tags in whitelist |
 
-### ButtonQueryResult
+## ButtonQueryResult
 
 This object represents an incoming button query results from a callback button
 
@@ -769,7 +769,7 @@ This object represents an incoming button query results from a callback button
 | longitude | String | Optional | Only sent in case of buttonQuery is location      |
 | contact   | String | Option   | Only sent in case of buttonQuery is phone_number. |
 
-### Chat Member
+## Chat Member
 
 This object represents a chat member user returned in getChatMember banChatMember, unbanChatMember, removeChatMember and when user join or leaves the chat.
 
@@ -851,7 +851,7 @@ This object represents a chat member user returned in getChatMember banChatMembe
 }
 ```
 
-### Chat Administrators
+## Chat Administrators
 
 This object represents channel or group administrator users. Returned as a reply to [getChatAdministrators](#_2250f4o)
 
@@ -892,7 +892,7 @@ This object represents channel or group administrator users. Returned as a reply
 }
 ```
 
-### Blacklist
+## Blacklist
 
 This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Blacklist)
 
@@ -956,7 +956,7 @@ This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Bl
 }
 ```
 
-### Whitelist
+## Whitelist
 
 This object represents whitelist. Returned as a reply to [getWhitelist](#_Get_Blacklist)
 
@@ -1026,7 +1026,7 @@ This object represents whitelist. Returned as a reply to [getWhitelist](#_Get_Bl
 }
 ```
 
-### Message Acknowledge
+## Message Acknowledge
 
 Object represents outbound messages acknowledgment details.
 
@@ -1052,7 +1052,7 @@ Object represents outbound messages acknowledgment details.
 }
 ```
 
-### Started Bot
+## Started Bot
 
 This object represents a user, Returned when user started bot
 
@@ -1072,7 +1072,7 @@ This object represents a user, Returned when user started bot
 }
 ```
 
-### User Joined Bot
+## User Joined Bot
 
 This object represents a user, Returned when user joined bot
 
@@ -1092,7 +1092,7 @@ This object represents a user, Returned when user joined bot
 }
 ```
 
-### User Stopped Bot
+## User Stopped Bot
 
 This object represents a user, Returned when user stopped bot
 
@@ -1112,7 +1112,7 @@ This object represents a user, Returned when user stopped bot
 }
 ```
 
-### User Left Bot
+## User Left Bot
 
 This object represents a user, Returned when user left bot
 
@@ -1132,7 +1132,7 @@ This object represents a user, Returned when user left bot
 }
 ```
 
-### Inline Search
+## Inline Search
 
 This object represents an inline search, Returned when user write search keyword in inline bot
 
@@ -1168,7 +1168,7 @@ This object represents an inline search, Returned when user write search keyword
   }
 }
 ```
-### User
+## User
 
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
@@ -1220,7 +1220,7 @@ This object represents an inline search, Returned when user write search keyword
 }
 ```
 
-### SetChatMenu_ack
+## SetChatMenu_ack
 
 This object represents acknowledgement of receipt new or updated normal keypad menu in returned for setChatMenu.
 
@@ -1239,9 +1239,9 @@ This object represents acknowledgement of receipt new or updated normal keypad m
   }
 }
 ```
-## API Manual: Outgoing Messages
+# API Manual: Outgoing Messages
 
-### Send Message
+## Send Message
 
 | Field                    | Type          | Required | Description                                                                                                       |
 | ------------------------ | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -1260,7 +1260,7 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Photo
+## Send Photo
 
 Use this method to send photos. On success, the sent Message is returned. Bots can currently send phot files of up to 20 MB in size, this limit may be changed in the future.
 
@@ -1280,7 +1280,7 @@ Use this method to send photos. On success, the sent Message is returned. Bots c
 | inline_menu              | Array of Menu | Optional | Inline menu object to hold menus.If both inline_menu and menu_ref are defined. Priority for inline_menu.          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Video
+## Send Video
 
 Use this method to send videos. nandbox clients support mp4 videos (other formats mybe sent as Document). On success, the sent Message is returned. Bots can currently send phot files of up to 50 MB in size, this limit may be changed in the future.
 
@@ -1301,7 +1301,7 @@ Use this method to send videos. nandbox clients support mp4 videos (other format
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                                                                                          |
 
-### Send Audio
+## Send Audio
 
 Use this method to send audio files, if you want nandbox clients to display them in the music player. Your audio must be in the .mp3 format. On success, sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 
@@ -1324,7 +1324,7 @@ Use this method to send audio files, if you want nandbox clients to display them
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Voice
+## Send Voice
 
 Use this method to send voice note. If you want nandbox clients to display the file as a playable voice message, your voice audio must be in an .ogg file encoded with OPUS (other format may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice note files of up to 50 MB in size, this limit may be changed in the future.
 
@@ -1346,7 +1346,7 @@ Use this method to send voice note. If you want nandbox clients to display the f
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Document
+## Send Document
 
 Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
@@ -1369,7 +1369,7 @@ Use this method to send general files. On success, the sent Message is returned.
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Location
+## Send Location
 
 Use this method to send location and point of map. On success, the sent Message is returned.
 
@@ -1393,7 +1393,7 @@ Use this method to send location and point of map. On success, the sent Message 
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Send Contact
+## Send Contact
 
 Use this method to send phone contact. On success, the sent Message is returned.
 
@@ -1414,7 +1414,7 @@ Use this method to send phone contact. On success, the sent Message is returned.
 |                          |
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
-### Update Message
+## Update Message
 
 Use this message to update existing Message sent. On success, the sent Message is returned with status "updated"
 
@@ -1430,7 +1430,7 @@ Use this message to update existing Message sent. On success, the sent Message i
 | menu_ref    | String        | Optional    | Menu reference for existing predefined Menu. The menu will be displayed as inline menu associated to the message. To hide the inline menu from message set menu_ref to empty String .                          |
 | inline_menu | Array of Menu | Optional    | Inline menu object to hold menus. Previous menu will be dropped and replaced by the updated one.If both inline_menu and menu_ref is defined. Priority for inline_menu unless menu_ref is set to empty String . |
 
-### Set Chat Menu
+## Set Chat Menu
 
 Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
 
@@ -1483,7 +1483,7 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 }
 ```
 
-### Inline Search Answer
+## Inline Search Answer
 
 | Field       | Type                 | Required | Description                                                                                                                                                                                       |
 | ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1494,11 +1494,11 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | chat_id     | String               | yes      | Chat id                                                                                                                                                                                           |
 | search_id   | String               | yes      | Unique id of this message                                                                                                                                                                         |
 
-### Types
+# Types
 
 The following data structures represents custom keypad menus with reply options
 
-#### Menu
+## Menu
 
 Each Menu composes of set of rows. At least one row should be defined.
 
@@ -1507,7 +1507,7 @@ Each Menu composes of set of rows. At least one row should be defined.
 | menu_ref | String       | Yes      | Unique identifier of this Menu as defined by bot.          |
 | rows     | Array of Row | Yes      | Rows belong to this menu. Row which is an Array of buttons |
 
-#### Row
+## Row
 
 Each row belongs to one keypad menu that composes of set of buttons. At least one button should be defined.
 
@@ -1516,7 +1516,7 @@ Each row belongs to one keypad menu that composes of set of buttons. At least on
 | buttons   | Array of Button | Yes      | Button belongs to the row. |
 | row_order | Integer         | Yes      | Row order in the menu.     |
 
-#### Button
+## Button
 
 This object represents button of reply. Button must have a button_callback which is the unique identifier defined by bot.
 
@@ -1536,7 +1536,7 @@ This object represents button of reply. Button must have a button_callback which
 | button_chat                                          | Chat    | Optional | Chat unique identifier that reference the specific chat to be opened when button is pressed. if button_url and button_chat are both defined, button_chat priority to button_chat.                       |
 | nav_type                                             | String  | Optional | -Null is default to show navigation button for channel, group or contact-Type "admin" for show admin navigation button in chat setting                                                                  |
 
-### Set Navigation Button
+## Set Navigation Button
 
 Use this method to set the navigation button with the menu reference. When navigation button is pressed the referenced menu will be displayed as normal keypad menu "Chat Menu".
 
@@ -1547,7 +1547,7 @@ Use this method to set the navigation button with the menu reference. When navig
 | chat_id                    | String                            | Yes      | Unique identifier for the target chat or User_id                                                                          |
 | to_user_id                 | String                            | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user.             |
 
-### Get User
+## Get User
 
 Use this method to get profile for a user. On success, User is returned.
 
@@ -1566,7 +1566,7 @@ Use this method to get profile for a user. On success, User is returned.
 }
 ```
 
-### Get Chat
+## Get Chat
 
 Use this method to get Group or Channel information. On success, Chat is returned.
 
@@ -1585,7 +1585,7 @@ Use this method to get Group or Channel information. On success, Chat is returne
 }
 ```
 
-### Get Chat Member
+## Get Chat Member
 
 Use this method to get Chat Member user public profile. On success, ChatMember is returned.
 
@@ -1606,8 +1606,7 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
   "user_id": "4521191845180798"
 }
 ```
-
-### Get Chat Administrators
+## Get Chat Administrators
 
 Use this method to get Chat Administrators. On success, [ChatAdministrators](#_1v1yuxt) message will received .
 
@@ -1626,7 +1625,7 @@ Use this method to get Chat Administrators. On success, [ChatAdministrators](#_1
 }
 ```
 
-### Ban Chat Member
+## Ban Chat Member
 
 Use this method to ban a Chat Member from accessing Chat. On success, ChatMember is returned with status "banned". Ban is a black list, user will not be able to join Chat again.
 
@@ -1648,7 +1647,7 @@ Use this method to ban a Chat Member from accessing Chat. On success, ChatMember
 }
 ```
 
-### Unban Chat Member
+## Unban Chat Member
 
 Use this method to unban a Chat Member from accessing Chat. On success, ChatMember is returned with status "Active". unBan is remove from black list, user will be able to join Chat once again.
 
@@ -1670,7 +1669,7 @@ Use this method to unban a Chat Member from accessing Chat. On success, ChatMemb
 }
 ```
 
-### Remove Chat Member
+## Remove Chat Member
 
 Use this method to remove a Chat Member from Chat. On success, ChatMember is returned with status "removed". Remove user is a temprorary kicking the user out from the Group or Channel. User will be able to join Chat once again.
 
@@ -1692,7 +1691,7 @@ Use this method to remove a Chat Member from Chat. On success, ChatMember is ret
 }
 ```
 
-### Set Chat
+## Set Chat
 
 Use this method to set Chat Group or Channel information. On success, chat is returned.
 
@@ -1718,7 +1717,7 @@ Use this method to set Chat Group or Channel information. On success, chat is re
 }
 ```
 
-### Add Blacklist
+## Add Blacklist
 
 Use this method to add black list.
 
@@ -1740,7 +1739,7 @@ Use this method to add black list.
 }
 ```
 
-### Add Whitelist
+## Add Whitelist
 
 Use this method to add white list.
 
@@ -1768,7 +1767,7 @@ Use this method to add white list.
 }
 ```
 
-### Add Blacklist Patterns
+## Add Blacklist Patterns
 
 Use this method to add black list patterns:
 
@@ -1806,7 +1805,7 @@ Use this method to add black list patterns:
 }
 ```
 
-### AddWhitelistPatterns
+## AddWhitelistPatterns
 
 Use this method to add white list.patterns:
 
@@ -1840,7 +1839,7 @@ Use this method to add white list.patterns:
 }
 ```
 
-### Delete Blacklist
+## Delete Blacklist
 
 Use this method to delete black list:
 
@@ -1865,7 +1864,7 @@ Use this method to delete black list:
 
 ```
 
-### Delete Whitelist
+## Delete Whitelist
 
 Use this method to delete white list:
 
@@ -1889,7 +1888,7 @@ Use this method to delete white list:
 }
 ```
 
-### Delete Blacklist Pattern
+## Delete Blacklist Pattern
 
 Use this method to delete black list pattern:
 
@@ -1913,7 +1912,7 @@ Use this method to delete black list pattern:
 }
 ```
 
-### Delete Whitelist Pattern
+## Delete Whitelist Pattern
 
 Use this method to delete white list pattern:
 
@@ -1937,7 +1936,7 @@ Use this method to delete white list pattern:
 }
 ```
 
-### Recall Message
+## Recall Message
 
 Use this message to recall existing Message sent .
 
@@ -1963,7 +1962,7 @@ Use this message to recall existing Message sent .
 }
 ```
 
-### Get Blacklist
+## Get Blacklist
 
 Use this method to get black list. On success, blacklist is returned.
 
@@ -1985,7 +1984,7 @@ Use this method to get black list. On success, blacklist is returned.
 }
 ```
 
-### Get Whitelist
+## Get Whitelist
 
 Use this method to get white list. On success, whitelist is returned.
 
@@ -2007,7 +2006,7 @@ Use this method to get white list. On success, whitelist is returned.
 }
 ```
 
-### Set My Profile
+## Set My Profile
 
 Use this method to set Bot Profile. On success, myProfile is returned.
 
@@ -2042,7 +2041,7 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 
 }
 ```
-### Get My Profiles
+## Get My Profiles
 
 Use this method to get Bot Profile. On success, myProfile is returned.
 
