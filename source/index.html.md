@@ -13,6 +13,7 @@ includes:
   - introduction
   - api # How API works?
   - authorization
+  - searchindex
   - features
   - bot
   - incoming

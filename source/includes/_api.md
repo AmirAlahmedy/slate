@@ -15,33 +15,34 @@ Creating API access or bot within nandbox is easy. In few steps, you can configu
 ### Create API/Bot within your nandbox App
 
 Login to your administrative portal of your nandbox App. Go to Bot Manager section and follow the instruction to create your first API/Bot as illustrated in the following screen.
+![](../images/image002.png)
+![](../images/image003.png)
 
 
 There are some API/Bot are already implemented by third party vendors offered in the Bot marketplace, where you can add them to your nandbox App and determine their access level to the information within your App.
+![](../images/image004.png)
 
 
 ### Create API/Bot within nandbox Messenger
 
-1. Use nandbox Android App version 2.1.0 or later
 
-1. From Settings menu open "Bot Manager"
-
-
-
-
-1. Tap "+" to create a new bot
+Use nandbox Android App version 2.1.0 or later.
+From Settings menu open "Bot Manager".
+![](../images/image005.jpg)
 
 
+Tap "+" to create a new bot.
+![](../images/image006.png)
 
-1. Enter your Bot title
-   (Limited to 32 characters)
 
+Enter your Bot title (Limited to 32 characters).
+![](../images/image007.jpg)
 1. Choose your bot type
 
 - Choose "Business", if your bot is associated or will be for use by organization, or business.
 
 - Choose "Individual" if bot will be for use by individual.
-
+![](../images/image008.jpg)
 
 Enter Bot Description: a short text of up to 120 characters, describing your bot. Users will see this text on the bot&#39;s profile page and when they share your bot with someone, this text is sent together with the link.
 
@@ -53,6 +54,7 @@ Enter Bot Description: a short text of up to 120 characters, describing your bot
    a short text of up to 512 characters, describing your bot. Users will see this text at the beginning of the conversation with the bot.
 
 1. Give your bot a unique handle by providing your business email.
+![](../images/image009.jpg)
 
 
 Unlike others, we protect your business name from being reserved by others bots. Your bot unique handle will be matching your web domain name. For example, if your business domain name is XYZ.com your bot handle will be "xyz".
@@ -65,3 +67,4 @@ After you reserve and book your bot handle, you can configure the following opti
 
 1. Filter: select which messages your bot will receive when added to a group. Choose from "none", "when mentioned", "posts" or "All".
 
+![](../images/image010.jpg)
