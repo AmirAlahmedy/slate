@@ -19,16 +19,13 @@ This object represents a nandbox user or bot account.
 | id      | String | Yes      | Unique identifier for this user or bot |
 | name    | String | Yes      | User or bot name.                      |
 | version | String | Yes      | Last updated user profile version.     |
-
-| terminal
-| String | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz) |
+| terminal| String | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz) |
 | type | String | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#_32hioqz) |
 | is_bot | Boolean | Optional | True if this user is a bot. Returned only in GetUser |
 | status | String | Optional | User status. Returned only in GetUser , |
 | photo | Photo | Optional | Public user&#39;s Photo. Returned only in GetUser |
-| profileStringOptionalProfile type "Other" , "Friend" , "Work" or "Family" |
-|
-|
+| profile | String | Optional | Profile type "Other" , "Friend" , "Work" or "Family" |
+
 
 ## Chat
 
