@@ -56,6 +56,7 @@ Incoming message represent new or updated user or bot profile. This inbound mess
 ## Chat Details
 
 ```javascript
+// ChatDetails class implementation
 const Chat = require("../data/Chat");
 
 module.exports = class ChatDetails {
@@ -74,6 +75,7 @@ module.exports = class ChatDetails {
 ```
 
 ```java
+// ChatDetails class implementation
 public class ChatDetails {
 	private static final String KEY_CHAT = "chat";
 
@@ -109,6 +111,7 @@ Incoming message represent new or updated Group or Channel profile This inbound 
 ## Chat Menu Callback
 
 ```javascript
+// ChatMenuCallBack class implementation
 const ButtonQueryResult = require("../data/ButtonQueryResult");
 const User = require("../data/User");
 const Chat = require("../data/Chat");
@@ -152,6 +155,22 @@ module.exports = class ChatMenuCallback {
 };
 ```
 
+```json
+{
+  "method": "chatMenuCallback",
+  "chatMenuCallback": {
+    "date": 1600588639278,
+    "button_callback": "VCB0",
+    "next_menu": null,
+    "button_query_result": null,
+    "chat": { "id": "90089668723575679", "type": "Mobile" },
+    "from": { "id": "90089668723575679", "type": "Mobile" },
+    "menu_ref": "ThirdMenu",
+    "button_label": "الفاتحة"
+  }
+}
+```
+
 Incoming message represents information about a clicked button associated with a normal keypad menu.
 
 | Field            | Type                          | Required | Description                                                                                              |
@@ -162,6 +181,7 @@ Incoming message represents information about a clicked button associated with a
 ## Inline Message Callback
 
 ```javascript
+// InlineMessageCallBack class implementation
 const User = require("../data/User");
 const Chat = require("../data/Chat");
 

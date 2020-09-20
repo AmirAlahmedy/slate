@@ -244,6 +244,25 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 
 ## Inline Search Answer
 
+```json
+ {
+    "method":"inlineSearchAnswer",
+    "results":
+      [
+        {
+          "title":"ص (50)",
+          "caption":"﴿جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأ َبْوَابُ﴾\nص (50)\nShared via @qurany_nb",
+          "height":10,
+          "width":40,
+          "description":"جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأَبْوَابُ"
+        }
+      ],
+    "next_offset":"",
+    "chat":{"id":"90089668723575679","type":"Mobile"},
+    "to_user_id":"90089668723575679","search_id":1589060
+}
+```
+
 | Field       | Type                 | Required | Description                                                                                                                                                                                       |
 | ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | method      | String               | Yes      | "inlineSearchAnswer"                                                                                                                                                                              |

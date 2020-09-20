@@ -14,18 +14,17 @@ It is safe to use 32-bit signed integers for storing all **Integer** fields unle
 
 This object represents a nandbox user or bot account.
 
-| Field   | Type   | Required | Description                            |
-| ------- | ------ | -------- | -------------------------------------- |
-| id      | String | Yes      | Unique identifier for this user or bot |
-| name    | String | Yes      | User or bot name.                      |
-| version | String | Yes      | Last updated user profile version.     |
-| terminal| String | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz) |
-| type | String | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#_32hioqz) |
-| is_bot | Boolean | Optional | True if this user is a bot. Returned only in GetUser |
-| status | String | Optional | User status. Returned only in GetUser , |
-| photo | Photo | Optional | Public user&#39;s Photo. Returned only in GetUser |
-| profile | String | Optional | Profile type "Other" , "Friend" , "Work" or "Family" |
-
+| Field    | Type    | Required | Description                                                                                                                                            |
+| -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id       | String  | Yes      | Unique identifier for this user or bot                                                                                                                 |
+| name     | String  | Yes      | User or bot name.                                                                                                                                      |
+| version  | String  | Yes      | Last updated user profile version.                                                                                                                     |
+| terminal | String  | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz)       |
+| type     | String  | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#_32hioqz) |
+| is_bot   | Boolean | Optional | True if this user is a bot. Returned only in GetUser                                                                                                   |
+| status   | String  | Optional | User status. Returned only in GetUser ,                                                                                                                |
+| photo    | Photo   | Optional | Public user&#39;s Photo. Returned only in GetUser                                                                                                      |
+| profile  | String  | Optional | Profile type "Other" , "Friend" , "Work" or "Family"                                                                                                   |
 
 ## Chat
 
@@ -99,63 +98,51 @@ The main message method defines all parameters for all incoming messages to the 
 
 ```json
 {
+  "method": "message",
 
-"method": "message",
+  "message": {
+    "date": 1512445910180,
 
-"message": {
+    "gif": {
+      "thumbnail": {
+        "width": 256,
 
-"date": 1512445910180,
+        "id": "cfdb3cc5.gif.thumb.jpg",
 
-"gif": {
+        "height": 191
+      },
 
-"thumbnail": {
+      "size": 4136640,
 
-"width": 256,
+      "width": 443,
 
-"id": "cfdb3cc5.gif.thumb.jpg",
+      "id": "02505e8f5e01aff254904853.gif",
 
-"height": 191
+      "height": 332
+    },
 
-},
+    "chat": {
+      "name": "chat 1",
 
-"size": 4136640,
+      "id": "4522291356145774",
 
-"width": 443,
+      "type": 0
+    },
 
-"id": "02505e8f5e01aff254904853.gif",
+    "message_id": "d2_QhlW1MAH12617138",
 
-"height": 332
+    "from": {
+      "name": "John Smith",
 
-},
+      "id": "4521191845180798",
 
-"chat": {
+      "type": 0,
 
-"name": "chat 1",
+      "version": "(&#39;0hn0&#39;,&#39;1YDA&#39;,&#39;2ViB&#39;,&#39;32Fg&#39;)"
+    },
 
-"id": "4522291356145774",
-
-"type": 0
-
-},
-
-"message_id": "d2_QhlW1MAH12617138",
-
-"from": {
-
-"name": "John Smith",
-
-"id": "4521191845180798",
-
-"type": 0,
-
-"version": "(&#39;0hn0&#39;,&#39;1YDA&#39;,&#39;2ViB&#39;,&#39;32Fg&#39;)"
-
-},
-
-"type": "gif"
-
-}
-
+    "type": "gif"
+  }
 }
 ```
 
@@ -315,6 +302,19 @@ This object represents an incoming callback query from a callback button within 
 | button_label        | String            | Optional | Button label                                                                                                                                                                                 |
 
 ## InlineSearch
+
+```json
+{
+  "method": "inlineSearch",
+  "inlineSearch": {
+    "date": 1600589339535,
+    "keywords": "فتح",
+    "chat": { "id": "90089668723575679", "type": "Mobile" },
+    "from": { "id": "90089668723575679", "type": "Mobile" },
+    "search_id": 1589060
+  }
+}
+```
 
 This object represents InlineSearch
 
@@ -780,6 +780,7 @@ This object represents an inline search, Returned when user write search keyword
   }
 }
 ```
+
 ## User
 
 | Field | Type | Required | Description                   |
