@@ -1,5 +1,5 @@
 ----------------------Amir Salah ReadMe-----------------------------
-
+--------------------------------------------------------------------
 To run, you have to have Ruby installed, version 2.6 is ok.
 After installing Ruby navigate to the slate directory.
 In the command line type 
