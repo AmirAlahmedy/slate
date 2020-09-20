@@ -1,4 +1,5 @@
----------------Amir Salah ReadMe-----------------------------
+----------------------Amir Salah ReadMe-----------------------------
+
 To run, you have to have Ruby installed, version 2.6 is ok.
 After installing Ruby navigate to the slate directory.
 In the command line type 
@@ -7,7 +8,7 @@ then type
 `bundle install`
 finally type
 `bundle exec middleman server`
--------------------------------------------------------------
+--------------------------------------------------------------------
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/slatedocs/img/main/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
