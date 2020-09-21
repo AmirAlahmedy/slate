@@ -1,4 +1,4 @@
-# Types
+# ![](../images/ic_Types.svg) More Types
 
 The following data structures represents custom keypad menus with reply options
 

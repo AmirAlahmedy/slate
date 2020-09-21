@@ -1,4 +1,4 @@
-# API Bot Features
+# ![](../images/ic_favourite.svg) API Bot Features
 ## Keypad Menu Types
 ### Normal Keypad Menu
 Whenever your bot sends a message, it can pass along a special keypad with predefined reply options. nandbox apps that receive the message will display your keypad to the user. Tapping any of the buttons will send the respective command. This way you can drastically simplify user interaction with your bot.

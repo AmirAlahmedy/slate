@@ -1,4 +1,4 @@
-# ✅ **API/Bot Authorization Token**
+# ![](../images/ic_info.svg) **API/Bot Authorization Token**
 
 Once you&#39;ve created an API/bot, you can obtain the API/bot&#39;s token by opening the bot for edit/chat and click "Get token" from top right overflow menu. The authorization token and API Server URL link will be sent within the bot chat window. The information will be used to connect your API/bot to API Server.
 

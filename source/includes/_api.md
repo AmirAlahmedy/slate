@@ -1,4 +1,4 @@
-# How API/Bot works?
+# ![](../images/ic_setting.svg) How API/Bot works?
 
 Users can interact with API/bots in two ways:
 

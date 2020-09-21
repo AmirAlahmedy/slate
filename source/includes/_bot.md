@@ -1,4 +1,4 @@
-# API/Bot
+# ![](../images/ic_Api.svg) API/Bot
 ## Authentication
 Each bot is given a unique authentication token. You can obtain the token through the "Get token" overflow menu from the API/bot chat. Obtaining a new token will cause any existing token to immediately expire.
 

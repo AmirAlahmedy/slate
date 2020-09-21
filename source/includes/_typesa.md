@@ -1,4 +1,4 @@
-# Types
+# ![](../images/ic_Types.svg) Types
 
 Capitalized types are data structures represented as JSON objects. The different types in incoming messages are listed below.
 

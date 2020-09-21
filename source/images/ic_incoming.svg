@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>ic_incoming_22dp</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Menus--" transform="translate(-53.000000, -423.000000)" fill="#4F566B" fill-rule="nonzero">
+            <g id="Group-2" transform="translate(53.000000, 423.000000)">
+                <g id="inbox" transform="translate(1.636364, 1.636364)">
+                    <polygon id="Path" points="10.2953704 4.35015447 7.36363636 8.29858807 4.43190234 4.35015447 0.582245028 4.35015447 7.36363636 9.85599716 14.1450277 4.35015447"></polygon>
+                    <polygon id="Path" points="9.87872088 8.92512997 14.7247127 14.1493423 14.7247127 4.99073331"></polygon>
+                    <polygon id="Path" points="9.2075657 9.47003906 7.36363636 10.9671009 5.64552166 9.57218075 0.638191406 14.7272727 14.0841914 14.7272727"></polygon>
+                    <polygon id="Path" points="0.0025600142 4.99073331 0.0025600142 14.1436183 4.97315838 9.02632244"></polygon>
+                    <polygon id="Path" points="8.95472834 3.26421946 8.95472834 3.26321271 8.95472834 0.00512002841 8.95472834 0 5.77257315 0 5.77257315 0.00512002841 5.77257315 3.26321271 5.77257315 3.26421946 4.62839062 3.26421946 7.36363636 6.94802237 10.0988821 3.26421946"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
