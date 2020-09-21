@@ -1,4 +1,4 @@
-# ![](../images/ic_incoming.svg)API Manual: IncomingMessages
+# ![](../images/ic_incoming.svg) IncomingMessages
 
 Your bot must be connected and authenticated over the WebSocket session to receive incoming messages. The Bot Server does not store any messages for bots for later retrieval.
 

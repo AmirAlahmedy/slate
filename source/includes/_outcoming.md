@@ -1,4 +1,4 @@
-# ![](../images/ic_outcoming.svg) API Manual: Outgoing Messages
+# ![](../images/ic_outcoming.svg) Outgoing Messages
 
 ## Send Message
 

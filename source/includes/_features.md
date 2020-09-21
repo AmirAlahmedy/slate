@@ -7,6 +7,7 @@ nandbox currently supports text and emoji for the buttons. Here are some custom 
 ### Inline Keypad Menu
 There are times when you would prefer to do things directly within the chat, such as when the user is changing settings, is choosing from a selection (e.g. voting) or flipping through search results. In such cases you can use Inline Keypads that are integrated directly into the messages they belong to.
 When callback buttons are used, your bot can update its existing messages (or just the keyboard) so that the chat remains tidy.
+
 ![](../images/image014.png)
 ## Message Edit
 Since Inline Keypad Menus do not send additional messages to the chat, it makes sense to give bots a way of manipulating existing messages, so that they don’t have to send a new message each time they need to update something. This helps reduce clutter and build more fluid interfaces.  All updated and edited messages will be marked with a small edit icon.
