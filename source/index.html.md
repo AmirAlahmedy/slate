@@ -15,6 +15,7 @@ includes:
 search: true
 code_clipboard: true
 ---
+
 # ![](../images/ic_home.svg) Introduction
 
 The API/Bot allows you to easily create programs that interface with nandbox App ecosystem platform. nandbox API/Bots are special accounts created without a phone number, or email that run as third party applications to provide extra functionality by interfacing to nandbox App ecosystem platform. Users can interact with API/Bots by sending them messages, commands and inline requests. You control your API/Bots using WebSocket messages to nandbox API server.
@@ -23,9 +24,9 @@ The API/Bot allows you to easily create programs that interface with nandbox App
 
 Users can interact with API/bots in two ways:
 
-  1. Send messages and commands to API/bots through a direct chat, by adding them to groups/channels, or associate them to your nandbox Apps. This is useful for example in automated chat bots, news bots, and/or integrating your nandbox&#39;s App to your backend systems.
+1. Send messages and commands to API/bots through a direct chat, by adding them to groups/channels, or associate them to your nandbox Apps. This is useful for example in automated chat bots, news bots, and/or integrating your nandbox&#39;s App to your backend systems.
 
-  1. Send requests directly from the input field by typing the bot&#39;s @handle and a query. This allows sending content from inline API/bots directly into any chat, group or channel within nandbox Apps.
+1. Send requests directly from the input field by typing the bot&#39;s @handle and a query. This allows sending content from inline API/bots directly into any chat, group or channel within nandbox Apps.
 
 Messages, commands and requests sent by users are passed to the software running on your servers where API/Bot is hosted. Our intermediary server handles all encryption and communication with the nandbox API/Bot for you. You communicate with this server via a WebSocket interface that offers a simplified version of the nandbox API/Bot.
 
@@ -39,31 +40,27 @@ Login to your administrative portal of your nandbox App. Go to Bot Manager secti
 ![](../images/image002.png)
 ![](../images/image003.png)
 
-
 There are some API/Bot are already implemented by third party vendors offered in the Bot marketplace, where you can add them to your nandbox App and determine their access level to the information within your App.
 ![](../images/image004.png)
 
-
 ### Create API/Bot within nandbox Messenger
-
 
 Use nandbox Android App version 2.1.0 or later.
 From Settings menu open "Bot Manager".
 ![](../images/image005.jpg)
 
-
 Tap "+" to create a new bot.
 ![](../images/image006.png)
 
-
 Enter your Bot title (Limited to 32 characters).
 ![](../images/image007.jpg)
+
 1. Choose your bot type
 
 - Choose "Business", if your bot is associated or will be for use by organization, or business.
 
 - Choose "Individual" if bot will be for use by individual.
-![](../images/image008.jpg)
+  ![](../images/image008.jpg)
 
 Enter Bot Description: a short text of up to 120 characters, describing your bot. Users will see this text on the bot&#39;s profile page and when they share your bot with someone, this text is sent together with the link.
 
@@ -75,8 +72,7 @@ Enter Bot Description: a short text of up to 120 characters, describing your bot
    a short text of up to 512 characters, describing your bot. Users will see this text at the beginning of the conversation with the bot.
 
 1. Give your bot a unique handle by providing your business email.
-![](../images/image009.jpg)
-
+   ![](../images/image009.jpg)
 
 Unlike others, we protect your business name from being reserved by others bots. Your bot unique handle will be matching your web domain name. For example, if your business domain name is XYZ.com your bot handle will be "xyz".
 
@@ -102,44 +98,57 @@ It is important to know that any change in the bot information will result the b
 ```javascript
 const TOKEN = "90091903321704167:0:pVB3qS7H3JBDVvxA9pRh4EQl8ObLVJ";
 const config = {
-    URI: "wss://w1.nandbox.net:5020/nandbox/api/",
-    DownloadServer: "https://w1.nandbox.net:5020/nandbox/download/",
-    UploadServer: "https://w1.nandbox.net:5020/nandbox/upload/"
-}
+  URI: "wss://w1.nandbox.net:5020/nandbox/api/",
+  DownloadServer: "https://w1.nandbox.net:5020/nandbox/download/",
+  UploadServer: "https://w1.nandbox.net:5020/nandbox/upload/",
+};
 ```
 
 <aside class="notice">
 You must replace <code>TOKEN</code> in your bot code with the token you got earlier.
 </aside>
 
-
-
 # ![](../images/ic_search.svg) Bot Search Index
-Your app users will be able to search bots title, description and username and join them. It is recommended for owners to use keywords within the title, description and handle to better represent their bot functionality for better exposure. 
+
+Your app users will be able to search bots title, description and username and join them. It is recommended for owners to use keywords within the title, description and handle to better represent their bot functionality for better exposure.
 ![](../images/image012.png)
 
 # ![](../images/ic_favourite.svg) API Bot Features
+
 ## Keypad Menu Types
+
 ### Normal Keypad Menu
+
 Whenever your bot sends a message, it can pass along a special keypad with predefined reply options. nandbox apps that receive the message will display your keypad to the user. Tapping any of the buttons will send the respective command. This way you can drastically simplify user interaction with your bot.
 nandbox currently supports text and emoji for the buttons. Here are some custom keyboard examples:
 ![](../images/image013.png)
+
 ### Inline Keypad Menu
+
 There are times when you would prefer to do things directly within the chat, such as when the user is changing settings, is choosing from a selection (e.g. voting) or flipping through search results. In such cases you can use Inline Keypads that are integrated directly into the messages they belong to.
 When callback buttons are used, your bot can update its existing messages (or just the keyboard) so that the chat remains tidy.
 
 ![](../images/image014.png)
+
 ## Message Edit
-Since Inline Keypad Menus do not send additional messages to the chat, it makes sense to give bots a way of manipulating existing messages, so that they don’t have to send a new message each time they need to update something. This helps reduce clutter and build more fluid interfaces.  All updated and edited messages will be marked with a small edit icon.
+
+Since Inline Keypad Menus do not send additional messages to the chat, it makes sense to give bots a way of manipulating existing messages, so that they don’t have to send a new message each time they need to update something. This helps reduce clutter and build more fluid interfaces. All updated and edited messages will be marked with a small edit icon.
 ![](../images/image015.png)
+
 ## API/Bot Types
+
 ### Chat API/Bot
+
 Users can interact with chat bots directly by opening the API/bot chat, or indirectly by communicating with a bot within a group, channel, or App.
+
 ### Inline API/Bot
+
 Users can interact with your bot via inline queries straight from the text input field in any chat, by typing the bot's handle and then a query.
 Having received the query, your bot can return some results. As soon as the user taps one of them, it is sent to the user's currently opened chat. This way, users can request content from your bot in any of their chats, groups or channels.
 ![](../images/image016.jpg)
+
 ## API/Bot Filter
+
 Bots are frequently added to groups and/or channels in order to augment communication between human users, e.g. by providing news, notifications from external services or additional search functionality. In order to insure that the bot is not receiving messages not intended for it, you can configure a bot filter.
 
 A bot running with a filter will not receive all messages that people send to the group. Instead, it will only receive:
@@ -164,7 +173,9 @@ Some API/bots need extra data from the user to work properly. For example, knowi
 API/Bots can ask a user for their **location** and **phone number** using special buttons. Note that both phone number and location request buttons will only work after the user accepts and grants permission for such service.
 
 # ![](../images/ic_Api.svg) API/Bot
+
 ## Authentication
+
 Each bot is given a unique authentication token. You can obtain the token through the "Get token" overflow menu from the API/bot chat. Obtaining a new token will cause any existing token to immediately expire.
 
 <aside class="success">
@@ -172,6 +183,7 @@ Remember — a happy bot is an authenticated bot!
 </aside>
 
 ## Sending Requests
+
 Requests to nandbox Bot API are sent as JSON objects over a WebSocket session. In order to connect to the server, you need to obtain an authentication token first.
 
 The Bot Server WebSocket URL format is:
@@ -180,19 +192,30 @@ The Bot Server WebSocket URL format is:
 
 The first request over the WebSocket method must be an authentication request. An example of an authentication request is as follows:
 
-```json 
-{"method":"TOKEN_AUTH","rem":true,"token":"90091784056528980:0:odIgBOQZ4lVpqSIuxpQlGzmse3hwsS"}
-``` 
+```json
+{
+  "method": "TOKEN_AUTH",
+  "rem": true,
+  "token": "90091784056528980:0:odIgBOQZ4lVpqSIuxpQlGzmse3hwsS"
+}
+```
 
 If bot is successfully authenticated, you should receive a response like the following:
 
 ```json
-{"method": "TOKEN_AUTH_OK", "name":"Hello World”, Bot","ID":"90091784056528980","reference":15269906159119, "date":1533216558322}
- ```
+{
+  "method": "TOKEN_AUTH_OK",
+  "name": "Hello World”, Bot",
+  "ID": "90091784056528980",
+  "reference": 15269906159119,
+  "date": 1533216558322
+}
+```
 
 After the bot is successfully authenticated it can send further requests.
 
 ## Uploading Media
+
 Media files are uploaded using HTTP PUT. You must set the following HTTP headers in the upload request:
 
 - " Content-type" = `"<File content type>"`
@@ -204,6 +227,7 @@ The Bot Server upload URL format is:
 `https://<nandboxBotServer>:<port>/nandbox/upload/<filename>`
 
 ## Downloading Media
+
 Media files are downloaded using HTTP GET. You must set the following HTTP headers in the download request.
 
 - "Content-type" = application/json
@@ -216,6 +240,7 @@ The Bot Server download URL format is:
 `**https://<nandboxBotServer>:<port>/nandbox/download/<file id>`
 
 ## Keypad Menu
+
 ### Sending Menu to Chat
 
 For both Normal and Inline Keypad menus, the menu structure definition can be sent to chat in two ways:
@@ -642,7 +667,6 @@ Incoming message represents outbound message acknowledge.
 | ------ | ------ | -------- | ----------------------------------------------------------- |
 | method | String | Yes      | "myProfilemessageAck"                                       |
 | ack    | Ack    | Yes      | Object represents outbound messages acknowledgment details. |
-
 
 # ![](../images/ic_Types.svg) Types
 
@@ -1498,9 +1522,117 @@ This object represents acknowledgement of receipt new or updated normal keypad m
   }
 }
 ```
+
 # ![](../images/ic_outcoming.svg) Outgoing Messages
 
 ## Send Message
+
+```javascript
+// below is an example that sends a button on receiving a message
+nCallBack.onReceive = (incomingMsg) => {
+  // send a button on receiving a message
+
+  // construct the outgoing message
+  let outmsg = new TextOutMessage();
+  const reference = Id();
+  outmsg.chat_id = incomingMsg.chat.id;
+  outmsg.reference = reference;
+  outmsg.text = "https://edition.cnn.com/";
+  outmsg.web_page_preview = OutMessage.WEB_PREVIEW_INSTANCE_VIEW;
+  outmsg.echo = 1;
+
+  let menuRef = MAIN_MENU_001;
+  let oneBtn = createButton(
+    "",
+    "oneBtnCBInWebView",
+    1,
+    "RED",
+    "White",
+    null,
+    null
+  );
+  oneBtn.button_icon = "ic_ball_ic_24dp";
+  oneBtn.button_icon_bgcolor = "#FFFF44";
+
+  let buttons = [];
+  buttons.push(oneBtn);
+
+  // a row is an array of buttons
+  let rowOrder = 1;
+  let firstRow = new Row(buttons, rowOrder);
+  let rows = [];
+  rows.push(firstRow);
+
+  // a menu is an array of rows
+  let inlineMenu = [];
+  let firstInlineMenu = new Menu(rows, menuRef);
+  inlineMenu.push(firstInlineMenu);
+
+  // the outgoing message in this case contains an inline menu
+  outmsg.menu_ref = menuRef;
+  outmsg.inline_menu = inlineMenu;
+
+  // send the outgoing message to the server
+  api.send(JSON.stringify(outmsg));
+};
+
+// use the following function to create your buttons
+let createButton = (
+  label,
+  callback,
+  order,
+  bgColor,
+  txtColor,
+  buttonQuery,
+  nextMenuRef
+) => {
+  let btn = new Button();
+
+  btn.button_label = label;
+  btn.button_order = order;
+  btn.button_callback = callback;
+  btn.button_bgcolor = bgColor;
+  btn.button_textcolor = txtColor;
+  btn.button_query = buttonQuery;
+  btn.next_menu = nextMenuRef;
+
+  return btn;
+};
+```
+
+```json
+{
+  "method": "sendMessage",
+  "chat_id": "90089668723575679",
+  "reference": 6096600070010,
+  "text": "https://edition.cnn.com/",
+  "echo": 1,
+  "menu_ref": "MAIN_MENU_001",
+  "inline_menu": [
+    {
+      "menu_ref": "MAIN_MENU_001",
+      "rows": [
+        {
+          "row_order": 1,
+          "buttons": [
+            {
+              "button_label": "",
+              "button_order": 1,
+              "button_callback": "oneBtnCBInWebView",
+              "button_bgcolor": "RED",
+              "button_textcolor": "White",
+              "button_query": null,
+              "next_menu": null,
+              "button_icon": "ic_ball_ic_24dp",
+              "button_icon_bgcolor": "#FFFF44"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
 | Field                    | Type          | Required | Description                                                                                                       |
 | ------------------------ | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -1521,7 +1653,35 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 
 ## Send Photo
 
-Use this method to send photos. On success, the sent Message is returned. Bots can currently send phot files of up to 20 MB in size, this limit may be changed in the future.
+```javascript
+/* use the MediaTansfer in src/util/MediaTransfer class to upload the photo to the server
+ then send it */
+MediaTransfer.uploadFile(TOKEN, "./your_photo.jpg", config.UploadServer)
+  .then((uploadedPhotoId) => {
+    let photoMsg = new PhotoOutMessage();
+    photoMsg.chat_id = incomingMsg.chat.id;
+    photoMsg.reference = Id();
+    photoMsg.photo = uploadedPhotoId;
+    photoMsg.caption = "Photo From Bot";
+    photoMsg.echo = 1;
+
+    api.send(JSON.stringify(photoMsg));
+  })
+  .catch((e) => console.log("Upload failed", e));
+```
+
+```json
+{
+  "method": "sendPhoto",
+  "chat_id": "90091903321704167",
+  "reference": 36006160866836,
+  "photo": "f3b0f1e475e5eebf9c320c1231767f3476210a24c04285132cae083494a65468.jpg",
+  "caption": "Photo From Bot",
+  "echo": 1
+}
+```
+
+Use this method to send photos. On success, the sent Message is returned. Bots can currently send photo files of up to 20 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
 | ------------------------ | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -1540,6 +1700,32 @@ Use this method to send photos. On success, the sent Message is returned. Bots c
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Video
+
+```javascript
+MediaTransfer.uploadFile(TOKEN, "./your_video.mp4", config.UploadServer)
+  .then((uploadedVideoId) => {
+    let vidoMsg = new VideoOutMessage();
+    vidoMsg.chat_id = incomingMsg.chat.id;
+    vidoMsg.reference = Id();
+    vidoMsg.video = uploadedVideoId;
+    vidoMsg.caption = "Video From Bot";
+    vidoMsg.echo = 0;
+
+    api.send(JSON.stringify(vidoMsg));
+  })
+  .catch((e) => console.log("Upload failed", e));
+```
+
+```json
+{
+  "method": "sendVideo",
+  "chat_id": "90091903321704167",
+  "reference": 26646740171012,
+  "video": "190717a3076b1eeac6ba555a2924179e9046bf2ceb28389f39d22dc697c54219.mp4",
+  "caption": "Video From Bot",
+  "echo": 0
+}
+```
 
 Use this method to send videos. nandbox clients support mp4 videos (other formats mybe sent as Document). On success, the sent Message is returned. Bots can currently send phot files of up to 50 MB in size, this limit may be changed in the future.
 
@@ -1607,6 +1793,35 @@ Use this method to send voice note. If you want nandbox clients to display the f
 
 ## Send Document
 
+```javascript
+MediaTransfer.uploadFile(
+  TOKEN,
+  "./your_document.pdf",
+  config.UploadServer
+).then((uploadedDocumentId) => {
+  let documentOutMsg = new DocumentOutMessage();
+  documentOutMsg.chat_id = incomingMsg.chat.id;
+  documentOutMsg.reference = Id();
+  documentOutMsg.document = uploadedDocumentId;
+  documentOutMsg.name = "Document renamed inside Bot";
+  documentOutMsg.caption = "Document From Bot";
+
+  api.send(JSON.stringify(documentOutMsg));
+ 
+});
+```
+
+```json
+{
+  "method": "sendDocument",
+  "chat_id": "90091903321704167",
+  "reference": 96181774767671,
+  "caption": "from all option send",
+  "name": null,
+  "size": null
+}
+```
+
 Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1629,6 +1844,30 @@ Use this method to send general files. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Location
+
+```javascript
+let locationOutMsg = new LocationOutMessage();
+locationOutMsg.chat_id = incomingMsg.chat.id;
+locationOutMsg.reference = Id();
+locationOutMsg.name = incomingMsg.location.name;
+locationOutMsg.details = incomingMsg.location.details;
+locationOutMsg.latitude = incomingMsg.location.latitude;
+locationOutMsg.longitude = incomingMsg.location.longitude;
+locationOutMsg.caption = "Location From Bot";
+
+api.send(JSON.stringify(locationOutMsg));
+```
+
+```json
+{
+  "method": "sendLocation",
+  "chat_id": "90089668723575679",
+  "reference": 80613906787070,
+  "latitude": "29.9740559",
+  "longitude": "31.482059",
+  "caption": "Location From Bot"
+}
+```
 
 Use this method to send location and point of map. On success, the sent Message is returned.
 
@@ -1653,6 +1892,26 @@ Use this method to send location and point of map. On success, the sent Message 
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Contact
+
+```javascript
+// this example echoes the received contact
+let contactOutMsg = new ContactOutMessage();
+contactOutMsg.chat_id = incomingMsg.chat.id;
+contactOutMsg.reference = Id;
+contactOutMsg.name = incomingMsg.contact.name;
+contactOutMsg.phoneNumber = incomingMsg.contact.phoneNumber;
+
+api.send(JSON.stringify(contactOutMsg));
+```
+
+```json
+{
+  "method": "sendContact",
+  "chat_id": "90089668723575679",
+  "reference": 16350635381030,
+  "name": "Youssef Sayed"
+}
+```
 
 Use this method to send phone contact. On success, the sent Message is returned.
 
@@ -1745,21 +2004,21 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 ## Inline Search Answer
 
 ```json
- {
-    "method":"inlineSearchAnswer",
-    "results":
-      [
-        {
-          "title":"ص (50)",
-          "caption":"﴿جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأ َبْوَابُ﴾\nص (50)\nShared via @qurany_nb",
-          "height":10,
-          "width":40,
-          "description":"جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأَبْوَابُ"
-        }
-      ],
-    "next_offset":"",
-    "chat":{"id":"90089668723575679","type":"Mobile"},
-    "to_user_id":"90089668723575679","search_id":1589060
+{
+  "method": "inlineSearchAnswer",
+  "results": [
+    {
+      "title": "ص (50)",
+      "caption": "﴿جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأ َبْوَابُ﴾\nص (50)\nShared via @qurany_nb",
+      "height": 10,
+      "width": 40,
+      "description": "جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأَبْوَابُ"
+    }
+  ],
+  "next_offset": "",
+  "chat": { "id": "90089668723575679", "type": "Mobile" },
+  "to_user_id": "90089668723575679",
+  "search_id": 1589060
 }
 ```
 
@@ -1771,7 +2030,6 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | next_offset | String               | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
 | chat_id     | String               | yes      | Chat id                                                                                                                                                                                           |
 | search_id   | String               | yes      | Unique id of this message                                                                                                                                                                         |
-
 
 # ![](../images/ic_Types.svg) More Types
 
@@ -1885,6 +2143,7 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
   "user_id": "4521191845180798"
 }
 ```
+
 ## Get Chat Administrators
 
 Use this method to get Chat Administrators. On success, [ChatAdministrators](#_1v1yuxt) message will received .
@@ -2301,25 +2560,20 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 
 ```json
 {
+  "method": "setMyProfile",
 
-"method": "setMyProfile",
+  "user": {
+    "profile": "Other",
 
-"user": {
+    "status": "OTHER PROFILE",
 
-"profile": "Other",
-
-"status": "OTHER PROFILE",
-
-"photo": {
-
-"id": "95d4438d7773be38db78.jpg"
-
-}
-
-}
-
+    "photo": {
+      "id": "95d4438d7773be38db78.jpg"
+    }
+  }
 }
 ```
+
 ## Get My Profiles
 
 Use this method to get Bot Profile. On success, myProfile is returned.
@@ -2332,8 +2586,6 @@ Use this method to get Bot Profile. On success, myProfile is returned.
 
 ```json
 {
-
-"method": "getMyProfiles"
-
+  "method": "getMyProfiles"
 }
 ```
