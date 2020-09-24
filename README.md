@@ -8,7 +8,7 @@ then type
 `bundle install`
 finally type belwo to run server 
 `bundle exec middleman server`
-to build only run the following 
+to build only run the following (This will export project to html and css)
 `bundle exec middleman build`
 --------------------------------------------------------------------
 
