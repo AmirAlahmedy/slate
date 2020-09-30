@@ -328,25 +328,25 @@ Incoming message represent new incoming, edited or deleted message from server
 | Field   | Type                | Required | Description                                  |
 | ------- | ------------------- | -------- | -------------------------------------------- |
 | method  | String              | Yes      | "message"                                    |
-| message | [Message](#_nmf14n) | Yes      | Object represents the content of the message |
+| message | [Message](#message-2) | Yes      | Object represents the content of the message |
 
 ## User Details
 
-Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#_2nusc19) .
+Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#get-user) .
 
 | Field  | Type              | Required | Description                                     |
 | ------ | ----------------- | -------- | ----------------------------------------------- |
 | method | String            | Yes      | "userDetails"                                   |
-| user   | [User](#_3tbugp1) | Yes      | Object represents a nandbox user or bot account |
+| user   | [User](#user) | Yes      | Object represents a nandbox user or bot account |
 
 ## Chat Details
 
-Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#_1302m92)
+Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#get-chat)
 
 | Field  | Type              | Required | Description                                                   |
 | ------ | ----------------- | -------- | ------------------------------------------------------------- |
 | method | String            | Yes      | "chatDetails"                                                 |
-| chat   | [Chat](#_28h4qwu) | Yes      | This object represents a nandbox group or channel information |
+| chat   | [Chat](#chat) | Yes      | This object represents a nandbox group or channel information |
 
 ## Chat Menu Callback
 
@@ -371,7 +371,7 @@ Incoming message represents information about a clicked button associated with a
 | Field            | Type                          | Required | Description                                                                                              |
 | ---------------- | ----------------------------- | -------- | -------------------------------------------------------------------------------------------------------- |
 | method           | String                        | Yes      | "chatMenuCallback"                                                                                       |
-| chatMenuCallback | [ChatMenuCallback](#_2dlolyb) | Yes      | object represents an incoming callback query from a callback button associated with a normal keypad menu |
+| chatMenuCallback | [ChatMenuCallback](#chatmenucallback) | Yes      | object represents an incoming callback query from a callback button associated with a normal keypad menu |
 
 ## Inline Message Callback
 
@@ -380,25 +380,25 @@ Incoming message represents information about a clicked button within an inline 
 | Field                 | Type                              | Required | Description                                                                                                                         |
 | --------------------- | --------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | method                | String                            | Yes      | "inlineMessageCallback"                                                                                                             |
-| inlineMessageCallback | [inlineMessageCallback](#_sqyw64) | Yes      | object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message |
+| inlineMessageCallback | [inlineMessageCallback](#inlinemessagecallback) | Yes      | object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message |
 
 ## Chat Member
 
-Incoming message represents information about group or channel member returned as a reply to [getChatMember](#_3mzq4wv) , [banChatMember](#_haapch), [unbanChatMember](#_319y80a), [removeChatMember](#_1gf8i83) and when user join or leaves the chat.
+Incoming message represents information about group or channel member returned as a reply to [getChatMember](#get-chat-member) , [banChatMember](#ban-chat-member), [unbanChatMember](#unban-chat-member), [removeChatMember](#remove-chat-member) and when user join or leaves the chat.
 
 | Field      | Type                    | Required | Description                           |
 | ---------- | ----------------------- | -------- | ------------------------------------- |
 | method     | String                  | Yes      | "chatMember"                          |
-| chatMember | [ChatMemebr](#_1rvwp1q) | Yes      | object represents a chat member user. |
+| chatMember | [ChatMemebr](#chat-member-2) | Yes      | object represents a chat member user. |
 
 ## Chat Administrators
 
-Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#_2250f4o).
+Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#get-chat-administrators).
 
 | Field              | Type                            | Required | Description                                             |
 | ------------------ | ------------------------------- | -------- | ------------------------------------------------------- |
 | method             | String                          | Yes      | "chatAdministrators"                                    |
-| chatAdministrators | [ChatAdministrators](#_4bvk7pj) | Yes      | object represents channel or group administrator users. |
+| chatAdministrators | [ChatAdministrators](#chat-administrators-2) | Yes      | object represents channel or group administrator users. |
 
 ## My Profile
 
@@ -434,12 +434,12 @@ Incoming message represents information about group or channel administrators re
 }
 ```
 
-Incoming message represents Bot profile details , this will be come as a reply to [getMyProfiles](#_3ep43zb) outgoing message
+Incoming message represents Bot profile details , this will be come as a reply to [getMyProfiles](#get-my-profiles) outgoing message
 
 | Field  | Type              | Required | Description                                |
 | ------ | ----------------- | -------- | ------------------------------------------ |
 | method | String            | Yes      | "myProfile"                                |
-| user   | [User](#_3tbugp1) | Yes      | User object represents Bot profile details |
+| user   | [User](#user) | Yes      | User object represents Bot profile details |
 
 ## Message Ack
 
@@ -485,8 +485,8 @@ This object represents a nandbox user or bot account.
 | id       | String  | Yes      | Unique identifier for this user or bot                                                                                                                 |
 | name     | String  | Yes      | User or bot name.                                                                                                                                      |
 | version  | String  | Yes      | Last updated user profile version.                                                                                                                     |
-| terminal | String  | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz)       |
-| type     | String  | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#_32hioqz) |
+| terminal | String  | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#message-2)       |
+| type     | String  | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#message-2) |
 | is_bot   | Boolean | Optional | True if this user is a bot. Returned only in GetUser                                                                                                   |
 | status   | String  | Optional | User status. Returned only in GetUser ,                                                                                                                |
 | photo    | Photo   | Optional | Public user&#39;s Photo. Returned only in GetUser                                                                                                      |
@@ -519,7 +519,7 @@ The main message method defines all parameters for all incoming messages to the 
 | ------------------- | ---------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | message_id          | String                       | Yes         | Unique identifier for this message.                                                                                                                                                                                                                                                                                                                                                                             |
 | Referencereference  | StringLong                   | yes         | Unique local identifier                                                                                                                                                                                                                                                                                                                                                                                         |
-| Chatchat            | [Chat](#_Chat)               | Yes         | Conversation the message belongs to.                                                                                                                                                                                                                                                                                                                                                                            |
+| Chatchat            | [Chat](#chat)               | Yes         | Conversation the message belongs to.                                                                                                                                                                                                                                                                                                                                                                            |
 | Fromfrom            | User                         | Yes         | Sender User of this message                                                                                                                                                                                                                                                                                                                                                                                     |
 | sent_to             | User                         | Yes         | Receiver user, most of the case it is the bot ID except if channel has multiple administrators, it will be the specific admin who should receive the message.                                                                                                                                                                                                                                                   |
 | type                | String                       | Yes         | "text": For text messages "text_file": Message is a text tile. Any message exceeds 1800 characters will be converted to text file. "photo":Message is a photo."gif": Message is a GIF"sticker": Message is a sticker."video": Message is a video"audio": Message is an audio"voice": Message is a voice note "location": Message is a location"contact": Message is a contact "document": Message is a document |
@@ -552,7 +552,7 @@ The main message method defines all parameters for all incoming messages to the 
 | url                 | String                       |
 |                     |
 |                     |
-| White_list_user     | [WhiteListUser](#_Whitelist) |
+| White_list_user     | [WhiteListUser](#whitelist) |
 |                     |
 |                     |
 | tag                 | TagDefinition                |
@@ -931,12 +931,12 @@ This object represents a chat member user returned in getChatMember banChatMembe
 
 ## Chat Administrators
 
-This object represents channel or group administrator users. Returned as a reply to [getChatAdministrators](#_2250f4o)
+This object represents channel or group administrator users. Returned as a reply to [getChatAdministrators](#get-chat-administrators)
 
 | Field          | Type                       | Required | Description                                                                |
 | -------------- | -------------------------- | -------- | -------------------------------------------------------------------------- |
-| chat           | [Chat](#_28h4qwu)          | Yes      | channel or group Unique identifier object where administrators belongs to. |
-| administrators | Array of [User](#_3tbugp1) | Yes      | List of All administrator users of this channel or group.                  |
+| chat           | [Chat](#chat)          | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| administrators | Array of [User](#user) | Yes      | List of All administrator users of this channel or group.                  |
 
 **JSON Example:**
 
@@ -972,13 +972,13 @@ This object represents channel or group administrator users. Returned as a reply
 
 ## Blacklist
 
-This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Blacklist)
+This object represents blacklist. Returned as a reply to [getBlacklist](#get-blacklist)
 
 | Field | Type                     | Required | Description                                                                |
 | ----- | ------------------------ | -------- | -------------------------------------------------------------------------- |
-| chat  | [Chat](#_28h4qwu)        | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| chat  | [Chat](#chat)        | Yes      | channel or group Unique identifier object where administrators belongs to. |
 | eop   | String                   | Yes      | Number of page                                                             |
-| users | Array of UsersSignupUser | Yes      | Array of users                                                             |
+| users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
 
 **JSON Example:**
 
@@ -1036,13 +1036,13 @@ This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Bl
 
 ## Whitelist
 
-This object represents whitelist. Returned as a reply to [getWhitelist](#_Get_Blacklist)
+This object represents whitelist. Returned as a reply to [getWhitelist](#get-whitelist)
 
 | Field | Type                 | Required | Description                                                                |
 | ----- | -------------------- | -------- | -------------------------------------------------------------------------- |
-| chat  | [Chat](#_28h4qwu)    | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| chat  | [Chat](#chat)    | Yes      | channel or group Unique identifier object where administrators belongs to. |
 | eop   | String               | Yes      | Number of page                                                             |
-| users | Array of SignupUsers | Yes      | Array of users                                                             |
+| users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
 
 **JSON Example:**
 
@@ -1217,7 +1217,7 @@ This object represents an inline search, Returned when user write search keyword
 | Field       | Type                           | Required | Description                   |
 | ----------- | ------------------------------ | -------- | ----------------------------- |
 | method      | String                         | yes      | "inlineSearch"                |
-| inineSearch | [InlineSearch](#_InlineSearch) | Yes      | Member User Unique identifier |
+| inineSearch | [InlineSearch](#inlinesearch) | Yes      | Member User Unique identifier |
 
 **JSON Example:**
 
@@ -1865,7 +1865,7 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | method      | String               | Yes      | "inlineSearchAnswer"                                                                                                                                                                              |
 | to_user_id  | String               | Yes      | The user id you want to sent to him                                                                                                                                                               |
-| results     | [Results](#_Results) | Yes      | Array of media information                                                                                                                                                                        |
+| results     | [Results](#results) | Yes      | Array of media information                                                                                                                                                                        |
 | next_offset | String               | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
 | chat_id     | String               | yes      | Chat id                                                                                                                                                                                           |
 | search_id   | String               | yes      | Unique id of this message                                                                                                                                                                         |
@@ -1919,7 +1919,7 @@ Use this method to set the navigation button with the menu reference. When navig
 | Field                      | Type                              | Required | Description                                                                                                               |
 | -------------------------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
 | method                     | String                            | Yes      | "setNavigationButton"                                                                                                     |
-| navigation_buttonsmenu_ref | StringArray of [Button](#_Button) | Yes      | Array of Button.Menu unique identifier that reference the next menu to navigate to it when the navigation button pressed. |
+| navigation_buttonsmenu_ref | StringArray of [Button](#button) | Yes      | Array of Button.Menu unique identifier that reference the next menu to navigate to it when the navigation button pressed. |
 | chat_id                    | String                            | Yes      | Unique identifier for the target chat or User_id                                                                          |
 | to_user_id                 | String                            | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user.             |
 
@@ -1985,7 +1985,7 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
 
 ## Get Chat Administrators
 
-Use this method to get Chat Administrators. On success, [ChatAdministrators](#_1v1yuxt) message will received .
+Use this method to get Chat Administrators. On success, [ChatAdministrators](#chat-administrators-2) message will received .
 
 | Field   | Type   | Required | Description                             |
 | ------- | ------ | -------- | --------------------------------------- |
@@ -2124,7 +2124,7 @@ Use this method to add white list.
 | ------ | -------------------------------------- | -------- | --------------------------------------- |
 | method | String                                 | Yes      | "addWhitelist"                          |
 | chat   | Chat                                   | Yes      | Unique identifier for Group or Channel. |
-| users  | Array of [UsersWhiteListUser](#_Users) | yes      | Add Array of Users                      |
+| users  | Array of [UsersWhiteListUser](#users) | yes      | Add Array of Users                      |
 
 **JSON Example:**
 
@@ -2152,7 +2152,7 @@ Use this method to add black list patterns:
 | ------ | ----------------------- | -------- | --------------------------------------- |
 | method | String                  | Yes      | "addBlacklistPatterns"                  |
 | chat   | Chat                    | Yes      | Unique identifier for Group or Channel. |
-| data   | Array of [Data](#_Data) | yes      | Add Array of Data                       |
+| data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
 **JSON Example:**
 
@@ -2190,7 +2190,7 @@ Use this method to add white list.patterns:
 | ------ | ----------------------- | -------- | --------------------------------------- |
 | method | String                  | Yes      | "addWhitelistPatterns"                  |
 | chat   | Chat                    | Yes      | Unique identifier for Group or Channel. |
-| data   | Array of [Data](#_Data) | yes      | Add Array of Data                       |
+| data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
 **JSON Example:**
 
