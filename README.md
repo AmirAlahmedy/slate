@@ -6,8 +6,10 @@ In the command line type
 `gem install bundler`
 then type
 `bundle install`
-finally type
+finally type belwo to run server 
 `bundle exec middleman server`
+to build only run the following (This will export project to html and css)
+`bundle exec middleman build`
 --------------------------------------------------------------------
 
 <p align="center">
