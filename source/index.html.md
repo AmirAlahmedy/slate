@@ -120,7 +120,7 @@ Your app users will be able to search bots title, description and username and j
 ### Normal Keypad Menu
 
 Whenever your bot sends a message, it can pass along a special keypad with predefined reply options. nandbox apps that receive the message will display your keypad to the user. Tapping any of the buttons will send the respective command. This way you can drastically simplify user interaction with your bot.
-nandbox currently supports text and emoji for the buttons. Here are some custom keyboard examples:
+
 ![](../images/image013.png)
 
 ### Inline Keypad Menu
@@ -1527,6 +1527,71 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 
 ## Send Message
 
+```java
+import com.nandbox.bots.api.outmessages.TextOutMessage;
+import com.nandbox.bots.api.data.Button;
+import com.nandbox.bots.api.data.Menu;
+import com.nandbox.bots.api.data.Row;
+
+// This example demonstrates sending a Text Message inside the onReceive Callback
+
+public static void main(String[] args) throws Exception {
+  NandboxClient client = NandboxClient.get();
+  client.connect(<YOUR TOKEN>, new Nandbox.Callback() {
+    Nandbox.Api api = null;
+    @Override
+    public void onReceive(IncomingMessage incomingMsg) {
+      if (incomingMsg.getText().equalsIgnoreCase("sd")) {
+        TextOutMessage textOutMessage = new TextOutMessage();
+        textOutMessage.setText("test Schedule Date Message");
+        textOutMessage.setReference(Utils.getUniqueId());
+        textOutMessage.setChatId(incomingMsg.getChat().getId());
+        textOutMessage.setScheduleDate(System.currentTimeMillis()+60000);
+        api.send(textOutMessage);
+      }
+
+      TextOutMessage outmsg = new TextOutMessage();
+      Long reference = getUniqueId();
+      outmsg.setChatId(incomingMsg.getChat().getId());
+      outmsg.setReference(reference);
+      outmsg.setText(incomingMsg.getText());
+
+      // Create Menu
+      Button btn1 = createButton("Naruto", "NarutoCB", 1, "#A5B8BC", "white", null, null);
+      Button btn2 = createButton("Sasuke", "SasukeCB", 2, "#A5B8BC", "white", null, null);
+      Row firstRow = new Row();
+      firstRow.setRowOrder(1);
+      firstRow.setButtons(new Button[] { btn1, btn2});
+      Menu inlineMenu = new Menu();
+      inlineMenu.setMenuRef(menuRef);
+      inlineMenu.setRows(new Row[] { firstRow });
+
+      // Set OutMessage Menus Array and assign menuRef to show the menu we created
+      outmsg.setInlineMenu(new Menu[] { inlineMenu });
+      outmsg.setMenuRef(menuRef);
+
+      // Send Message
+      api.send(outmsg);
+    }
+    @Override
+    public void onConnect(Nandbox.Api api) {
+      System.out.println("ONCONNECT");
+      this.api = api;
+    }
+
+    @Override
+    public void onClose() {
+      System.out.println("ONCLOSE");
+    }
+
+    @Override
+    public void onError() {
+      System.out.println("ONERROR");
+    }
+  }
+}
+```
+
 ```javascript
 // below is an example that sends a button on receiving a message
 nCallBack.onReceive = (incomingMsg) => {
@@ -1653,6 +1718,19 @@ let createButton = (
 
 ## Send Photo
 
+```java
+import com.nandbox.bots.api.outmessages.PhotoOutMessage;
+
+PhotoOutMessage outmsg = new PhotoOutMessage();
+Long reference = getUniqueId();
+outmsg.setChatId(incomingMsg.getChat().getId());
+outmsg.setReference(reference);
+outmsg.setCaption("Old Caption");
+String uploadedPhotoId = MediaTransfer.uploadFile(TOKEN, "./upload/welcome.jpg");
+outmsg.setPhoto(uploadedPhotoId);
+api.send(outmsg);
+```
+
 ```javascript
 /* use the MediaTansfer in src/util/MediaTransfer class to upload the photo to the server
  then send it */
@@ -1701,6 +1779,25 @@ Use this method to send photos. On success, the sent Message is returned. Bots c
 
 ## Send Video
 
+```java
+import com.nandbox.bots.api.outmessages.VideoOutMessage;
+import com.nandbox.bots.api.util.MediaTransfer;
+
+String uploadedVideoId = MediaTransfer.uploadFile(TOKEN, "./upload/recallTest.mp4");
+
+				if (uploadedVideoId != null) {
+					//
+					VideoOutMessage vidoMsg = new VideoOutMessage();
+					vidoMsg.setChatId(incomingMsg.getChat().getId());
+					vidoMsg.setReference(getUniqueId());
+					vidoMsg.setVideo(uploadedVideoId);
+					vidoMsg.setCaption("Video From Bot");
+					vidoMsg.setEcho(0);
+					api.send(vidoMsg);
+					//
+				}
+
+```
 ```javascript
 MediaTransfer.uploadFile(TOKEN, "./your_video.mp4", config.UploadServer)
   .then((uploadedVideoId) => {
@@ -1748,6 +1845,25 @@ Use this method to send videos. nandbox clients support mp4 videos (other format
 
 ## Send Audio
 
+```java
+import com.nandbox.bots.api.outmessages.AudioOutMessage;
+import com.nandbox.bots.api.util.MediaTransfer;
+
+String uploadedAudioId = MediaTransfer.uploadFile(TOKEN, "< .mp3 File Path >");
+
+				if (uploadedAudioId != null) {
+					//
+					AudioOutMessage audioMsg = new AudioOutMessage();
+					audioMsg.setChatId(incomingMsg.getChat().getId());
+					audioMsg.setReference(getUniqueId());
+					audioMsg.setAudio(uploadedAudioId);
+					audioMsg.setTitle("Audio From Bot");
+					audioMsg.setEcho(0);
+					api.send(audioMsg);
+					//
+				}
+
+```
 Use this method to send audio files, if you want nandbox clients to display them in the music player. Your audio must be in the .mp3 format. On success, sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1770,7 +1886,23 @@ Use this method to send audio files, if you want nandbox clients to display them
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Voice
+```java
+import com.nandbox.bots.api.outmessages.VoiceOutMessage;
+import com.nandbox.bots.api.util.MediaTransfer;
 
+String uploadedVoiceId = MediaTransfer.uploadFile(TOKEN, "< .ogg File Path >");
+if (uploadedVoiceId != null) {
+  //
+  VoiceOutMessage voiceMsg = new VoiceOutMessage();
+  voiceMsg.setChatId(incomingMsg.getChat().getId());
+  voiceMsg.setReference(getUniqueId());
+  voiceMsg.setVoice(uploadedVoiceId);
+  voiceMsg.setEcho(0);
+  api.send(voiceMsg);
+  //
+}
+
+```
 Use this method to send voice note. If you want nandbox clients to display the file as a playable voice message, your voice audio must be in an .ogg file encoded with OPUS (other format may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice note files of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1792,7 +1924,16 @@ Use this method to send voice note. If you want nandbox clients to display the f
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Document
+```java
+	DocumentOutMessage documentOutMsg = new DocumentOutMessage();
+  documentOutMsg.setChatId(incomingMsg.getChat().getId());
+  documentOutMsg.setReference(getUniqueId());
+  documentOutMsg.setDocument(incomingMsg.getDocument().getId());
+  documentOutMsg.setName("Document renamed inside Bot");
+  documentOutMsg.setCaption("Document From Bot");
+  api.send(documentOutMsg);
 
+```
 ```javascript
 MediaTransfer.uploadFile(
   TOKEN,
@@ -1807,7 +1948,6 @@ MediaTransfer.uploadFile(
   documentOutMsg.caption = "Document From Bot";
 
   api.send(JSON.stringify(documentOutMsg));
- 
 });
 ```
 
@@ -1844,7 +1984,41 @@ Use this method to send general files. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Location
+```java
 
+import com.nandbox.bots.api.Nandbox;
+import com.nandbox.bots.api.Nandbox.Api;
+import com.nandbox.bots.api.NandboxClient;
+import com.nandbox.bots.api.outmessages.LocationOutMessage
+public class LocationBot {
+
+	public static final String TOKEN = "<PUT your token here >";
+
+	public static void main(String[] args) throws Exception {
+		NandboxClient client = NandboxClient.get();
+		client.connect(TOKEN, new Nandbox.Callback() {
+			Nandbox.Api api = null;
+
+			@Override
+			public void onConnect(Api api) {
+				System.out.println("Authenticated");
+				this.api = api;
+			}
+
+			@Override
+			public void onReceive(IncomingMessage incomingMsg) {
+        // create LocationOutMessage manually
+        LocationOutMessage message = new LocationOutMessage();
+        message.setName('<location-name>');
+        message.setDetails('<location-details>');
+        message.setLatitude(<latitude>);
+        message.setLongitude(<longitude>);
+        message.setChatId(incomingMessage.getChat().getId())
+        this.api.send(message);
+			}
+    }
+  }
+```
 ```javascript
 let locationOutMsg = new LocationOutMessage();
 locationOutMsg.chat_id = incomingMsg.chat.id;
@@ -1893,6 +2067,16 @@ Use this method to send location and point of map. On success, the sent Message 
 
 ## Send Contact
 
+```java
+import com.nandbox.bots.api.outmessages.ContactOutMessage
+...
+    ContactOutMessage contactOutMessage = new ContactOutMessage();
+    contactOutMessage.setPhoneNumber(phoneNumber);
+    contactOutMessage.setName(name);
+    contactOutMessage.setChatId(<chatId>)
+    this.api.send(contactOutMessage);
+...
+```
 ```javascript
 // this example echoes the received contact
 let contactOutMsg = new ContactOutMessage();
@@ -1933,7 +2117,17 @@ Use this method to send phone contact. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Update Message
-
+```java
+import com.nandbox.bots.api.outmessages.UpdateOutMessage
+...
+    UpdateOutMessage updateOutMessage = new UpdateOutMessage();
+    updateOutMessage.setMessageId(<msg_id>);
+    updateOutMessage.setText(<text>);
+    updateOutMessage.setInlineMenu(<Array of Menus>)
+    updateOutMessage.setMenuRef(<menuRef>)
+    this.api.send(updateOutMessage);
+...
+```
 Use this message to update existing Message sent. On success, the sent Message is returned with status "updated"
 
 | Field       | Type          | Required    | Description                                                                                                                                                                                                    |
@@ -1949,7 +2143,25 @@ Use this message to update existing Message sent. On success, the sent Message i
 | inline_menu | Array of Menu | Optional    | Inline menu object to hold menus. Previous menu will be dropped and replaced by the updated one.If both inline_menu and menu_ref is defined. Priority for inline_menu unless menu_ref is set to empty String . |
 
 ## Set Chat Menu
+```java
+import com.nandbox.bots.api.outmessages.SetChatMenuOutMessage;
+...
+SetChatMenuOutMessage outmsg = new SetChatMenuOutMessage();
+Row firstRow = new Row();
+firstRow.setRowOrder(1);
+firstRow.setButtons(new Button[] { menuBtn1, menuBtn2, menuBtn3 });
 
+Menu chatMenu = new Menu();
+String menuRef = "mainMenu";
+chatMenu.setMenuRef(menuRef);
+chatMenu.setRows(new Row[] { firstRow });
+
+outmsg.setChatId(incomingMsg.getChat().getId());
+outmsg.setMenus(new Menu[] { chatMenu });
+
+this.api.send(outmsg);
+              ...
+```
 Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
 
 | Field      | Type   | Required | Description                                                                                                   |
@@ -2002,7 +2214,44 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 ```
 
 ## Inline Search Answer
+```java
+import com.nandbox.bots.api.outmessages.InlineSearchAnswer;
 
+...
+InlineSearchAnswer inlineSearchAnswer = new InlineSearchAnswer();
+
+inlineSearchAnswer.setChatId(incomingMsg.getChat().getId());
+inlineSearchAnswer.setToUserId(incomingMsg.getFrom().getId());
+inlineSearchAnswer.setSearchId(1);
+
+Result results = new Result();
+results.setId("8b6229eefde75174b6cb5474b38e7f2f55a280a17ccc1f18a3ed6f5416890070.mp4");
+results.setCaption("test Video caption");
+results.setDescription("Test Video desc");
+results.setTitle("Test Video title");
+
+Result results2 = new Result();
+results2.setId("d2ba4e79f2e240d145e8be48f1ef98ece2f283193bce80f1b7ddbd0e8daae23a.gif");
+
+results2.setCaption("test GIF caption");
+results2.setDescription("Test GIF desc");
+results2.setTitle("Test GIF title");
+
+Result results3 = new Result();
+results3.setId("4bdb5b65838706092cff9de33694641aa0b7a02899b0884d07df2f58374bf40d.jpg");
+results3.setCaption("test Photo caption");
+results3.setDescription("Test Photo desc");
+results3.setTitle("Test Photo title");
+ArrayList<Result> multiResults = new ArrayList<Result>();
+multiResults.add(results3);
+multiResults.add(results2);
+multiResults.add(results);
+inlineSearchAnswer.setResults(multiResults);
+this.api.send(inlineSearchAnswer);
+
+...
+
+```
 ```json
 {
   "method": "inlineSearchAnswer",
