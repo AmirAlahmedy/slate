@@ -10,7 +10,6 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
 
 search: true
 code_clipboard: true
@@ -342,52 +341,6 @@ Incoming message represent new or updated user or bot profile. This inbound mess
 
 ## Chat Details
 
-```javascript
-// ChatDetails class implementation
-const Chat = require("../data/Chat");
-
-module.exports = class ChatDetails {
-  constructor(obj) {
-    this.chat = new Chat(obj.chat);
-  }
-
-  toJsonObject() {
-    let obj;
-
-    if (this.chat) obj.chat = chat.toJsonObject();
-
-    return obj;
-  }
-};
-```
-
-```java
-// ChatDetails class implementation
-public class ChatDetails {
-	private static final String KEY_CHAT = "chat";
-
-	private Chat chat;
-
-	public ChatDetails(JSONObject obj) {
-
-		this.chat = new Chat((JSONObject) obj.get(KEY_CHAT));
-
-	}
-
-	public JSONObject toJsonObject() {
-
-		JSONObject obj = new JSONObject();
-
-		if (chat != null) {
-			obj.put(KEY_CHAT, chat.toJsonObject());
-		}
-
-		return obj;
-
-	}
-}
-```
-
 Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#_1302m92)
 
 | Field  | Type              | Required | Description                                                   |
@@ -396,51 +349,6 @@ Incoming message represent new or updated Group or Channel profile This inbound 
 | chat   | [Chat](#_28h4qwu) | Yes      | This object represents a nandbox group or channel information |
 
 ## Chat Menu Callback
-
-```javascript
-// ChatMenuCallBack class implementation
-const ButtonQueryResult = require("../data/ButtonQueryResult");
-const User = require("../data/User");
-const Chat = require("../data/Chat");
-
-module.exports = class ChatMenuCallback {
-  constructor(jsonObj) {
-    console.log("json " + JSON.stringify(jsonObj));
-    let obj = jsonObj.chatMenuCallback;
-
-    let fromUser = new User(obj.from);
-    this.chat = obj.chat == null ? null : new Chat(obj.chat);
-    let btnqueryResults =
-      obj.button_query_result == null
-        ? null
-        : new ButtonQueryResult(obj.button_query_result);
-    this.method = obj.method;
-    this.menu_ref = obj.menu_ref;
-    this.from = fromUser;
-    this.button_query_result = btnqueryResults;
-    this.button_callback = obj.button_callback;
-    this.next_menu = obj.next_menu;
-    this.date = obj.date;
-  }
-
-  toJsonObject() {
-    let obj;
-
-    if (this.date) obj.date = this.date;
-    if (this.from) obj.from = this.from.toJsonObject();
-    if (this.chat) obj.chat = this.chat.toJsonObject();
-    if (this.method) obj.method = this.method;
-    if (this.menuRef) obj.menu_ref = this.menu_ref;
-    if (this.buttonCallback) obj.button_callback = this.button_callback;
-    if (this.buttonQueryResult)
-      obj.button_query_result = this.button_query_result;
-    if (this.nextMenu) obj.next_menu = this.next_menu;
-
-    console.log("to " + JSON.stringify(obj));
-    return obj;
-  }
-};
-```
 
 ```json
 {
@@ -467,48 +375,6 @@ Incoming message represents information about a clicked button associated with a
 
 ## Inline Message Callback
 
-```javascript
-// InlineMessageCallBack class implementation
-const User = require("../data/User");
-const Chat = require("../data/Chat");
-
-module.exports = class InlineMessageCallback {
-  constructor(jsonObj) {
-    let obj = jsonObj.inlineMessageCallback;
-
-    let fromUser = new User(obj.from);
-    this.chat = obj.chat == null ? null : new Chat(obj.chat);
-    let btnqueryResults =
-      obj.button_query_result == null
-        ? null
-        : new ButtonQueryResult(obj.button_query_result);
-    this.message_id = obj.message_id;
-    this.menu_ref = obj.menu_ref;
-    this.reference = obj.reference;
-    this.from = fromUser;
-    this.button_query_result = btnqueryResults;
-    this.button_callback = obj.button_callback;
-    this.date = obj.date;
-  }
-
-  toJsonObject() {
-    let obj;
-
-    if (this.date) obj.date = this.date;
-    if (this.from) obj.from = this.from.toJsonObject();
-    if (this.chat) obj.chat = this.chat.toJsonObject();
-    if (this.message_id) obj.message_id = this.message_id;
-    if (this.menu_ref) obj.menu_ref = this.menu_ref;
-    if (this.reference) obj.reference = this.reference;
-    if (this.button_callback) obj.button_callback = this.button_callback;
-    if (this.button_query_result)
-      obj.button_query_result = this.button_query_result;
-
-    return obj;
-  }
-};
-```
-
 Incoming message represents information about a clicked button within an inline keypad menu associated with a specific message
 
 | Field                 | Type                              | Required | Description                                                                                                                         |
@@ -518,38 +384,6 @@ Incoming message represents information about a clicked button within an inline 
 
 ## Chat Member
 
-```javascript
-module.exports = class ChatMember {
-  constructor(jsonObj) {
-    let obj = jsonObj.chatMember;
-
-    this.user = obj.user == null ? null : new User(obj.user);
-    this.chat = obj.chat == null ? null : new Chat(obj.chat);
-
-    this.type = obj.type;
-    this.member_since = obj.member_since;
-    this.status = obj.status;
-    this.tags = obj.tags;
-    this.account_type = obj.account_type;
-    this.msisdn = obj.msisdn;
-  }
-
-  toJsonObject() {
-    let obj;
-
-    if (this.user) obj.user = this.user.toJsonObject();
-    if (this.chat) obj.chat = this.chat.toJsonObject();
-    if (this.type) obj.type = this.type;
-    if (this.member_since) obj.member_since = this.member_since;
-    if (this.status) obj.status = this.status;
-    if (this.tags) obj.tags = this.tags;
-    if (this.account_type) obj.account_type = this.account_type;
-    if (this.msisdn) obj.msisdn = this.msisdn;
-    return obj;
-  }
-};
-```
-
 Incoming message represents information about group or channel member returned as a reply to [getChatMember](#_3mzq4wv) , [banChatMember](#_haapch), [unbanChatMember](#_319y80a), [removeChatMember](#_1gf8i83) and when user join or leaves the chat.
 
 | Field      | Type                    | Required | Description                           |
@@ -558,44 +392,6 @@ Incoming message represents information about group or channel member returned a
 | chatMember | [ChatMemebr](#_1rvwp1q) | Yes      | object represents a chat member user. |
 
 ## Chat Administrators
-
-```javascript
-const Chat = require("../data/Chat");
-const User = require("../data/User");
-
-module.exports = class ChatAdministrators {
-  constructor(jsonObj) {
-    let obj = jsonObj.chatAdministrators;
-    this.administrators = [];
-    this.chat = obj.chat == null ? null : new Chat(obj.chat);
-
-    let adminArrayObj = obj.administrators;
-    if (adminArrayObj != null) {
-      let admin = [];
-      for (let i = 0; i < adminArrayObj.length; i++)
-        admin[i] = new User(adminArrayObj[i]);
-
-      this.administrators = admin;
-    }
-  }
-
-  toJsonObject() {
-    let obj;
-    if (this.administrators) {
-      let adminsArrayObjnew = [];
-      for (let i = 0; i < administrators.length; i++)
-        adminsArrayObjnew.push(administrators[i].toJsonObject());
-      obj.administrators = adminsArrayObjnew;
-    }
-
-    if (this.chat) {
-      obj.chat = chat.toJsonObject();
-    }
-
-    return obj;
-  }
-};
-```
 
 Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#_2250f4o).
 
@@ -1748,6 +1544,34 @@ Use this method to send videos. nandbox clients support mp4 videos (other format
 
 ## Send Audio
 
+```javascript
+MediaTransfer.uploadFile(TOKEN, "./your_audio.mp3", config.UploadServer).then(
+  (uploadedAudioId) => {
+    let audioOutMsg = new AudioOutMessage();
+    audioOutMsg.chat_id = incomingMsg.chat.id;
+    audioOutMsg.reference = Id();
+    audioOutMsg.audio = uploadedAudioId;
+    audioOutMsg.performer = "Perfomer Man";
+    audioOutMsg.title = " Song";
+    audioOutMsg.caption = "Audio From Bot";
+
+    api.send(JSON.stringify(audioOutMsg));
+  }
+);
+```
+
+```json
+{
+  "method": "sendAudio",
+  "chat_id": "90089668723575679",
+  "reference": 64818504566661,
+  "audio": "a2517a187f5c78f3b3b5b6e535e7ab6be54e524e7f94b718b079b82a9c008ee6.mp3",
+  "performer": "Perfomer Man",
+  "title": " Song",
+  "caption": "Audio From Bot"
+}
+```
+
 Use this method to send audio files, if you want nandbox clients to display them in the music player. Your audio must be in the .mp3 format. On success, sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1807,8 +1631,11 @@ MediaTransfer.uploadFile(
   documentOutMsg.caption = "Document From Bot";
 
   api.send(JSON.stringify(documentOutMsg));
- 
 });
+```
+
+```javascript
+https://github.com/nandbox/nandboxbotsapi-js/blob/master/src/data/Document.js
 ```
 
 ```json
@@ -1933,6 +1760,18 @@ Use this method to send phone contact. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Update Message
+
+```javascript
+const newPage = new UpdateOutMessage();
+newPage.message_id = inlineMsgCallback.message_id;
+newPage.text = data.msgText;
+newPage.reference = inlineMsgCallback.reference;
+newPage.to_user_id = inlineMsgCallback.from.id;
+newPage.chat_id = inlineMsgCallback.chat.id;
+newPage.inline_menu = data.menus;
+newPage.menu_ref = data.menuRef;
+api.send(JSON.stringify(newPage));
+```
 
 Use this message to update existing Message sent. On success, the sent Message is returned with status "updated"
 
