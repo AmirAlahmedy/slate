@@ -1324,67 +1324,47 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 ## Send Message
 
 ```java
-import com.nandbox.bots.api.outmessages.TextOutMessage;
-import com.nandbox.bots.api.data.Button;
-import com.nandbox.bots.api.data.Menu;
-import com.nandbox.bots.api.data.Row;
+// SEND TEXT MESSAGE
+if (incomingMsg.getText().toLowerCase().equals("text")) {
+    TextOutMessage outmsg = new TextOutMessage();
+    Long reference = getUniqueId();
+    outmsg.setChatId(incomingMsg.getChat().getId());
+    outmsg.setReference(reference);
+    outmsg.setText("Text");
+    api.send(outmsg);
+}
+// SEND MESSAGE WITH INLINE MENU
+else if (incomingMsg.getText().toLowerCase().equals("inlinemenu")) {
+    TextOutMessage outmsg = new TextOutMessage();
+    Long reference = getUniqueId();
+    outmsg.setChatId(incomingMsg.getChat().getId());
+    outmsg.setReference(reference);
+    outmsg.setText("https://edition.cnn.com/");
+    outmsg.setWebPagePreview(WEB_PREVIEW_INSTANCE_VIEW);
 
-// This example demonstrates sending a Text Message inside the onReceive Callback
+    outmsg.setEcho(1);
+    String menuRef = "MAIN_MENU_001";
+    Button oneBtn = createButton("RSS", "oneBtnCBInWebView", 1, "RED", "White", null, null);
+    oneBtn.setButtonIcon("ic_mood_bad_24dp");
+    oneBtn.setButtonIconBgColor("#FFFF44");
+    Button secondBtn = createButton("Calendar", "secondBtn", 1, "RED", "White", null, null);
+    secondBtn.setButtonIcon("ic_hourglass_full_24dp");
+    secondBtn.setButtonIconBgColor("White");
+    Button thirdButton = createButton("Feed", "thirdBtn", 1, "RED", "White", null, null);
+    thirdButton.setButtonIcon("ic_credit_card_24dp");
+    thirdButton.setButtonIconBgColor("Yellow");
+    thirdButton.setButtonURL("https://edition.cnn.com/");
 
-public static void main(String[] args) throws Exception {
-  NandboxClient client = NandboxClient.get();
-  client.connect(<YOUR TOKEN>, new Nandbox.Callback() {
-    Nandbox.Api api = null;
-    @Override
-    public void onReceive(IncomingMessage incomingMsg) {
-      if (incomingMsg.getText().equalsIgnoreCase("sd")) {
-        TextOutMessage textOutMessage = new TextOutMessage();
-        textOutMessage.setText("test Schedule Date Message");
-        textOutMessage.setReference(Utils.getUniqueId());
-        textOutMessage.setChatId(incomingMsg.getChat().getId());
-        textOutMessage.setScheduleDate(System.currentTimeMillis()+60000);
-        api.send(textOutMessage);
-      }
+    Row firstRow = new Row();
+    firstRow.setRowOrder(1);
+    firstRow.setButtons(new Button[] { oneBtn, secondBtn, thirdButton });
 
-      TextOutMessage outmsg = new TextOutMessage();
-      Long reference = getUniqueId();
-      outmsg.setChatId(incomingMsg.getChat().getId());
-      outmsg.setReference(reference);
-      outmsg.setText(incomingMsg.getText());
-
-      // Create Menu
-      Button btn1 = createButton("Naruto", "NarutoCB", 1, "#A5B8BC", "white", null, null);
-      Button btn2 = createButton("Sasuke", "SasukeCB", 2, "#A5B8BC", "white", null, null);
-      Row firstRow = new Row();
-      firstRow.setRowOrder(1);
-      firstRow.setButtons(new Button[] { btn1, btn2});
-      Menu inlineMenu = new Menu();
-      inlineMenu.setMenuRef(menuRef);
-      inlineMenu.setRows(new Row[] { firstRow });
-
-      // Set OutMessage Menus Array and assign menuRef to show the menu we created
-      outmsg.setInlineMenu(new Menu[] { inlineMenu });
-      outmsg.setMenuRef(menuRef);
-
-      // Send Message
-      api.send(outmsg);
-    }
-    @Override
-    public void onConnect(Nandbox.Api api) {
-      System.out.println("ONCONNECT");
-      this.api = api;
-    }
-
-    @Override
-    public void onClose() {
-      System.out.println("ONCLOSE");
-    }
-
-    @Override
-    public void onError() {
-      System.out.println("ONERROR");
-    }
-  }
+    Menu inlineMenu = new Menu();
+    inlineMenu.setMenuRef(menuRef);
+    inlineMenu.setRows(new Row[] { firstRow });
+    outmsg.setMenuRef(menuRef);
+    outmsg.setInlineMenu(new Menu[] { inlineMenu });
+    api.send(outmsg);
 }
 ```
 
