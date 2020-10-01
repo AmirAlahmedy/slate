@@ -332,6 +332,29 @@ Incoming message represent new incoming, edited or deleted message from server
 
 ## User Details
 
+```json
+{
+  "method": "userDetails",
+  "user": {
+    "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9V\nXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSk\npKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCABeAF4DASIA\nAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAgQBAwUABv/EACwQAAIBAwMDAwQCAwEAAAAAAAEC\nAAMEERIhMQVBURNhcQYUIjKBkSMzY9H/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EABwRAQEB\nAQEBAQEBAAAAAAAAAAABEQIhEgMiQf/aAAwDAQACEQMRAD8A0xCAkAQgJUcBKqlylNwpI37+Jedg\nTMTq1VdOpXTK8aTv7wrUe6pohZjgDycTPqdepqcJSJ9ycTIq3VWsgTfA8d4vpJ7GBv0utasllUAd\nsx+3vqVwwVWXURnAM8jpI33lttcNQqaxyJB7AidiV2Fwt3bLVHfYjxGCIFREHGJYRBJkHAQwJAEI\nCaGf1q4qW9p/jC4c6ST2+J5ks1WoFznJm79QXQCrQQgnfUPHBExLUD1x4G8hD9OmqIBjecaantI+\n6pA4wT7yxalOp+rD+5l1mAFNR2ldxahkLpsw7eZexpj9nA/mSGQg6GB27GWJcOfTlRft2pgHIOTN\ncieX6HX9G/GSArAgkz1ErmAiCVlhgGQcIYi4qwhUmh5/6hdjfFdOAoGD5i9lQzbvUOck4Amp1mgr\nj1f729tovY4W20nkEzNakZ76ycacfMYtKJYEkER10Tmcjpo2Zc+MyNyMy6BWoRgkCdRUMQVJB8TQ\nq00qHBx8iSluib5hPkl0wUl6iEr405K4I5PE9WulVCrgAcATz/T7WlVvqtRsnQcjxmbRYeZpzXEj\nzAZh5lDPKy8DgYYMp4k6jCpuQpotq4EwaVbQ7KDkEzdJyCJ56uPTuWBzsYNNV7kIQOTFTWZmJUKJ\nNJg1bJGfmHWqOpwFBHxI3uptqyrnVsT3jFW40Ad4pUUNT1MNLeBAYmpoUc8QluNjpi6KBc8ucmNF\n5TST06arucDElveEGXHmAzQcqJBI8wGAymdgdouKmnkAROteO1TckKOADianNvrNv+NIzD6ip+4Z\n8bHxHfWyaR5KAruc895TVGsbzGul4zys1XIO0uFc43nPb44JlfotLrGWJeqX5jvS6OpjVbP4/rFa\nVuSfy4mpaFEQ0wQpXB3941ZKaJgn3hDbmcSMbQKjAIhtKzkwM97hnfUZdc06Q9IZKmogYEnYGI5j\nl/vRtT/z/wDJ3tc4FGPcYYcgww+ZWzZCP3P4n+JI5nmsyvZz/fIzIxvO5GJyjHeTU+KMHElf2J7k\ngf0YI5zCGwzJrfPGe1NSo/ZypA232PzCoXZqHD4BlT/64mjEP8zt+fvlcP2knsbOs+0BjvE6NwVw\npGRGC3tHXHy5y6//2Q==\n",
+    "name": "Amir Salah",
+    "photo": {
+      "thumbnail": {
+        "width": 120,
+        "id": "V_0HNt_90089668723575679_0_Q0CrJoK5iB.jpg.thumb.jpg",
+        "height": 120
+      },
+      "width": 256,
+      "id": "V_0HNt_90089668723575679_0_Q0CrJoK5iB.jpg",
+      "height": 256
+    },
+    "id": "90089668723575679",
+    "is_bot": false,
+    "version": "0HNt"
+  }
+}
+```
+
 Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#get-user) .
 
 | Field  | Type          | Required | Description                                     |
@@ -340,6 +363,44 @@ Incoming message represent new or updated user or bot profile. This inbound mess
 | user   | [User](#user) | Yes      | Object represents a nandbox user or bot account |
 
 ## Chat Details
+
+```json
+{
+  "method": "chatDetails",
+  "chat": {
+    "cancel": 0,
+    "regions": null,
+    "owner_id": "90089668723575679",
+    "admin": 1,
+    "description": "",
+    "welcome_message": null,
+    "title": "Test",
+    "type": "Channel",
+    "slotMax": 0,
+    "inivite_link": "https://join.ndbx.me/join?id=SzzFPuoDUdTiF4k2iXyJFFSB4XLIcBUjVXYbfuuJfos%3D&type=Channel&pay=0",
+    "language_code": null,
+    "allDay": 0,
+    "splash_config": null,
+    "isPublic": 0,
+    "startTime": 1590979113000,
+    "id": "90090691357982716",
+    "member_count": 2,
+    "vapp": 0,
+    "slotSpace": 0,
+    "area": null,
+    "classification": null,
+    "version": "hybonm",
+    "slotDuration": 0,
+    "createdDate": 1599767443000,
+    "parent_id": "1",
+    "tagsDefinition": null,
+    "endTime": 1590979113000,
+    "category": "S",
+    "fees_range": null,
+    "splash": 0
+  }
+}
+```
 
 Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#get-chat)
 
@@ -375,6 +436,24 @@ Incoming message represents information about a clicked button associated with a
 
 ## Inline Message Callback
 
+```json
+{
+  "method": "inlineMessageCallback",
+  "inlineMessageCallback": {
+    "date": 1601556230820,
+    "reference": "91551042165645",
+    "button_callback": "oneBtnCBInWebView",
+    "next_menu": null,
+    "button_query_result": null,
+    "chat": { "id": "90089668723575679", "type": "Mobile" },
+    "from": { "id": "90089668723575679", "type": "Mobile" },
+    "message_id": "p1_o87RlPgT38178",
+    "menu_ref": "MAIN_MENU_001",
+    "button_label": ""
+  }
+}
+```
+
 Incoming message represents information about a clicked button within an inline keypad menu associated with a specific message
 
 | Field                 | Type                                            | Required | Description                                                                                                                         |
@@ -384,6 +463,23 @@ Incoming message represents information about a clicked button within an inline 
 
 ## Chat Member
 
+```json
+{
+  "chatMember": {
+    "member_since": 1590979113000,
+    "privileges": ["1", "4611686018427387904"],
+    "view": 0,
+    "account_type": "msisdn",
+    "chat": { "id": "90090691357982716" },
+    "type": "Admin",
+    "user": { "id": "90089668723575679" },
+    "status": "Active",
+    "tags": null
+  },
+  "method": "chatMember"
+}
+```
+
 Incoming message represents information about group or channel member returned as a reply to [getChatMember](#get-chat-member) , [banChatMember](#ban-chat-member), [unbanChatMember](#unban-chat-member), [removeChatMember](#remove-chat-member) and when user join or leaves the chat.
 
 | Field      | Type                         | Required | Description                           |
@@ -392,6 +488,19 @@ Incoming message represents information about group or channel member returned a
 | chatMember | [ChatMemebr](#chat-member-2) | Yes      | object represents a chat member user. |
 
 ## Chat Administrators
+
+```json
+{
+  "chatAdministrators": {
+    "chat": { "id": "90090691357982716" },
+    "administrators": [
+      { "id": "90089668723575679" },
+      { "id": "90091905646805157" }
+    ]
+  },
+  "method": "chatAdministrators"
+}
+```
 
 Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#get-chat-administrators).
 
@@ -849,6 +958,23 @@ This object represents an incoming button query results from a callback button
 
 ## Chat Member
 
+```json
+{
+  "chatMember": {
+    "member_since": 1590979113000,
+    "privileges": ["1", "4611686018427387904"],
+    "view": 0,
+    "account_type": "msisdn",
+    "chat": { "id": "90090691357982716" },
+    "type": "Admin",
+    "user": { "id": "90089668723575679" },
+    "status": "Active",
+    "tags": null
+  },
+  "method": "chatMember"
+}
+```
+
 This object represents a chat member user returned in getChatMember banChatMember, unbanChatMember, removeChatMember and when user join or leaves the chat.
 
 | Field                                      | Type            | Required                                                          | Description                                                                                                                                                                           |
@@ -936,7 +1062,6 @@ This object represents channel or group administrator users. Returned as a reply
 | chat           | [Chat](#chat)          | Yes      | channel or group Unique identifier object where administrators belongs to. |
 | administrators | Array of [User](#user) | Yes      | List of All administrator users of this channel or group.                  |
 
-
 ```json
 {
   "chatAdministrators": {
@@ -976,7 +1101,6 @@ This object represents blacklist. Returned as a reply to [getBlacklist](#get-bla
 | chat  | [Chat](#chat)                        | Yes      | channel or group Unique identifier object where administrators belongs to. |
 | eop   | String                               | Yes      | Number of page                                                             |
 | users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
-
 
 ```json
 {
@@ -1039,7 +1163,6 @@ This object represents whitelist. Returned as a reply to [getWhitelist](#get-whi
 | chat  | [Chat](#chat)                        | Yes      | channel or group Unique identifier object where administrators belongs to. |
 | eop   | String                               | Yes      | Number of page                                                             |
 | users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
-
 
 ```json
 {
@@ -1109,7 +1232,6 @@ Object represents outbound messages acknowledgment details.
 | message_id | String | Yes      | Global Unique identifier for the original message.                |
 | date       | Long   | Yes      | Date the message was sent in Unix Epoch timestamp in milliseconds |
 
-
 ```json
 {
   "method": "messageAck",
@@ -1132,7 +1254,6 @@ This object represents a user, Returned when user started bot
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
 
-
 ```json
 {
   "method": "userStartedBot",
@@ -1150,7 +1271,6 @@ This object represents a user, Returned when user joined bot
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
-
 
 ```json
 {
@@ -1170,7 +1290,6 @@ This object represents a user, Returned when user stopped bot
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
 
-
 ```json
 {
   "method": "userStoppedBot",
@@ -1188,7 +1307,6 @@ This object represents a user, Returned when user left bot
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
-
 
 ```json
 {
@@ -1208,7 +1326,6 @@ This object represents an inline search, Returned when user write search keyword
 | ----------- | ----------------------------- | -------- | ----------------------------- |
 | method      | String                        | yes      | "inlineSearch"                |
 | inineSearch | [InlineSearch](#inlinesearch) | Yes      | Member User Unique identifier |
-
 
 ```json
 {
@@ -1241,7 +1358,6 @@ This object represents an inline search, Returned when user write search keyword
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
-
 
 ```json
 {
@@ -1295,7 +1411,6 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 | ----- | ---- | -------- | ------------------------------------- |
 | chat  | Chat | Yes      | Conversation Chat which menu send to. |
 
-
 ```json
 {
   "method": "setChatMenu_ack",
@@ -1307,7 +1422,9 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 ```
 
 # ![](../images/ic_outcoming.svg) Outgoing Messages
+
 [Here you can find a complete example of the javascript code snippets below](https://github.com/AmirAlahmedy/nandbox-bot-api/blob/master/src/test/Snippets.js)
+
 ## Send Message
 
 ```javascript
@@ -1582,6 +1699,30 @@ Use this method to send audio files, if you want nandbox clients to display them
 
 ## Send Voice
 
+```javascript
+if (incomingMsg.isVoiceMsg()) {
+  let voiceOutMsg = new VoiceOutMessage();
+  voiceOutMsg.chat_id = incomingMsg.chat.id;
+  voiceOutMsg.reference = Id();
+  voiceOutMsg.voice = incomingMsg.voice.id;
+  voiceOutMsg.size = 700;
+  voiceOutMsg.caption = "Vocie From Bot";
+
+  api.send(JSON.stringify(voiceOutMsg));
+}
+```
+
+```json
+{
+  "method": "sendVoice",
+  "chat_id": "90089668723575679",
+  "reference": 95959775121117,
+  "voice": "8a94888c62b2f3b632c4bc00da4387b8a465e5ee8d521bf428b49625c0dee3b9.m4a",
+  "size": 700,
+  "caption": "Vocie From Bot"
+}
+```
+
 Use this method to send voice note. If you want nandbox clients to display the file as a playable voice message, your voice audio must be in an .ogg file encoded with OPUS (other format may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice note files of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1748,15 +1889,24 @@ Use this method to send phone contact. On success, the sent Message is returned.
 ## Update Message
 
 ```javascript
-const newPage = new UpdateOutMessage();
-newPage.message_id = inlineMsgCallback.message_id;
-newPage.text = data.msgText;
-newPage.reference = inlineMsgCallback.reference;
-newPage.to_user_id = inlineMsgCallback.from.id;
-newPage.chat_id = inlineMsgCallback.chat.id;
-newPage.inline_menu = data.menus;
-newPage.menu_ref = data.menuRef;
-api.send(JSON.stringify(newPage));
+const newMsg = new UpdateOutMessage();
+newMsg.message_id = incomingMsg.message_id;
+newMsg.text = "new edits";
+newMsg.reference = incomingMsg.reference;
+newMsg.to_user_id = incomingMsg.from.id;
+newMsg.chat_id = incomingMsg.chat.id;
+api.send(JSON.stringify(newMsg));
+```
+
+```json
+{
+  "method": "updateMessage",
+  "message_id": "i1_iWBJSzaA129813",
+  "text": "new edits",
+  "reference": 2372,
+  "to_user_id": "90089668723575679",
+  "chat_id": "90089668723575679"
+}
 ```
 
 Use this message to update existing Message sent. On success, the sent Message is returned with status "updated"
@@ -1872,11 +2022,11 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
   "method": "inlineSearchAnswer",
   "results": [
     {
-      "title": "ص (50)",
-      "caption": "﴿جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأ َبْوَابُ﴾\nص (50)\nShared via @qurany_nb",
+      "title": "any catchy title",
+      "caption": "any valid caption",
       "height": 10,
       "width": 40,
-      "description": "جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأَبْوَابُ"
+      "description": "a descriptive decription"
     }
   ],
   "next_offset": "",
@@ -1957,8 +2107,6 @@ Use this method to get profile for a user. On success, User is returned.
 | method  | String | Yes      | "getUser"                               |
 | user_id | String | Yes      | Unique identifier for this user or bot. |
 
-**JSON Example:**
-
 ```json
 {
   "method": "getUser",
@@ -1975,8 +2123,6 @@ Use this method to get Group or Channel information. On success, Chat is returne
 | ------- | ------ | -------- | --------------------------------------- |
 | method  | String | Yes      | "getChat"                               |
 | chat_id | String | Yes      | Unique identifier for Group or Channel. |
-
-**JSON Example:**
 
 ```json
 {
@@ -1995,8 +2141,6 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
 | method  | String | Yes      | "getChatMember"                                                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
-
-**JSON Example:**
 
 ```json
 {
@@ -2017,8 +2161,6 @@ Use this method to get Chat Administrators. On success, [ChatAdministrators](#ch
 | method  | String | Yes      | "getChatAdministrators"                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel. |
 
-**JSON Example:**
-
 ```json
 {
   "method": "getChatAdministrators",
@@ -2036,8 +2178,6 @@ Use this method to ban a Chat Member from accessing Chat. On success, ChatMember
 | method  | String | Yes      | "banChatMember"                                                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
-
-**JSON Example:**
 
 ```json
 {
@@ -2059,8 +2199,6 @@ Use this method to unban a Chat Member from accessing Chat. On success, ChatMemb
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member used to belong to. |
 | user_id | String | Yes      | Unique identifier for the banned user.                                 |
 
-**JSON Example:**
-
 ```json
 {
   "method": "unbanChatMember",
@@ -2081,8 +2219,6 @@ Use this method to remove a Chat Member from Chat. On success, ChatMember is ret
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member used to belong to. |
 | user_id | String | Yes      | Unique identifier for the banned user.                                 |
 
-**JSON Example:**
-
 ```json
 {
   "method": "removeChatMember",
@@ -2101,8 +2237,6 @@ Use this method to set Chat Group or Channel information. On success, chat is re
 | ------ | ------ | -------- | --------------------------------------- |
 | method | String | Yes      | "setChat"                               |
 | chat   | Chat   | Yes      | Unique identifier for Group or Channel. |
-
-**JSON Example:**
 
 ```json
 {
@@ -2129,8 +2263,6 @@ Use this method to add black list.
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```json
 {
   "method": "addBlacklist",
@@ -2150,8 +2282,6 @@ Use this method to add white list.
 | method | String                                | Yes      | "addWhitelist"                          |
 | chat   | Chat                                  | Yes      | Unique identifier for Group or Channel. |
 | users  | Array of [UsersWhiteListUser](#users) | yes      | Add Array of Users                      |
-
-**JSON Example:**
 
 ```json
 {
@@ -2178,8 +2308,6 @@ Use this method to add black list patterns:
 | method | String                 | Yes      | "addBlacklistPatterns"                  |
 | chat   | Chat                   | Yes      | Unique identifier for Group or Channel. |
 | data   | Array of [Data](#data) | yes      | Add Array of Data                       |
-
-**JSON Example:**
 
 ```JSON
 {
@@ -2217,8 +2345,6 @@ Use this method to add white list.patterns:
 | chat   | Chat                   | Yes      | Unique identifier for Group or Channel. |
 | data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
-**JSON Example:**
-
 ```json
 {
   "method": "addWhitelistPatterns",
@@ -2251,8 +2377,6 @@ Use this method to delete black list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2276,8 +2400,6 @@ Use this method to delete white list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2300,8 +2422,6 @@ Use this method to delete black list pattern:
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2323,8 +2443,6 @@ Use this method to delete white list pattern:
 | method  | String          | Yes      | "deleteWhitelistPatterns"               |
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
-
-**JSON Example:**
 
 ```JSON
 {
@@ -2350,8 +2468,6 @@ Use this message to recall existing Message sent .
 | reference    | StringLong | Yes      | Unique local identifier for the target chat/user                      |
 | from_user_id | String     | Optional | Original sender id Mandatory in case the bot is the admin of the Chat |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2374,8 +2490,6 @@ Use this method to get black list. On success, blacklist is returned.
 | chat_id   | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | page_size | String |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2395,8 +2509,6 @@ Use this method to get white list. On success, whitelist is returned.
 | method    | String | Yes      | "getWhitelist"                                                  |
 | chat_id   | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | page_size | String |
-
-**JSON Example:**
 
 ```JSON
 {
@@ -2419,8 +2531,6 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 | page_size | String |
 |           |
 |           |
-
-**JSON Example:**
 
 ```json
 {
@@ -2445,8 +2555,6 @@ Use this method to get Bot Profile. On success, myProfile is returned.
 | Field  | Type   | Required | Description     |
 | ------ | ------ | -------- | --------------- |
 | method | String | Yes      | "getMyProfiles" |
-
-**JSON Example:**
 
 ```json
 {
