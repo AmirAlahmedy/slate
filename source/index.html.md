@@ -1307,7 +1307,7 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 ```
 
 # ![](../images/ic_outcoming.svg) Outgoing Messages
-
+[Here you can find a complete example of the javascript code snippets below](https://github.com/AmirAlahmedy/nandbox-bot-api/blob/master/src/test/Snippets.js)
 ## Send Message
 
 ```javascript
