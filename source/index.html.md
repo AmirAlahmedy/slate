@@ -1599,16 +1599,19 @@ let createButton = (
 ## Send Photo
 
 ```java
-import com.nandbox.bots.api.outmessages.PhotoOutMessage;
-
-PhotoOutMessage outmsg = new PhotoOutMessage();
-Long reference = getUniqueId();
-outmsg.setChatId(incomingMsg.getChat().getId());
-outmsg.setReference(reference);
-outmsg.setCaption("Old Caption");
-String uploadedPhotoId = MediaTransfer.uploadFile(TOKEN, "./upload/welcome.jpg");
-outmsg.setPhoto(uploadedPhotoId);
-api.send(outmsg);
+ // SEND PHOTO
+                    else if (incomingMsg.getText().toLowerCase().equals("photo")) {
+                        String uploadedPhotoId = MediaTransfer.uploadFile(TOKEN, System.getProperty("user.dir") + "/src/main/resources/upload/welcome.jpg");
+                        PhotoOutMessage photoMsg = new PhotoOutMessage();
+                        photoMsg.setChatId(incomingMsg.getChat().getId());
+                        photoMsg.setReference(Utils.getUniqueId());
+                        if (uploadedPhotoId != null) {
+                            photoMsg.setPhoto(uploadedPhotoId);
+                            api.send(photoMsg);
+                        } else {
+                            System.out.println("Upload Failed");
+                        }
+                    }
 ```
 
 ```javascript
@@ -1660,23 +1663,20 @@ Use this method to send photos. On success, the sent Message is returned. Bots c
 ## Send Video
 
 ```java
-import com.nandbox.bots.api.outmessages.VideoOutMessage;
-import com.nandbox.bots.api.util.MediaTransfer;
-
-String uploadedVideoId = MediaTransfer.uploadFile(TOKEN, "./upload/recallTest.mp4");
-
-				if (uploadedVideoId != null) {
-					//
-					VideoOutMessage vidoMsg = new VideoOutMessage();
-					vidoMsg.setChatId(incomingMsg.getChat().getId());
-					vidoMsg.setReference(getUniqueId());
-					vidoMsg.setVideo(uploadedVideoId);
-					vidoMsg.setCaption("Video From Bot");
-					vidoMsg.setEcho(0);
-					api.send(vidoMsg);
-					//
-				}
-
+// SEND VIDEO
+                    else if (incomingMsg.getText().toLowerCase().equals("video")) {
+                        String uploadedVideoId = MediaTransfer.uploadFile(TOKEN, System.getProperty("user.dir") + "/src/main/resources/upload/recallTest.mp4");
+                        VideoOutMessage videoMsg = new VideoOutMessage();
+                        videoMsg.setChatId(incomingMsg.getChat().getId());
+                        videoMsg.setReference(Utils.getUniqueId());
+                        videoMsg.setCaption("Video From Bot");
+                        if (uploadedVideoId != null) {
+                            videoMsg.setVideo(uploadedVideoId);
+                            api.send(videoMsg);
+                        } else {
+                            System.out.println("Upload Failed");
+                        }
+                    }
 ```
 ```javascript
 MediaTransfer.uploadFile(TOKEN, "./your_video.mp4", config.UploadServer)
@@ -1726,22 +1726,22 @@ Use this method to send videos. nandbox clients support mp4 videos (other format
 ## Send Audio
 
 ```java
-import com.nandbox.bots.api.outmessages.AudioOutMessage;
-import com.nandbox.bots.api.util.MediaTransfer;
-
-String uploadedAudioId = MediaTransfer.uploadFile(TOKEN, "< .mp3 File Path >");
-
-				if (uploadedAudioId != null) {
-					//
-					AudioOutMessage audioMsg = new AudioOutMessage();
-					audioMsg.setChatId(incomingMsg.getChat().getId());
-					audioMsg.setReference(getUniqueId());
-					audioMsg.setAudio(uploadedAudioId);
-					audioMsg.setTitle("Audio From Bot");
-					audioMsg.setEcho(0);
-					api.send(audioMsg);
-					//
-				}
+// SEND AUDIO
+                    else if (incomingMsg.getText().toLowerCase().equals("audio")) {
+                        String uploadedAudioId = MediaTransfer.uploadFile(TOKEN, System.getProperty("user.dir") + "/src/main/resources/upload/hello.mp3");
+                        AudioOutMessage audioMsg = new AudioOutMessage();
+                        audioMsg.setChatId(incomingMsg.getChat().getId());
+                        audioMsg.setReference(Utils.getUniqueId());
+                        audioMsg.setCaption("Audio From Bot");
+                        if (uploadedAudioId != null) {
+                            audioMsg.setAudio(uploadedAudioId);
+                            audioMsg.setTitle("Hello");
+                            audioMsg.setPerformer("Male");
+                            api.send(audioMsg);
+                        } else {
+                            System.out.println("Upload Failed");
+                        }
+                    }
 
 ```
 ```javascript
@@ -1795,9 +1795,6 @@ Use this method to send audio files, if you want nandbox clients to display them
 
 ## Send Voice
 ```java
-import com.nandbox.bots.api.outmessages.VoiceOutMessage;
-import com.nandbox.bots.api.util.MediaTransfer;
-
 String uploadedVoiceId = MediaTransfer.uploadFile(TOKEN, "< .ogg File Path >");
 if (uploadedVoiceId != null) {
   //
@@ -1856,14 +1853,23 @@ Use this method to send voice note. If you want nandbox clients to display the f
 
 ## Send Document
 ```java
-	DocumentOutMessage documentOutMsg = new DocumentOutMessage();
-  documentOutMsg.setChatId(incomingMsg.getChat().getId());
-  documentOutMsg.setReference(getUniqueId());
-  documentOutMsg.setDocument(incomingMsg.getDocument().getId());
-  documentOutMsg.setName("Document renamed inside Bot");
-  documentOutMsg.setCaption("Document From Bot");
-  api.send(documentOutMsg);
+                    // SEND DOCUMENT
 
+	else if (incomingMsg.getText().toLowerCase().equals("document")) {
+                        api.sendText(incomingMsg.getChat().getId(),"Uploading the document to the server...");
+                        String uploadedDocumentId = MediaTransfer.uploadFile(TOKEN, System.getProperty("user.dir") + "/src/main/resources/upload/malala.pdf");
+                        DocumentOutMessage documentMsg = new DocumentOutMessage();
+                        documentMsg.setChatId(incomingMsg.getChat().getId());
+                        documentMsg.setReference(Utils.getUniqueId());
+                        documentMsg.setCaption("Audio From Bot");
+                        if (uploadedDocumentId != null) {
+                            documentMsg.setDocument(uploadedDocumentId);
+                            documentMsg.setName("Malala Book");
+                            api.send(documentMsg);
+                        } else {
+                            System.out.println("Upload Failed");
+                        }
+                    }
 ```
 ```javascript
 MediaTransfer.uploadFile(
@@ -1917,38 +1923,18 @@ Use this method to send general files. On success, the sent Message is returned.
 ## Send Location
 ```java
 
-import com.nandbox.bots.api.Nandbox;
-import com.nandbox.bots.api.Nandbox.Api;
-import com.nandbox.bots.api.NandboxClient;
-import com.nandbox.bots.api.outmessages.LocationOutMessage
-public class LocationBot {
-
-	public static final String TOKEN = "<PUT your token here >";
-
-	public static void main(String[] args) throws Exception {
-		NandboxClient client = NandboxClient.get();
-		client.connect(TOKEN, new Nandbox.Callback() {
-			Nandbox.Api api = null;
-
-			@Override
-			public void onConnect(Api api) {
-				System.out.println("Authenticated");
-				this.api = api;
-			}
-
-			@Override
-			public void onReceive(IncomingMessage incomingMsg) {
-        // create LocationOutMessage manually
-        LocationOutMessage message = new LocationOutMessage();
-        message.setName('<location-name>');
-        message.setDetails('<location-details>');
-        message.setLatitude(<latitude>);
-        message.setLongitude(<longitude>);
-        message.setChatId(incomingMessage.getChat().getId())
-        this.api.send(message);
-			}
-    }
-  }
+// SEND LOCATION
+                    else if (incomingMsg.getText().toLowerCase().equals("location")) {
+                        LocationOutMessage locMsg = new LocationOutMessage();
+                        locMsg.setChatId(incomingMsg.getChat().getId());
+                        locMsg.setReference(Utils.getUniqueId());
+                        locMsg.setName("Cairo International Airport");
+                        locMsg.setDetails("Cairo, Egypt");
+                        locMsg.setLatitude("30.102366");
+                        locMsg.setLongitude("31.426319");
+                        locMsg.setCaption("Cairo Airport Location From Bot");
+                        api.send(locMsg);
+                    }
 ```
 ```javascript
 let locationOutMsg = new LocationOutMessage();
@@ -1999,14 +1985,15 @@ Use this method to send location and point of map. On success, the sent Message 
 ## Send Contact
 
 ```java
-import com.nandbox.bots.api.outmessages.ContactOutMessage
-...
-    ContactOutMessage contactOutMessage = new ContactOutMessage();
-    contactOutMessage.setPhoneNumber(phoneNumber);
-    contactOutMessage.setName(name);
-    contactOutMessage.setChatId(<chatId>)
-    this.api.send(contactOutMessage);
-...
+// SEND CONTACT
+                    else if (incomingMsg.getText().toLowerCase().equals("contact")) {
+                        ContactOutMessage contactMsg = new ContactOutMessage();
+                        contactMsg.setChatId(incomingMsg.getChat().getId());
+                        contactMsg.setReference(Utils.getUniqueId());
+                        contactMsg.setName("KFC");
+                        contactMsg.setPhoneNumber("19019");
+                        api.send(contactMsg);
+                    }
 ```
 ```javascript
 let contactOutMsg = new ContactOutMessage();
@@ -2099,25 +2086,7 @@ Use this message to update existing Message sent. On success, the sent Message i
 | inline_menu | Array of Menu | Optional    | Inline menu object to hold menus. Previous menu will be dropped and replaced by the updated one.If both inline_menu and menu_ref is defined. Priority for inline_menu unless menu_ref is set to empty String . |
 
 ## Set Chat Menu
-```java
-import com.nandbox.bots.api.outmessages.SetChatMenuOutMessage;
-...
-SetChatMenuOutMessage outmsg = new SetChatMenuOutMessage();
-Row firstRow = new Row();
-firstRow.setRowOrder(1);
-firstRow.setButtons(new Button[] { menuBtn1, menuBtn2, menuBtn3 });
 
-Menu chatMenu = new Menu();
-String menuRef = "mainMenu";
-chatMenu.setMenuRef(menuRef);
-chatMenu.setRows(new Row[] { firstRow });
-
-outmsg.setChatId(incomingMsg.getChat().getId());
-outmsg.setMenus(new Menu[] { chatMenu });
-
-this.api.send(outmsg);
-              ...
-```
 Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
 
 ```javascript
@@ -2211,44 +2180,7 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | to_user_id | String | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user. |
 
 ## Inline Search Answer
-```java
-import com.nandbox.bots.api.outmessages.InlineSearchAnswer;
 
-...
-InlineSearchAnswer inlineSearchAnswer = new InlineSearchAnswer();
-
-inlineSearchAnswer.setChatId(incomingMsg.getChat().getId());
-inlineSearchAnswer.setToUserId(incomingMsg.getFrom().getId());
-inlineSearchAnswer.setSearchId(1);
-
-Result results = new Result();
-results.setId("8b6229eefde75174b6cb5474b38e7f2f55a280a17ccc1f18a3ed6f5416890070.mp4");
-results.setCaption("test Video caption");
-results.setDescription("Test Video desc");
-results.setTitle("Test Video title");
-
-Result results2 = new Result();
-results2.setId("d2ba4e79f2e240d145e8be48f1ef98ece2f283193bce80f1b7ddbd0e8daae23a.gif");
-
-results2.setCaption("test GIF caption");
-results2.setDescription("Test GIF desc");
-results2.setTitle("Test GIF title");
-
-Result results3 = new Result();
-results3.setId("4bdb5b65838706092cff9de33694641aa0b7a02899b0884d07df2f58374bf40d.jpg");
-results3.setCaption("test Photo caption");
-results3.setDescription("Test Photo desc");
-results3.setTitle("Test Photo title");
-ArrayList<Result> multiResults = new ArrayList<Result>();
-multiResults.add(results3);
-multiResults.add(results2);
-multiResults.add(results);
-inlineSearchAnswer.setResults(multiResults);
-this.api.send(inlineSearchAnswer);
-
-...
-
-```
 ```json
 {
   "method": "inlineSearchAnswer",
