@@ -94,12 +94,12 @@ As the owner (creator) of the API/bot, you will have a chance to test the bot be
 
 It is important to know that any change in the bot information will result the bot being unpublished, and the owner must publish his/her bot again to make it available for public search index.
 
-```javascript
-const TOKEN = "90091903321704167:0:pVB3qS7H3JBDVvxA9pRh4EQl8ObLVJ";
-const config = {
-  URI: "wss://w1.nandbox.net:5020/nandbox/api/",
-  DownloadServer: "https://w1.nandbox.net:5020/nandbox/download/",
-  UploadServer: "https://w1.nandbox.net:5020/nandbox/upload/",
+```json
+{
+  "Token": "90091903321704167:0:pVB3qS7H3JBDVvxA9pRh4EQl8ObLVJ",
+  "URI": "wss://w1.nandbox.net:5020/nandbox/api/",
+  "DownloadServer": "https://w1.nandbox.net:5020/nandbox/download/",
+  "UploadServer": "https://w1.nandbox.net:5020/nandbox/upload/",
 };
 ```
 
@@ -325,28 +325,89 @@ The following table lists the different incoming JSON messages for the bot.
 
 Incoming message represent new incoming, edited or deleted message from server
 
-| Field   | Type                | Required | Description                                  |
-| ------- | ------------------- | -------- | -------------------------------------------- |
-| method  | String              | Yes      | "message"                                    |
-| message | [Message](#_nmf14n) | Yes      | Object represents the content of the message |
+| Field   | Type                  | Required | Description                                  |
+| ------- | --------------------- | -------- | -------------------------------------------- |
+| method  | String                | Yes      | "message"                                    |
+| message | [Message](#message-2) | Yes      | Object represents the content of the message |
 
 ## User Details
 
-Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#_2nusc19) .
+```json
+{
+  "method": "userDetails",
+  "user": {
+    "image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9V\nXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSk\npKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCABeAF4DASIA\nAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAgQBAwUABv/EACwQAAIBAwMDAwQCAwEAAAAAAAEC\nAAMEERIhMQVBURNhcQYUIjKBkSMzY9H/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EABwRAQEB\nAQEBAQEBAAAAAAAAAAABEQIhEgMiQf/aAAwDAQACEQMRAD8A0xCAkAQgJUcBKqlylNwpI37+Jedg\nTMTq1VdOpXTK8aTv7wrUe6pohZjgDycTPqdepqcJSJ9ycTIq3VWsgTfA8d4vpJ7GBv0utasllUAd\nsx+3vqVwwVWXURnAM8jpI33lttcNQqaxyJB7AidiV2Fwt3bLVHfYjxGCIFREHGJYRBJkHAQwJAEI\nCaGf1q4qW9p/jC4c6ST2+J5ks1WoFznJm79QXQCrQQgnfUPHBExLUD1x4G8hD9OmqIBjecaantI+\n6pA4wT7yxalOp+rD+5l1mAFNR2ldxahkLpsw7eZexpj9nA/mSGQg6GB27GWJcOfTlRft2pgHIOTN\ncieX6HX9G/GSArAgkz1ErmAiCVlhgGQcIYi4qwhUmh5/6hdjfFdOAoGD5i9lQzbvUOck4Amp1mgr\nj1f729tovY4W20nkEzNakZ76ycacfMYtKJYEkER10Tmcjpo2Zc+MyNyMy6BWoRgkCdRUMQVJB8TQ\nq00qHBx8iSluib5hPkl0wUl6iEr405K4I5PE9WulVCrgAcATz/T7WlVvqtRsnQcjxmbRYeZpzXEj\nzAZh5lDPKy8DgYYMp4k6jCpuQpotq4EwaVbQ7KDkEzdJyCJ56uPTuWBzsYNNV7kIQOTFTWZmJUKJ\nNJg1bJGfmHWqOpwFBHxI3uptqyrnVsT3jFW40Ad4pUUNT1MNLeBAYmpoUc8QluNjpi6KBc8ucmNF\n5TST06arucDElveEGXHmAzQcqJBI8wGAymdgdouKmnkAROteO1TckKOADianNvrNv+NIzD6ip+4Z\n8bHxHfWyaR5KAruc895TVGsbzGul4zys1XIO0uFc43nPb44JlfotLrGWJeqX5jvS6OpjVbP4/rFa\nVuSfy4mpaFEQ0wQpXB3941ZKaJgn3hDbmcSMbQKjAIhtKzkwM97hnfUZdc06Q9IZKmogYEnYGI5j\nl/vRtT/z/wDJ3tc4FGPcYYcgww+ZWzZCP3P4n+JI5nmsyvZz/fIzIxvO5GJyjHeTU+KMHElf2J7k\ngf0YI5zCGwzJrfPGe1NSo/ZypA232PzCoXZqHD4BlT/64mjEP8zt+fvlcP2knsbOs+0BjvE6NwVw\npGRGC3tHXHy5y6//2Q==\n",
+    "name": "Amir Salah",
+    "photo": {
+      "thumbnail": {
+        "width": 120,
+        "id": "V_0HNt_90089668723575679_0_Q0CrJoK5iB.jpg.thumb.jpg",
+        "height": 120
+      },
+      "width": 256,
+      "id": "V_0HNt_90089668723575679_0_Q0CrJoK5iB.jpg",
+      "height": 256
+    },
+    "id": "90089668723575679",
+    "is_bot": false,
+    "version": "0HNt"
+  }
+}
+```
 
-| Field  | Type              | Required | Description                                     |
-| ------ | ----------------- | -------- | ----------------------------------------------- |
-| method | String            | Yes      | "userDetails"                                   |
-| user   | [User](#_3tbugp1) | Yes      | Object represents a nandbox user or bot account |
+Incoming message represent new or updated user or bot profile. This inbound message returned as a reply to [GetUser](#get-user) .
+
+| Field  | Type          | Required | Description                                     |
+| ------ | ------------- | -------- | ----------------------------------------------- |
+| method | String        | Yes      | "userDetails"                                   |
+| user   | [User](#user) | Yes      | Object represents a nandbox user or bot account |
 
 ## Chat Details
 
-Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#_1302m92)
+```json
+{
+  "method": "chatDetails",
+  "chat": {
+    "cancel": 0,
+    "regions": null,
+    "owner_id": "90089668723575679",
+    "admin": 1,
+    "description": "",
+    "welcome_message": null,
+    "title": "Test",
+    "type": "Channel",
+    "slotMax": 0,
+    "inivite_link": "https://join.ndbx.me/join?id=SzzFPuoDUdTiF4k2iXyJFFSB4XLIcBUjVXYbfuuJfos%3D&type=Channel&pay=0",
+    "language_code": null,
+    "allDay": 0,
+    "splash_config": null,
+    "isPublic": 0,
+    "startTime": 1590979113000,
+    "id": "90090691357982716",
+    "member_count": 2,
+    "vapp": 0,
+    "slotSpace": 0,
+    "area": null,
+    "classification": null,
+    "version": "hybonm",
+    "slotDuration": 0,
+    "createdDate": 1599767443000,
+    "parent_id": "1",
+    "tagsDefinition": null,
+    "endTime": 1590979113000,
+    "category": "S",
+    "fees_range": null,
+    "splash": 0
+  }
+}
+```
 
-| Field  | Type              | Required | Description                                                   |
-| ------ | ----------------- | -------- | ------------------------------------------------------------- |
-| method | String            | Yes      | "chatDetails"                                                 |
-| chat   | [Chat](#_28h4qwu) | Yes      | This object represents a nandbox group or channel information |
+Incoming message represent new or updated Group or Channel profile This inbound message returned as a reply to [GetChat](#get-chat)
+
+| Field  | Type          | Required | Description                                                   |
+| ------ | ------------- | -------- | ------------------------------------------------------------- |
+| method | String        | Yes      | "chatDetails"                                                 |
+| chat   | [Chat](#chat) | Yes      | This object represents a nandbox group or channel information |
 
 ## Chat Menu Callback
 
@@ -368,37 +429,85 @@ Incoming message represent new or updated Group or Channel profile This inbound 
 
 Incoming message represents information about a clicked button associated with a normal keypad menu.
 
-| Field            | Type                          | Required | Description                                                                                              |
-| ---------------- | ----------------------------- | -------- | -------------------------------------------------------------------------------------------------------- |
-| method           | String                        | Yes      | "chatMenuCallback"                                                                                       |
-| chatMenuCallback | [ChatMenuCallback](#_2dlolyb) | Yes      | object represents an incoming callback query from a callback button associated with a normal keypad menu |
+| Field            | Type                                  | Required | Description                                                                                              |
+| ---------------- | ------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| method           | String                                | Yes      | "chatMenuCallback"                                                                                       |
+| chatMenuCallback | [ChatMenuCallback](#chatmenucallback) | Yes      | object represents an incoming callback query from a callback button associated with a normal keypad menu |
 
 ## Inline Message Callback
 
+```json
+{
+  "method": "inlineMessageCallback",
+  "inlineMessageCallback": {
+    "date": 1601556230820,
+    "reference": "91551042165645",
+    "button_callback": "oneBtnCBInWebView",
+    "next_menu": null,
+    "button_query_result": null,
+    "chat": { "id": "90089668723575679", "type": "Mobile" },
+    "from": { "id": "90089668723575679", "type": "Mobile" },
+    "message_id": "p1_o87RlPgT38178",
+    "menu_ref": "MAIN_MENU_001",
+    "button_label": ""
+  }
+}
+```
+
 Incoming message represents information about a clicked button within an inline keypad menu associated with a specific message
 
-| Field                 | Type                              | Required | Description                                                                                                                         |
-| --------------------- | --------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| method                | String                            | Yes      | "inlineMessageCallback"                                                                                                             |
-| inlineMessageCallback | [inlineMessageCallback](#_sqyw64) | Yes      | object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message |
+| Field                 | Type                                            | Required | Description                                                                                                                         |
+| --------------------- | ----------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| method                | String                                          | Yes      | "inlineMessageCallback"                                                                                                             |
+| inlineMessageCallback | [inlineMessageCallback](#inlinemessagecallback) | Yes      | object represents an incoming callback query from a callback button within an inline keypad menu associated with a specific message |
 
 ## Chat Member
 
-Incoming message represents information about group or channel member returned as a reply to [getChatMember](#_3mzq4wv) , [banChatMember](#_haapch), [unbanChatMember](#_319y80a), [removeChatMember](#_1gf8i83) and when user join or leaves the chat.
+```json
+{
+  "chatMember": {
+    "member_since": 1590979113000,
+    "privileges": ["1", "4611686018427387904"],
+    "view": 0,
+    "account_type": "msisdn",
+    "chat": { "id": "90090691357982716" },
+    "type": "Admin",
+    "user": { "id": "90089668723575679" },
+    "status": "Active",
+    "tags": null
+  },
+  "method": "chatMember"
+}
+```
 
-| Field      | Type                    | Required | Description                           |
-| ---------- | ----------------------- | -------- | ------------------------------------- |
-| method     | String                  | Yes      | "chatMember"                          |
-| chatMember | [ChatMemebr](#_1rvwp1q) | Yes      | object represents a chat member user. |
+Incoming message represents information about group or channel member returned as a reply to [getChatMember](#get-chat-member) , [banChatMember](#ban-chat-member), [unbanChatMember](#unban-chat-member), [removeChatMember](#remove-chat-member) and when user join or leaves the chat.
+
+| Field      | Type                         | Required | Description                           |
+| ---------- | ---------------------------- | -------- | ------------------------------------- |
+| method     | String                       | Yes      | "chatMember"                          |
+| chatMember | [ChatMemebr](#chat-member-2) | Yes      | object represents a chat member user. |
 
 ## Chat Administrators
 
-Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#_2250f4o).
+```json
+{
+  "chatAdministrators": {
+    "chat": { "id": "90090691357982716" },
+    "administrators": [
+      { "id": "90089668723575679" },
+      { "id": "90091905646805157" }
+    ]
+  },
+  "method": "chatAdministrators"
+}
+```
 
-| Field              | Type                            | Required | Description                                             |
-| ------------------ | ------------------------------- | -------- | ------------------------------------------------------- |
-| method             | String                          | Yes      | "chatAdministrators"                                    |
-| chatAdministrators | [ChatAdministrators](#_4bvk7pj) | Yes      | object represents channel or group administrator users. |
+Incoming message represents information about group or channel administrators returned as a reply to [getChatAdministrators](#get-chat-administrators).
+
+| Field              | Type                                         | Required | Description                                             |
+| ------------------ | -------------------------------------------- | -------- | ------------------------------------------------------- |
+| method             | String                                       | Yes      | "chatAdministrators"                                    |
+| chatAdministrators | [ChatAdministrators](#chat-administrators-2) | Yes      | object represents channel or group administrator users. |
 
 ## My Profile
 
@@ -434,12 +543,12 @@ Incoming message represents information about group or channel administrators re
 }
 ```
 
-Incoming message represents Bot profile details , this will be come as a reply to [getMyProfiles](#_3ep43zb) outgoing message
+Incoming message represents Bot profile details , this will be come as a reply to [getMyProfiles](#get-my-profiles) outgoing message
 
-| Field  | Type              | Required | Description                                |
-| ------ | ----------------- | -------- | ------------------------------------------ |
-| method | String            | Yes      | "myProfile"                                |
-| user   | [User](#_3tbugp1) | Yes      | User object represents Bot profile details |
+| Field  | Type          | Required | Description                                |
+| ------ | ------------- | -------- | ------------------------------------------ |
+| method | String        | Yes      | "myProfile"                                |
+| user   | [User](#user) | Yes      | User object represents Bot profile details |
 
 ## Message Ack
 
@@ -480,17 +589,17 @@ It is safe to use 32-bit signed integers for storing all **Integer** fields unle
 
 This object represents a nandbox user or bot account.
 
-| Field    | Type    | Required | Description                                                                                                                                            |
-| -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| id       | String  | Yes      | Unique identifier for this user or bot                                                                                                                 |
-| name     | String  | Yes      | User or bot name.                                                                                                                                      |
-| version  | String  | Yes      | Last updated user profile version.                                                                                                                     |
-| terminal | String  | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#_32hioqz)       |
-| type     | String  | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#_32hioqz) |
-| is_bot   | Boolean | Optional | True if this user is a bot. Returned only in GetUser                                                                                                   |
-| status   | String  | Optional | User status. Returned only in GetUser ,                                                                                                                |
-| photo    | Photo   | Optional | Public user&#39;s Photo. Returned only in GetUser                                                                                                      |
-| profile  | String  | Optional | Profile type "Other" , "Friend" , "Work" or "Family"                                                                                                   |
+| Field    | Type    | Required | Description                                                                                                                                             |
+| -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id       | String  | Yes      | Unique identifier for this user or bot                                                                                                                  |
+| name     | String  | Yes      | User or bot name.                                                                                                                                       |
+| version  | String  | Yes      | Last updated user profile version.                                                                                                                      |
+| terminal | String  | Optional | Mobile if it is sent from mobile, API if it is sent from API. It will returned only if the user object come inside incoming [message](#message-2)       |
+| type     | String  | Optional | Contact if it is sent from normal user, Bot if it is sent from Bot. It will returned only if the user object come inside incoming [message](#message-2) |
+| is_bot   | Boolean | Optional | True if this user is a bot. Returned only in GetUser                                                                                                    |
+| status   | String  | Optional | User status. Returned only in GetUser ,                                                                                                                 |
+| photo    | Photo   | Optional | Public user&#39;s Photo. Returned only in GetUser                                                                                                       |
+| profile  | String  | Optional | Profile type "Other" , "Friend" , "Work" or "Family"                                                                                                    |
 
 ## Chat
 
@@ -515,50 +624,50 @@ This object represents a nandbox group or channel information
 
 The main message method defines all parameters for all incoming messages to the bot.
 
-| Field               | Type                         | Required    | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------- | ---------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| message_id          | String                       | Yes         | Unique identifier for this message.                                                                                                                                                                                                                                                                                                                                                                             |
-| Referencereference  | StringLong                   | yes         | Unique local identifier                                                                                                                                                                                                                                                                                                                                                                                         |
-| Chatchat            | [Chat](#_Chat)               | Yes         | Conversation the message belongs to.                                                                                                                                                                                                                                                                                                                                                                            |
-| Fromfrom            | User                         | Yes         | Sender User of this message                                                                                                                                                                                                                                                                                                                                                                                     |
-| sent_to             | User                         | Yes         | Receiver user, most of the case it is the bot ID except if channel has multiple administrators, it will be the specific admin who should receive the message.                                                                                                                                                                                                                                                   |
-| type                | String                       | Yes         | "text": For text messages "text_file": Message is a text tile. Any message exceeds 1800 characters will be converted to text file. "photo":Message is a photo."gif": Message is a GIF"sticker": Message is a sticker."video": Message is a video"audio": Message is an audio"voice": Message is a voice note "location": Message is a location"contact": Message is a contact "document": Message is a document |
+| Field               | Type                        | Required    | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------- | --------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| message_id          | String                      | Yes         | Unique identifier for this message.                                                                                                                                                                                                                                                                                                                                                                             |
+| Referencereference  | StringLong                  | yes         | Unique local identifier                                                                                                                                                                                                                                                                                                                                                                                         |
+| Chatchat            | [Chat](#chat)               | Yes         | Conversation the message belongs to.                                                                                                                                                                                                                                                                                                                                                                            |
+| Fromfrom            | User                        | Yes         | Sender User of this message                                                                                                                                                                                                                                                                                                                                                                                     |
+| sent_to             | User                        | Yes         | Receiver user, most of the case it is the bot ID except if channel has multiple administrators, it will be the specific admin who should receive the message.                                                                                                                                                                                                                                                   |
+| type                | String                      | Yes         | "text": For text messages "text_file": Message is a text tile. Any message exceeds 1800 characters will be converted to text file. "photo":Message is a photo."gif": Message is a GIF"sticker": Message is a sticker."video": Message is a video"audio": Message is an audio"voice": Message is a voice note "location": Message is a location"contact": Message is a contact "document": Message is a document |
 |                     |
-| Date                | Long                         | Yes         | Date the message was sent in Unix Epoch timestamp in milliseconds.                                                                                                                                                                                                                                                                                                                                              |
-| reply_to_message_id | String                       | Optional    | Parent message Unique identifier.                                                                                                                                                                                                                                                                                                                                                                               |
-| from_admin          | Integer                      | Optional    | 1 if from user is admin, otherwise it is 0                                                                                                                                                                                                                                                                                                                                                                      |
-| Text                | String                       | Conditional | Only available when type is text                                                                                                                                                                                                                                                                                                                                                                                |
-| text_file           | Text_File                    | Conditional | Only available when type is text_file                                                                                                                                                                                                                                                                                                                                                                           |
-| Photo               | Photo                        | Conditional | Only available when type is photo                                                                                                                                                                                                                                                                                                                                                                               |
-| Gif                 | GIF                          | Conditional | Only available when type is gif                                                                                                                                                                                                                                                                                                                                                                                 |
-| Sticker             | Sticker                      | Conditional | Only available when type is sticker                                                                                                                                                                                                                                                                                                                                                                             |
-| Video               | Video                        | Conditional | Only available when type is video                                                                                                                                                                                                                                                                                                                                                                               |
-| Audio               | Audio                        | Conditional | Only available when type is audio                                                                                                                                                                                                                                                                                                                                                                               |
-| Voice               | Voice                        | Conditional | Only available when type is voice                                                                                                                                                                                                                                                                                                                                                                               |
-| Document            | Document                     | Conditional | Only available when type is document                                                                                                                                                                                                                                                                                                                                                                            |
-| Location            | Location                     | Conditional | Only available when type is location                                                                                                                                                                                                                                                                                                                                                                            |
-| Contact             | Contact                      | Conditional | Only available when type is contact                                                                                                                                                                                                                                                                                                                                                                             |
-| Status              | String                       | Optional    | "deleted" if messages is recalled and "updated" if it is updated.                                                                                                                                                                                                                                                                                                                                               |
-| chat_settings       | Integer                      | Optional    | 1 if from chat settings bot, otherwise it is 0                                                                                                                                                                                                                                                                                                                                                                  |
-| caption             | String                       |
-|                     |
-|                     |
-| bg_color            | String                       |
+| Date                | Long                        | Yes         | Date the message was sent in Unix Epoch timestamp in milliseconds.                                                                                                                                                                                                                                                                                                                                              |
+| reply_to_message_id | String                      | Optional    | Parent message Unique identifier.                                                                                                                                                                                                                                                                                                                                                                               |
+| from_admin          | Integer                     | Optional    | 1 if from user is admin, otherwise it is 0                                                                                                                                                                                                                                                                                                                                                                      |
+| Text                | String                      | Conditional | Only available when type is text                                                                                                                                                                                                                                                                                                                                                                                |
+| text_file           | Text_File                   | Conditional | Only available when type is text_file                                                                                                                                                                                                                                                                                                                                                                           |
+| Photo               | Photo                       | Conditional | Only available when type is photo                                                                                                                                                                                                                                                                                                                                                                               |
+| Gif                 | GIF                         | Conditional | Only available when type is gif                                                                                                                                                                                                                                                                                                                                                                                 |
+| Sticker             | Sticker                     | Conditional | Only available when type is sticker                                                                                                                                                                                                                                                                                                                                                                             |
+| Video               | Video                       | Conditional | Only available when type is video                                                                                                                                                                                                                                                                                                                                                                               |
+| Audio               | Audio                       | Conditional | Only available when type is audio                                                                                                                                                                                                                                                                                                                                                                               |
+| Voice               | Voice                       | Conditional | Only available when type is voice                                                                                                                                                                                                                                                                                                                                                                               |
+| Document            | Document                    | Conditional | Only available when type is document                                                                                                                                                                                                                                                                                                                                                                            |
+| Location            | Location                    | Conditional | Only available when type is location                                                                                                                                                                                                                                                                                                                                                                            |
+| Contact             | Contact                     | Conditional | Only available when type is contact                                                                                                                                                                                                                                                                                                                                                                             |
+| Status              | String                      | Optional    | "deleted" if messages is recalled and "updated" if it is updated.                                                                                                                                                                                                                                                                                                                                               |
+| chat_settings       | Integer                     | Optional    | 1 if from chat settings bot, otherwise it is 0                                                                                                                                                                                                                                                                                                                                                                  |
+| caption             | String                      |
 |                     |
 |                     |
-| article             | Article                      |
+| bg_color            | String                      |
 |                     |
 |                     |
-| url                 | String                       |
+| article             | Article                     |
 |                     |
 |                     |
-| White_list_user     | [WhiteListUser](#_Whitelist) |
+| url                 | String                      |
 |                     |
 |                     |
-| tag                 | TagDefinition                |
+| White_list_user     | [WhiteListUser](#whitelist) |
 |                     |
 |                     |
-| schedule_date       | Long                         | Optional    | Long time format like this example 1579102262                                                                                                                                                                                                                                                                                                                                                                   |
+| tag                 | TagDefinition               |
+|                     |
+|                     |
+| schedule_date       | Long                        | Optional    | Long time format like this example 1579102262                                                                                                                                                                                                                                                                                                                                                                   |
 
 **JSON Example:**
 
@@ -849,6 +958,23 @@ This object represents an incoming button query results from a callback button
 
 ## Chat Member
 
+```json
+{
+  "chatMember": {
+    "member_since": 1590979113000,
+    "privileges": ["1", "4611686018427387904"],
+    "view": 0,
+    "account_type": "msisdn",
+    "chat": { "id": "90090691357982716" },
+    "type": "Admin",
+    "user": { "id": "90089668723575679" },
+    "status": "Active",
+    "tags": null
+  },
+  "method": "chatMember"
+}
+```
+
 This object represents a chat member user returned in getChatMember banChatMember, unbanChatMember, removeChatMember and when user join or leaves the chat.
 
 | Field                                      | Type            | Required                                                          | Description                                                                                                                                                                           |
@@ -862,8 +988,6 @@ This object represents a chat member user returned in getChatMember banChatMembe
 | account_type                               | String          | OptionalMust have specific privilege from Web (Get User Login ID) |
 | Type for which user signup(email , msisdn) |
 | msisdn                                     | String          | Optional                                                          | Get email or msisdn                                                                                                                                                                   |
-
-**JSON Example:**
 
 ```json
 "chatMember": {
@@ -931,14 +1055,12 @@ This object represents a chat member user returned in getChatMember banChatMembe
 
 ## Chat Administrators
 
-This object represents channel or group administrator users. Returned as a reply to [getChatAdministrators](#_2250f4o)
+This object represents channel or group administrator users. Returned as a reply to [getChatAdministrators](#get-chat-administrators)
 
-| Field          | Type                       | Required | Description                                                                |
-| -------------- | -------------------------- | -------- | -------------------------------------------------------------------------- |
-| chat           | [Chat](#_28h4qwu)          | Yes      | channel or group Unique identifier object where administrators belongs to. |
-| administrators | Array of [User](#_3tbugp1) | Yes      | List of All administrator users of this channel or group.                  |
-
-**JSON Example:**
+| Field          | Type                   | Required | Description                                                                |
+| -------------- | ---------------------- | -------- | -------------------------------------------------------------------------- |
+| chat           | [Chat](#chat)          | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| administrators | Array of [User](#user) | Yes      | List of All administrator users of this channel or group.                  |
 
 ```json
 {
@@ -972,15 +1094,13 @@ This object represents channel or group administrator users. Returned as a reply
 
 ## Blacklist
 
-This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Blacklist)
+This object represents blacklist. Returned as a reply to [getBlacklist](#get-blacklist)
 
-| Field | Type                     | Required | Description                                                                |
-| ----- | ------------------------ | -------- | -------------------------------------------------------------------------- |
-| chat  | [Chat](#_28h4qwu)        | Yes      | channel or group Unique identifier object where administrators belongs to. |
-| eop   | String                   | Yes      | Number of page                                                             |
-| users | Array of UsersSignupUser | Yes      | Array of users                                                             |
-
-**JSON Example:**
+| Field | Type                                 | Required | Description                                                                |
+| ----- | ------------------------------------ | -------- | -------------------------------------------------------------------------- |
+| chat  | [Chat](#chat)                        | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| eop   | String                               | Yes      | Number of page                                                             |
+| users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
 
 ```json
 {
@@ -1036,15 +1156,13 @@ This object represents blacklist. Returned as a reply to [getBlacklist](#_Get_Bl
 
 ## Whitelist
 
-This object represents whitelist. Returned as a reply to [getWhitelist](#_Get_Blacklist)
+This object represents whitelist. Returned as a reply to [getWhitelist](#get-whitelist)
 
-| Field | Type                 | Required | Description                                                                |
-| ----- | -------------------- | -------- | -------------------------------------------------------------------------- |
-| chat  | [Chat](#_28h4qwu)    | Yes      | channel or group Unique identifier object where administrators belongs to. |
-| eop   | String               | Yes      | Number of page                                                             |
-| users | Array of SignupUsers | Yes      | Array of users                                                             |
-
-**JSON Example:**
+| Field | Type                                 | Required | Description                                                                |
+| ----- | ------------------------------------ | -------- | -------------------------------------------------------------------------- |
+| chat  | [Chat](#chat)                        | Yes      | channel or group Unique identifier object where administrators belongs to. |
+| eop   | String                               | Yes      | Number of page                                                             |
+| users | Array of [SignupUsers](#signup-user) | Yes      | Array of users                                                             |
 
 ```json
 {
@@ -1114,8 +1232,6 @@ Object represents outbound messages acknowledgment details.
 | message_id | String | Yes      | Global Unique identifier for the original message.                |
 | date       | Long   | Yes      | Date the message was sent in Unix Epoch timestamp in milliseconds |
 
-**JSON Example:**
-
 ```json
 {
   "method": "messageAck",
@@ -1138,8 +1254,6 @@ This object represents a user, Returned when user started bot
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
 
-**JSON Example:**
-
 ```json
 {
   "method": "userStartedBot",
@@ -1157,8 +1271,6 @@ This object represents a user, Returned when user joined bot
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
-
-**JSON Example:**
 
 ```json
 {
@@ -1178,8 +1290,6 @@ This object represents a user, Returned when user stopped bot
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
 
-**JSON Example:**
-
 ```json
 {
   "method": "userStoppedBot",
@@ -1198,8 +1308,6 @@ This object represents a user, Returned when user left bot
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
 
-**JSON Example:**
-
 ```json
 {
   "method": "userLeftBot",
@@ -1214,12 +1322,10 @@ This object represents a user, Returned when user left bot
 
 This object represents an inline search, Returned when user write search keyword in inline bot
 
-| Field       | Type                           | Required | Description                   |
-| ----------- | ------------------------------ | -------- | ----------------------------- |
-| method      | String                         | yes      | "inlineSearch"                |
-| inineSearch | [InlineSearch](#_InlineSearch) | Yes      | Member User Unique identifier |
-
-**JSON Example:**
+| Field       | Type                          | Required | Description                   |
+| ----------- | ----------------------------- | -------- | ----------------------------- |
+| method      | String                        | yes      | "inlineSearch"                |
+| inineSearch | [InlineSearch](#inlinesearch) | Yes      | Member User Unique identifier |
 
 ```json
 {
@@ -1252,8 +1358,6 @@ This object represents an inline search, Returned when user write search keyword
 | Field | Type | Required | Description                   |
 | ----- | ---- | -------- | ----------------------------- |
 | user  | User | Yes      | Member User Unique identifier |
-
-**JSON Example:**
 
 ```json
 {
@@ -1307,8 +1411,6 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 | ----- | ---- | -------- | ------------------------------------- |
 | chat  | Chat | Yes      | Conversation Chat which menu send to. |
 
-**JSON Example:**
-
 ```json
 {
   "method": "setChatMenu_ack",
@@ -1320,6 +1422,8 @@ This object represents acknowledgement of receipt new or updated normal keypad m
 ```
 
 # ![](../images/ic_outcoming.svg) Outgoing Messages
+
+[Here you can find a complete example of the javascript code snippets below](https://github.com/AmirAlahmedy/nandbox-bot-api/blob/master/src/test/Snippets.js)
 
 ## Send Message
 
@@ -1706,7 +1810,30 @@ if (uploadedVoiceId != null) {
   //
 }
 
+```javascript
+if (incomingMsg.isVoiceMsg()) {
+  let voiceOutMsg = new VoiceOutMessage();
+  voiceOutMsg.chat_id = incomingMsg.chat.id;
+  voiceOutMsg.reference = Id();
+  voiceOutMsg.voice = incomingMsg.voice.id;
+  voiceOutMsg.size = 700;
+  voiceOutMsg.caption = "Vocie From Bot";
+
+  api.send(JSON.stringify(voiceOutMsg));
+}
 ```
+
+```json
+{
+  "method": "sendVoice",
+  "chat_id": "90089668723575679",
+  "reference": 95959775121117,
+  "voice": "8a94888c62b2f3b632c4bc00da4387b8a465e5ee8d521bf428b49625c0dee3b9.m4a",
+  "size": 700,
+  "caption": "Vocie From Bot"
+}
+```
+
 Use this method to send voice note. If you want nandbox clients to display the file as a playable voice message, your voice audio must be in an .ogg file encoded with OPUS (other format may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice note files of up to 50 MB in size, this limit may be changed in the future.
 
 | Field                    | Type          | Required | Description                                                                                                       |
@@ -1753,10 +1880,6 @@ MediaTransfer.uploadFile(
 
   api.send(JSON.stringify(documentOutMsg));
 });
-```
-
-```javascript
-https://github.com/nandbox/nandboxbotsapi-js/blob/master/src/data/Document.js
 ```
 
 ```json
@@ -1886,14 +2009,17 @@ import com.nandbox.bots.api.outmessages.ContactOutMessage
 ...
 ```
 ```javascript
-// this example echoes the received contact
 let contactOutMsg = new ContactOutMessage();
 contactOutMsg.chat_id = incomingMsg.chat.id;
 contactOutMsg.reference = Id;
-contactOutMsg.name = incomingMsg.contact.name;
-contactOutMsg.phoneNumber = incomingMsg.contact.phoneNumber;
+contactOutMsg.name = "KFC";
+contactOutMsg.phoneNumber = "19019";
 
-api.send(JSON.stringify(contactOutMsg));
+api.sendContact(
+  incomingMsg.chat.id,
+  contactOutMsg.phoneNumber,
+  contactOutMsg.name
+);
 ```
 
 ```json
@@ -1938,15 +2064,24 @@ import com.nandbox.bots.api.outmessages.UpdateOutMessage
 ```
 
 ```javascript
-const newPage = new UpdateOutMessage();
-newPage.message_id = inlineMsgCallback.message_id;
-newPage.text = data.msgText;
-newPage.reference = inlineMsgCallback.reference;
-newPage.to_user_id = inlineMsgCallback.from.id;
-newPage.chat_id = inlineMsgCallback.chat.id;
-newPage.inline_menu = data.menus;
-newPage.menu_ref = data.menuRef;
-api.send(JSON.stringify(newPage));
+const newMsg = new UpdateOutMessage();
+newMsg.message_id = incomingMsg.message_id;
+newMsg.text = "new edits";
+newMsg.reference = incomingMsg.reference;
+newMsg.to_user_id = incomingMsg.from.id;
+newMsg.chat_id = incomingMsg.chat.id;
+api.send(JSON.stringify(newMsg));
+```
+
+```json
+{
+  "method": "updateMessage",
+  "message_id": "i1_iWBJSzaA129813",
+  "text": "new edits",
+  "reference": 2372,
+  "to_user_id": "90089668723575679",
+  "chat_id": "90089668723575679"
+}
 ```
 
 Use this message to update existing Message sent. On success, the sent Message is returned with status "updated"
@@ -1985,12 +2120,44 @@ this.api.send(outmsg);
 ```
 Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
 
-| Field      | Type   | Required | Description                                                                                                   |
-| ---------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------- |
-| method     | String | Yes      | "setChatMenu"                                                                                                 |
-| menus      | Menu   | Yes      | New or updated Menus                                                                                          |
-| chat_id    | String | Yes      | Unique identifier for the target chat or User_id                                                              |
-| to_user_id | String | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user. |
+```javascript
+let outmsg = new SetChatMenuOutMessage();
+
+let chat_id = incomingMsg.chat.id;
+
+Utility.setNavigationButton(chat_id, "mainMenu", api);
+
+let menuBtn1 = createButton(
+  "No Smoking",
+  "mainCB",
+  1,
+  "Gray",
+  "Red",
+  null,
+  null
+);
+menuBtn1.button_icon = "ic_smoke_free_24dp";
+menuBtn1.button_icon_bgcolor = "#00FFFF";
+
+let buttons = [];
+buttons.push(menuBtn1);
+
+let rowOrder = 1;
+let firstRow = new Row(buttons, rowOrder);
+
+let rows = [];
+rows.push(firstRow);
+
+let menuRef = "mainMenu";
+let chatMenu = new Menu(rows, menuRef);
+let menus = [];
+menus.push(chatMenu);
+
+outmsg.chat_id = incomingMsg.chat.id;
+outmsg.menus = menus;
+
+api.send(JSON.stringify(outmsg));
+```
 
 ```json
 {
@@ -2033,6 +2200,15 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
   ]
 }
 ```
+
+Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
+
+| Field      | Type   | Required | Description                                                                                                   |
+| ---------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------- |
+| method     | String | Yes      | "setChatMenu"                                                                                                 |
+| menus      | Menu   | Yes      | New or updated Menus                                                                                          |
+| chat_id    | String | Yes      | Unique identifier for the target chat or User_id                                                              |
+| to_user_id | String | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user. |
 
 ## Inline Search Answer
 ```java
@@ -2078,11 +2254,11 @@ this.api.send(inlineSearchAnswer);
   "method": "inlineSearchAnswer",
   "results": [
     {
-      "title": "ص (50)",
-      "caption": "﴿جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأ َبْوَابُ﴾\nص (50)\nShared via @qurany_nb",
+      "title": "any catchy title",
+      "caption": "any valid caption",
       "height": 10,
       "width": 40,
-      "description": "جَنَّاتِ عَدْنٍ مُفَتَّحَةً لَهُمُ الْأَبْوَابُ"
+      "description": "a descriptive decription"
     }
   ],
   "next_offset": "",
@@ -2092,14 +2268,14 @@ this.api.send(inlineSearchAnswer);
 }
 ```
 
-| Field       | Type                 | Required | Description                                                                                                                                                                                       |
-| ----------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| method      | String               | Yes      | "inlineSearchAnswer"                                                                                                                                                                              |
-| to_user_id  | String               | Yes      | The user id you want to sent to him                                                                                                                                                               |
-| results     | [Results](#_Results) | Yes      | Array of media information                                                                                                                                                                        |
-| next_offset | String               | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
-| chat_id     | String               | yes      | Chat id                                                                                                                                                                                           |
-| search_id   | String               | yes      | Unique id of this message                                                                                                                                                                         |
+| Field       | Type                | Required | Description                                                                                                                                                                                       |
+| ----------- | ------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| method      | String              | Yes      | "inlineSearchAnswer"                                                                                                                                                                              |
+| to_user_id  | String              | Yes      | The user id you want to sent to him                                                                                                                                                               |
+| results     | [Results](#results) | Yes      | Array of media information                                                                                                                                                                        |
+| next_offset | String              | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
+| chat_id     | String              | yes      | Chat id                                                                                                                                                                                           |
+| search_id   | String              | yes      | Unique id of this message                                                                                                                                                                         |
 
 # ![](../images/ic_Types.svg) More Types
 
@@ -2147,12 +2323,12 @@ This object represents button of reply. Button must have a button_callback which
 
 Use this method to set the navigation button with the menu reference. When navigation button is pressed the referenced menu will be displayed as normal keypad menu "Chat Menu".
 
-| Field                      | Type                              | Required | Description                                                                                                               |
-| -------------------------- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
-| method                     | String                            | Yes      | "setNavigationButton"                                                                                                     |
-| navigation_buttonsmenu_ref | StringArray of [Button](#_Button) | Yes      | Array of Button.Menu unique identifier that reference the next menu to navigate to it when the navigation button pressed. |
-| chat_id                    | String                            | Yes      | Unique identifier for the target chat or User_id                                                                          |
-| to_user_id                 | String                            | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user.             |
+| Field                      | Type                             | Required | Description                                                                                                               |
+| -------------------------- | -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
+| method                     | String                           | Yes      | "setNavigationButton"                                                                                                     |
+| navigation_buttonsmenu_ref | StringArray of [Button](#button) | Yes      | Array of Button.Menu unique identifier that reference the next menu to navigate to it when the navigation button pressed. |
+| chat_id                    | String                           | Yes      | Unique identifier for the target chat or User_id                                                                          |
+| to_user_id                 | String                           | Optional | if reply or send message to target user within a group chat or channel, unique identifier of the target user.             |
 
 ## Get User
 
@@ -2162,8 +2338,6 @@ Use this method to get profile for a user. On success, User is returned.
 | ------- | ------ | -------- | --------------------------------------- |
 | method  | String | Yes      | "getUser"                               |
 | user_id | String | Yes      | Unique identifier for this user or bot. |
-
-**JSON Example:**
 
 ```json
 {
@@ -2181,8 +2355,6 @@ Use this method to get Group or Channel information. On success, Chat is returne
 | ------- | ------ | -------- | --------------------------------------- |
 | method  | String | Yes      | "getChat"                               |
 | chat_id | String | Yes      | Unique identifier for Group or Channel. |
-
-**JSON Example:**
 
 ```json
 {
@@ -2202,8 +2374,6 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
 
-**JSON Example:**
-
 ```json
 {
   "method": "getChatMember",
@@ -2216,14 +2386,12 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
 
 ## Get Chat Administrators
 
-Use this method to get Chat Administrators. On success, [ChatAdministrators](#_1v1yuxt) message will received .
+Use this method to get Chat Administrators. On success, [ChatAdministrators](#chat-administrators-2) message will received .
 
 | Field   | Type   | Required | Description                             |
 | ------- | ------ | -------- | --------------------------------------- |
 | method  | String | Yes      | "getChatAdministrators"                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel. |
-
-**JSON Example:**
 
 ```json
 {
@@ -2242,8 +2410,6 @@ Use this method to ban a Chat Member from accessing Chat. On success, ChatMember
 | method  | String | Yes      | "banChatMember"                                                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
-
-**JSON Example:**
 
 ```json
 {
@@ -2265,8 +2431,6 @@ Use this method to unban a Chat Member from accessing Chat. On success, ChatMemb
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member used to belong to. |
 | user_id | String | Yes      | Unique identifier for the banned user.                                 |
 
-**JSON Example:**
-
 ```json
 {
   "method": "unbanChatMember",
@@ -2287,8 +2451,6 @@ Use this method to remove a Chat Member from Chat. On success, ChatMember is ret
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member used to belong to. |
 | user_id | String | Yes      | Unique identifier for the banned user.                                 |
 
-**JSON Example:**
-
 ```json
 {
   "method": "removeChatMember",
@@ -2307,8 +2469,6 @@ Use this method to set Chat Group or Channel information. On success, chat is re
 | ------ | ------ | -------- | --------------------------------------- |
 | method | String | Yes      | "setChat"                               |
 | chat   | Chat   | Yes      | Unique identifier for Group or Channel. |
-
-**JSON Example:**
 
 ```json
 {
@@ -2335,8 +2495,6 @@ Use this method to add black list.
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```json
 {
   "method": "addBlacklist",
@@ -2351,13 +2509,11 @@ Use this method to add black list.
 
 Use this method to add white list.
 
-| Field  | Type                                   | Required | Description                             |
-| ------ | -------------------------------------- | -------- | --------------------------------------- |
-| method | String                                 | Yes      | "addWhitelist"                          |
-| chat   | Chat                                   | Yes      | Unique identifier for Group or Channel. |
-| users  | Array of [UsersWhiteListUser](#_Users) | yes      | Add Array of Users                      |
-
-**JSON Example:**
+| Field  | Type                                  | Required | Description                             |
+| ------ | ------------------------------------- | -------- | --------------------------------------- |
+| method | String                                | Yes      | "addWhitelist"                          |
+| chat   | Chat                                  | Yes      | Unique identifier for Group or Channel. |
+| users  | Array of [UsersWhiteListUser](#users) | yes      | Add Array of Users                      |
 
 ```json
 {
@@ -2379,13 +2535,11 @@ Use this method to add white list.
 
 Use this method to add black list patterns:
 
-| Field  | Type                    | Required | Description                             |
-| ------ | ----------------------- | -------- | --------------------------------------- |
-| method | String                  | Yes      | "addBlacklistPatterns"                  |
-| chat   | Chat                    | Yes      | Unique identifier for Group or Channel. |
-| data   | Array of [Data](#_Data) | yes      | Add Array of Data                       |
-
-**JSON Example:**
+| Field  | Type                   | Required | Description                             |
+| ------ | ---------------------- | -------- | --------------------------------------- |
+| method | String                 | Yes      | "addBlacklistPatterns"                  |
+| chat   | Chat                   | Yes      | Unique identifier for Group or Channel. |
+| data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
 ```JSON
 {
@@ -2417,13 +2571,11 @@ Use this method to add black list patterns:
 
 Use this method to add white list.patterns:
 
-| Field  | Type                    | Required | Description                             |
-| ------ | ----------------------- | -------- | --------------------------------------- |
-| method | String                  | Yes      | "addWhitelistPatterns"                  |
-| chat   | Chat                    | Yes      | Unique identifier for Group or Channel. |
-| data   | Array of [Data](#_Data) | yes      | Add Array of Data                       |
-
-**JSON Example:**
+| Field  | Type                   | Required | Description                             |
+| ------ | ---------------------- | -------- | --------------------------------------- |
+| method | String                 | Yes      | "addWhitelistPatterns"                  |
+| chat   | Chat                   | Yes      | Unique identifier for Group or Channel. |
+| data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
 ```json
 {
@@ -2457,8 +2609,6 @@ Use this method to delete black list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2482,8 +2632,6 @@ Use this method to delete white list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2506,8 +2654,6 @@ Use this method to delete black list pattern:
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2529,8 +2675,6 @@ Use this method to delete white list pattern:
 | method  | String          | Yes      | "deleteWhitelistPatterns"               |
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
-
-**JSON Example:**
 
 ```JSON
 {
@@ -2556,8 +2700,6 @@ Use this message to recall existing Message sent .
 | reference    | StringLong | Yes      | Unique local identifier for the target chat/user                      |
 | from_user_id | String     | Optional | Original sender id Mandatory in case the bot is the admin of the Chat |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2580,8 +2722,6 @@ Use this method to get black list. On success, blacklist is returned.
 | chat_id   | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | page_size | String |
 
-**JSON Example:**
-
 ```JSON
 {
 
@@ -2601,8 +2741,6 @@ Use this method to get white list. On success, whitelist is returned.
 | method    | String | Yes      | "getWhitelist"                                                  |
 | chat_id   | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | page_size | String |
-
-**JSON Example:**
 
 ```JSON
 {
@@ -2625,8 +2763,6 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 | page_size | String |
 |           |
 |           |
-
-**JSON Example:**
 
 ```json
 {
@@ -2651,8 +2787,6 @@ Use this method to get Bot Profile. On success, myProfile is returned.
 | Field  | Type   | Required | Description     |
 | ------ | ------ | -------- | --------------- |
 | method | String | Yes      | "getMyProfiles" |
-
-**JSON Example:**
 
 ```json
 {
