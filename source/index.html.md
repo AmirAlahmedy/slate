@@ -2088,7 +2088,39 @@ Use this message to update existing Message sent. On success, the sent Message i
 ## Set Chat Menu
 
 Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
+```java
+ // SEND CHAT MENU
+else if (incomingMsg.getText().toLowerCase().equals("chatmenu")) {
+    String chatId = incomingMsg.getChat().getId();
 
+    new Utils().setNavigationButton(chatId, "mainMenu", api);
+
+    Button menuBtn1 = createButton("مصراوي", "mainCB", 1, "Gray", "Red", null, null);
+    menuBtn1.setButtonIcon("ic_smoke_free_24dp");
+    menuBtn1.setButtonIconBgColor("#00FFFF");
+    Button menuBtn2 = createButton("Funny", "funnyCB", 1, "Gray", "Red", null, null);
+    menuBtn2.setButtonIcon("ic_timeline_24dp");
+
+    Button menuBtn3 = createButton("Option", "optionCB", 1, "Gray", "Red", null, null);
+    menuBtn3.setButtonIcon("ic_pregnant_woman_24dp");
+    menuBtn3.setButtonIconBgColor("orange");
+    SetChatMenuOutMessage outmsg = new SetChatMenuOutMessage();
+
+    Row firstRow = new Row();
+    firstRow.setRowOrder(1);
+    firstRow.setButtons(new Button[] { menuBtn1, menuBtn2, menuBtn3 });
+
+    Menu chatMenu = new Menu();
+    String menuRef = "mainMenu";
+    chatMenu.setMenuRef(menuRef);
+    chatMenu.setRows(new Row[] { firstRow });
+
+    outmsg.setChatId(incomingMsg.getChat().getId());
+    outmsg.setMenus(new Menu[] { chatMenu });
+
+    api.send(outmsg);
+}
+```
 ```javascript
 let outmsg = new SetChatMenuOutMessage();
 
