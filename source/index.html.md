@@ -2466,6 +2466,13 @@ Use this method to remove a Chat Member from Chat. On success, ChatMember is ret
 
 ## Set Chat
 
+```javascript
+let chat = new Chat();
+chat.title = "NEW TITLE";
+chat.td = "90090684268836495";
+api.setChat(chat);
+```
+
 Use this method to set Chat Group or Channel information. On success, chat is returned.
 
 | Field  | Type   | Required | Description                             |
@@ -2750,17 +2757,23 @@ Use this method to delete white list pattern:
 
 ```json
 {
+  "method": "deleteWhitelistPatterns",
 
-"method": "deleteWhitelistPatterns",
+  "pattern": ["5555*"],
 
-"pattern": ["5555\*"],
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
 ```
 
 ## Recall Message
+
+```javascript
+let recallOutMessage = new RecallOutMessage();
+recallOutMessage.chatId = "90090684265384780";
+recallOutMessage.messageId = "d1_CIRKHD6C12617260";
+recallOutMessage.reference = 6915;
+recallOutMessage.setFromUserId = "90089584801498185";
+```
 
 Use this message to recall existing Message sent .
 
@@ -2774,13 +2787,11 @@ Use this message to recall existing Message sent .
 
 ```json
 {
+  "method": "recallMessage",
 
-"method": "recallMessage",
+  "chat_id": "4522291356145774",
 
-"chat_id": "4522291356145774",
-
-"message_id": "d2_F4k48l1t12617132"
-
+  "message_id": "d2_F4k48l1t12617132"
 }
 ```
 
@@ -2807,8 +2818,9 @@ Use this method to get black list. On success, blacklist is returned.
 ```
 
 ## Get Whitelist
+
 ```javascript
- api.getWhiteList(chat.id);
+api.getWhiteList(chat.id);
 ```
 
 Use this method to get white list. On success, whitelist is returned.
@@ -2830,6 +2842,17 @@ Use this method to get white list. On success, whitelist is returned.
 ```
 
 ## Set My Profile
+
+```javascript
+let user = new User();
+user.profile = "other";
+user.status = "I am set My profile Bot 2 ";
+let photo = new Photo();
+photo.id =
+  "e801b7277dbd921376f26b13aeadf0ee4b49950a66641f2761863a823e035845.jpg";
+
+api.setMyProifle(user);
+```
 
 Use this method to set Bot Profile. On success, myProfile is returned.
 
