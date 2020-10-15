@@ -2748,7 +2748,7 @@ Use this method to delete white list pattern:
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
 
-```JSON
+```json
 {
 
 "method": "deleteWhitelistPatterns",
@@ -2772,7 +2772,7 @@ Use this message to recall existing Message sent .
 | reference    | StringLong | Yes      | Unique local identifier for the target chat/user                      |
 | from_user_id | String     | Optional | Original sender id Mandatory in case the bot is the admin of the Chat |
 
-```JSON
+```json
 {
 
 "method": "recallMessage",
