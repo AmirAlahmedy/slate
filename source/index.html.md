@@ -2283,6 +2283,18 @@ The following data structures represents custom keypad menus with reply options
 
 
 ## Set Navigation Button
+```javascript
+ static setNavigationButton(chatId, nextMenu, api){
+        let fb = new Button();
+        fb.next_menu = nextMenu;
+        let navMsg = new SetNavigationButtonOutMessage();
+        navMsg.chat_id = chatId;
+        navMsg.navigation_buttons = []
+        navMsg.navigation_buttons.push(fb);
+
+        api.send(JSON.stringify(navMsg));
+    }
+```
 
 Use this method to set the navigation button with the menu reference. When navigation button is pressed the referenced menu will be displayed as normal keypad menu "Chat Menu".
 
@@ -2295,6 +2307,9 @@ Use this method to set the navigation button with the menu reference. When navig
 
 ## Get User
 
+```javascript
+ api.getUser(user.id);
+```
 Use this method to get profile for a user. On success, User is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2311,7 +2326,9 @@ Use this method to get profile for a user. On success, User is returned.
 ```
 
 ## Get Chat
-
+```javascript
+ api.getChat(chat.id)
+```
 Use this method to get Group or Channel information. On success, Chat is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2329,14 +2346,9 @@ Use this method to get Group or Channel information. On success, Chat is returne
 
 ## Get Chat Member
 
-Use this method to get Chat Member user public profile. On success, ChatMember is returned.
-
-| Field   | Type   | Required | Description                                                     |
-| ------- | ------ | -------- | --------------------------------------------------------------- |
-| method  | String | Yes      | "getChatMember"                                                 |
-| chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
-| user_id | String | Yes      | Unique identifier for this user member.                         |
-
+```javascript
+ api.getChatMember(chat.id, user.id);
+```
 ```json
 {
   "method": "getChatMember",
@@ -2346,16 +2358,20 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
   "user_id": "4521191845180798"
 }
 ```
+Use this method to get Chat Member user public profile. On success, ChatMember is returned.
+
+| Field   | Type   | Required | Description                                                     |
+| ------- | ------ | -------- | --------------------------------------------------------------- |
+| method  | String | Yes      | "getChatMember"                                                 |
+| chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
+| user_id | String | Yes      | Unique identifier for this user member.                         |
+
+
 
 ## Get Chat Administrators
-
-Use this method to get Chat Administrators. On success, [ChatAdministrators](#chat-administrators-2) message will received .
-
-| Field   | Type   | Required | Description                             |
-| ------- | ------ | -------- | --------------------------------------- |
-| method  | String | Yes      | "getChatAdministrators"                 |
-| chat_id | String | Yes      | Unique identifier for Group or Channel. |
-
+```javascript
+ api.getChatAdministrators(chat.id);
+```
 ```json
 {
   "method": "getChatAdministrators",
@@ -2363,17 +2379,16 @@ Use this method to get Chat Administrators. On success, [ChatAdministrators](#ch
   "chat_id": "4522291356145774"
 }
 ```
+Use this method to get Chat Administrators. On success, [ChatAdministrators](#chat-administrators-2) message will received .
+
+| Field   | Type   | Required | Description                             |
+| ------- | ------ | -------- | --------------------------------------- |
+| method  | String | Yes      | "getChatAdministrators"                 |
+| chat_id | String | Yes      | Unique identifier for Group or Channel. |
+
+
 
 ## Ban Chat Member
-
-Use this method to ban a Chat Member from accessing Chat. On success, ChatMember is returned with status "banned". Ban is a black list, user will not be able to join Chat again.
-
-| Field   | Type   | Required | Description                                                     |
-| ------- | ------ | -------- | --------------------------------------------------------------- |
-| method  | String | Yes      | "banChatMember"                                                 |
-| chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
-| user_id | String | Yes      | Unique identifier for this user member.                         |
-
 ```json
 {
   "method": "banChatMember",
@@ -2383,6 +2398,15 @@ Use this method to ban a Chat Member from accessing Chat. On success, ChatMember
   "user_id": "90089584758972053"
 }
 ```
+Use this method to ban a Chat Member from accessing Chat. On success, ChatMember is returned with status "banned". Ban is a black list, user will not be able to join Chat again.
+
+| Field   | Type   | Required | Description                                                     |
+| ------- | ------ | -------- | --------------------------------------------------------------- |
+| method  | String | Yes      | "banChatMember"                                                 |
+| chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
+| user_id | String | Yes      | Unique identifier for this user member.                         |
+
+
 
 ## Unban Chat Member
 
