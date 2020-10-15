@@ -1420,6 +1420,44 @@ This object represents acknowledgement of receipt new or updated normal keypad m
   }
 }
 ```
+## Menu
+
+Each Menu composes of set of rows. At least one row should be defined.
+
+| Field    | Type         | Required | Description                                                |
+| -------- | ------------ | -------- | ---------------------------------------------------------- |
+| menu_ref | String       | Yes      | Unique identifier of this Menu as defined by bot.          |
+| rows     | Array of Row | Yes      | Rows belong to this menu. Row which is an Array of buttons |
+
+## Row
+
+Each row belongs to one keypad menu that composes of set of buttons. At least one button should be defined.
+
+| Field     | Type            | Required | Description                |
+| --------- | --------------- | -------- | -------------------------- |
+| buttons   | Array of Button | Yes      | Button belongs to the row. |
+| row_order | Integer         | Yes      | Row order in the menu.     |
+
+## Button
+
+This object represents button of reply. Button must have a button_callback which is the unique identifier defined by bot.
+
+| Field                                                | Type    | Required | Description                                                                                                                                                                                             |
+| ---------------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| button_callback                                      | String  | Yes      | This is unique identifier as defined by bot. The button_callback returned in inlineMessageCallback and ChatMenuCallbakc when button pressed.                                                            |
+| next_menu                                            | Menu    | Optional | Menu unique identifier that reference the next menu to navigate to it when the button pressed.                                                                                                          |
+| button_span                                          | Integer | Optional | Button Span                                                                                                                                                                                             |
+| button_order                                         | Integer | Optional | The number of button order by ascending                                                                                                                                                                 |
+| button_text_color                                    | String  | Optional | Text color of the button Title The color should be in hexadecimal format (Hex triplet ) or according to its common English name .                                                                       |
+| Example : Red color can be set as "RED" or "#FF0000" |
+| button_bg_color                                      | String  | Optional | Button background color .The color should be in hexadecimal format (Hex triplet ) or according to its common English name .                                                                             |
+| Example : Red color can be set as "RED" or "#FF0000" |
+| button_label                                         | String  | Optional | Button label or title.                                                                                                                                                                                  |
+| button_url                                           | String  | Optional | Button URL. When button pressed, an external URL link will be opened.                                                                                                                                   |
+| button_query                                         | String  | Optional | Field used to query information from app, this can take one of two values as follows Location: to ask user to get location or point of map information.Contact : to ask user to get his contact number. |
+| button_chat                                          | Chat    | Optional | Chat unique identifier that reference the specific chat to be opened when button is pressed. if button_url and button_chat are both defined, button_chat priority to button_chat.                       |
+| nav_type                                             | String  | Optional | -Null is default to show navigation button for channel, group or contact-Type "admin" for show admin navigation button in chat setting                                                                  |
+
 
 # ![](../images/ic_outcoming.svg) Outgoing Messages
 
@@ -2240,48 +2278,11 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | next_offset | String              | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
 | chat_id     | String              | yes      | Chat id                                                                                                                                                                                           |
 | search_id   | String              | yes      | Unique id of this message                                                                                                                                                                         |
-
-# ![](../images/ic_Types.svg) More Types
+<!-- 
+# ![](../images/ic_Types.svg) More Types -->
 
 The following data structures represents custom keypad menus with reply options
 
-## Menu
-
-Each Menu composes of set of rows. At least one row should be defined.
-
-| Field    | Type         | Required | Description                                                |
-| -------- | ------------ | -------- | ---------------------------------------------------------- |
-| menu_ref | String       | Yes      | Unique identifier of this Menu as defined by bot.          |
-| rows     | Array of Row | Yes      | Rows belong to this menu. Row which is an Array of buttons |
-
-## Row
-
-Each row belongs to one keypad menu that composes of set of buttons. At least one button should be defined.
-
-| Field     | Type            | Required | Description                |
-| --------- | --------------- | -------- | -------------------------- |
-| buttons   | Array of Button | Yes      | Button belongs to the row. |
-| row_order | Integer         | Yes      | Row order in the menu.     |
-
-## Button
-
-This object represents button of reply. Button must have a button_callback which is the unique identifier defined by bot.
-
-| Field                                                | Type    | Required | Description                                                                                                                                                                                             |
-| ---------------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| button_callback                                      | String  | Yes      | This is unique identifier as defined by bot. The button_callback returned in inlineMessageCallback and ChatMenuCallbakc when button pressed.                                                            |
-| next_menu                                            | Menu    | Optional | Menu unique identifier that reference the next menu to navigate to it when the button pressed.                                                                                                          |
-| button_span                                          | Integer | Optional | Button Span                                                                                                                                                                                             |
-| button_order                                         | Integer | Optional | The number of button order by ascending                                                                                                                                                                 |
-| button_text_color                                    | String  | Optional | Text color of the button Title The color should be in hexadecimal format (Hex triplet ) or according to its common English name .                                                                       |
-| Example : Red color can be set as "RED" or "#FF0000" |
-| button_bg_color                                      | String  | Optional | Button background color .The color should be in hexadecimal format (Hex triplet ) or according to its common English name .                                                                             |
-| Example : Red color can be set as "RED" or "#FF0000" |
-| button_label                                         | String  | Optional | Button label or title.                                                                                                                                                                                  |
-| button_url                                           | String  | Optional | Button URL. When button pressed, an external URL link will be opened.                                                                                                                                   |
-| button_query                                         | String  | Optional | Field used to query information from app, this can take one of two values as follows Location: to ask user to get location or point of map information.Contact : to ask user to get his contact number. |
-| button_chat                                          | Chat    | Optional | Chat unique identifier that reference the specific chat to be opened when button is pressed. if button_url and button_chat are both defined, button_chat priority to button_chat.                       |
-| nav_type                                             | String  | Optional | -Null is default to show navigation button for channel, group or contact-Type "admin" for show admin navigation button in chat setting                                                                  |
 
 ## Set Navigation Button
 
