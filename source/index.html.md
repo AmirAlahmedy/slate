@@ -2307,7 +2307,6 @@ The following data structures represents custom keypad menus with reply options
         api.send(JSON.stringify(navMsg));
     }
 ```
-
 Use this method to set the navigation button with the menu reference. When navigation button is pressed the referenced menu will be displayed as normal keypad menu "Chat Menu".
 
 | Field                      | Type                             | Required | Description                                                                                                               |
@@ -2322,7 +2321,14 @@ Use this method to set the navigation button with the menu reference. When navig
 ```javascript
 api.getUser(user.id);
 ```
+```java
+                        // The object will be received in the onReceive callback.
 
+else if(text.equals("getUser")){
+                        api.getUser(incomingMsg.getFrom().getId());
+
+                    }
+```
 Use this method to get profile for a user. On success, User is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2343,7 +2349,13 @@ Use this method to get profile for a user. On success, User is returned.
 ```javascript
 api.getChat(chat.id);
 ```
+```java
+                        // The object will be received in the onReceive callback.
 
+else if(text.equals("getChat")){
+                        api.getChat(incomingMsg.getChat().getId());
+                    }
+```
 Use this method to get Group or Channel information. On success, Chat is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2364,6 +2376,7 @@ Use this method to get Group or Channel information. On success, Chat is returne
 ```javascript
 api.getChatMember(chat.id, user.id);
 ```
+
 
 ```json
 {
@@ -2775,6 +2788,17 @@ recallOutMessage.reference = 6915;
 recallOutMessage.setFromUserId = "90089584801498185";
 ```
 
+```java
+else if(text.equals("recallMessage")){
+                        RecallOutMessage outmsg = new RecallOutMessage();
+                        outmsg.setMessageId("<message_id>");
+                        outmsg.setChatId("<chat_id>");
+                        outmsg.setReference(Utils.getUniqueId());
+                        // make sure to replace message id and chat id with real values
+//                        api.send(outmsg);
+                    }
+```
+
 Use this message to recall existing Message sent .
 
 | Field        | Type       | Required | Description                                                           |
@@ -2854,6 +2878,14 @@ photo.id =
 api.setMyProifle(user);
 ```
 
+```java
+
+else if(text.equals("setMyProfile")){
+                        JSONObject obj = new JSONObject();
+                        obj.put("name", "updated Bot Name");
+                        api.setMyProifle(new User(obj));
+                    }
+```
 Use this method to set Bot Profile. On success, myProfile is returned.
 
 | Field     | Type   | Required | Description             |
@@ -2885,7 +2917,13 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 ```javascript
 api.getMyProfiles();
 ```
+```java
+                        // The object will be received in the onReceive callback.
 
+else if(text.equals("getMyProfile")){
+                        api.getMyProfiles();
+                    }
+```
 Use this method to get Bot Profile. On success, myProfile is returned.
 
 | Field  | Type   | Required | Description     |
