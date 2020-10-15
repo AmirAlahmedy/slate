@@ -2807,6 +2807,9 @@ Use this method to get black list. On success, blacklist is returned.
 ```
 
 ## Get Whitelist
+```javascript
+ api.getWhiteList(chat.id);
+```
 
 Use this method to get white list. On success, whitelist is returned.
 
