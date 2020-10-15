@@ -1420,6 +1420,7 @@ This object represents acknowledgement of receipt new or updated normal keypad m
   }
 }
 ```
+
 ## Menu
 
 Each Menu composes of set of rows. At least one row should be defined.
@@ -1457,7 +1458,6 @@ This object represents button of reply. Button must have a button_callback which
 | button_query                                         | String  | Optional | Field used to query information from app, this can take one of two values as follows Location: to ask user to get location or point of map information.Contact : to ask user to get his contact number. |
 | button_chat                                          | Chat    | Optional | Chat unique identifier that reference the specific chat to be opened when button is pressed. if button_url and button_chat are both defined, button_chat priority to button_chat.                       |
 | nav_type                                             | String  | Optional | -Null is default to show navigation button for channel, group or contact-Type "admin" for show admin navigation button in chat setting                                                                  |
-
 
 # ![](../images/ic_outcoming.svg) Outgoing Messages
 
@@ -1716,6 +1716,7 @@ Use this method to send photos. On success, the sent Message is returned. Bots c
                         }
                     }
 ```
+
 ```javascript
 MediaTransfer.uploadFile(TOKEN, "./your_video.mp4", config.UploadServer)
   .then((uploadedVideoId) => {
@@ -1782,6 +1783,7 @@ Use this method to send videos. nandbox clients support mp4 videos (other format
                     }
 
 ```
+
 ```javascript
 MediaTransfer.uploadFile(TOKEN, "./your_audio.mp3", config.UploadServer).then(
   (uploadedAudioId) => {
@@ -1832,7 +1834,8 @@ Use this method to send audio files, if you want nandbox clients to display them
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Voice
-```java
+
+````java
 String uploadedVoiceId = MediaTransfer.uploadFile(TOKEN, "< .ogg File Path >");
 if (uploadedVoiceId != null) {
   //
@@ -1856,7 +1859,7 @@ if (incomingMsg.isVoiceMsg()) {
 
   api.send(JSON.stringify(voiceOutMsg));
 }
-```
+````
 
 ```json
 {
@@ -1890,6 +1893,7 @@ Use this method to send voice note. If you want nandbox clients to display the f
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Document
+
 ```java
                     // SEND DOCUMENT
 
@@ -1909,6 +1913,7 @@ Use this method to send voice note. If you want nandbox clients to display the f
                         }
                     }
 ```
+
 ```javascript
 MediaTransfer.uploadFile(
   TOKEN,
@@ -1959,6 +1964,7 @@ Use this method to send general files. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Send Location
+
 ```java
 
 // SEND LOCATION
@@ -1974,6 +1980,7 @@ Use this method to send general files. On success, the sent Message is returned.
                         api.send(locMsg);
                     }
 ```
+
 ```javascript
 let locationOutMsg = new LocationOutMessage();
 locationOutMsg.chat_id = incomingMsg.chat.id;
@@ -2033,6 +2040,7 @@ Use this method to send location and point of map. On success, the sent Message 
                         api.send(contactMsg);
                     }
 ```
+
 ```javascript
 let contactOutMsg = new ContactOutMessage();
 contactOutMsg.chat_id = incomingMsg.chat.id;
@@ -2076,6 +2084,7 @@ Use this method to send phone contact. On success, the sent Message is returned.
 | chat_settings            | Integer       | Optional | 1= if you want to send to bot chat settings                                                                       |
 
 ## Update Message
+
 ```java
 import com.nandbox.bots.api.outmessages.UpdateOutMessage
 ...
@@ -2124,6 +2133,7 @@ Use this message to update existing Message sent. On success, the sent Message i
 | inline_menu | Array of Menu | Optional    | Inline menu object to hold menus. Previous menu will be dropped and replaced by the updated one.If both inline_menu and menu_ref is defined. Priority for inline_menu unless menu_ref is set to empty String . |
 
 ## Set Chat Menu
+
 ```java
  // SEND CHAT MENU
 else if (incomingMsg.getText().toLowerCase().equals("chatmenu")) {
@@ -2157,6 +2167,7 @@ else if (incomingMsg.getText().toLowerCase().equals("chatmenu")) {
     api.send(outmsg);
 }
 ```
+
 ```javascript
 let outmsg = new SetChatMenuOutMessage();
 
@@ -2276,13 +2287,14 @@ Use this message to set normal keypad menus "Chat Menu". This message will overw
 | next_offset | String              | yes      | Pass the offset that a client should send in the next search with the same text to receive more results. Pass an empty string if there are no more results or if you don&#39;t support pagination |
 | chat_id     | String              | yes      | Chat id                                                                                                                                                                                           |
 | search_id   | String              | yes      | Unique id of this message                                                                                                                                                                         |
-<!-- 
+
+<!--
 # ![](../images/ic_Types.svg) More Types -->
 
 The following data structures represents custom keypad menus with reply options
 
-
 ## Set Navigation Button
+
 ```javascript
  static setNavigationButton(chatId, nextMenu, api){
         let fb = new Button();
@@ -2308,8 +2320,9 @@ Use this method to set the navigation button with the menu reference. When navig
 ## Get User
 
 ```javascript
- api.getUser(user.id);
+api.getUser(user.id);
 ```
+
 Use this method to get profile for a user. On success, User is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2326,9 +2339,11 @@ Use this method to get profile for a user. On success, User is returned.
 ```
 
 ## Get Chat
+
 ```javascript
- api.getChat(chat.id)
+api.getChat(chat.id);
 ```
+
 Use this method to get Group or Channel information. On success, Chat is returned.
 
 | Field   | Type   | Required | Description                             |
@@ -2347,8 +2362,9 @@ Use this method to get Group or Channel information. On success, Chat is returne
 ## Get Chat Member
 
 ```javascript
- api.getChatMember(chat.id, user.id);
+api.getChatMember(chat.id, user.id);
 ```
+
 ```json
 {
   "method": "getChatMember",
@@ -2358,6 +2374,7 @@ Use this method to get Group or Channel information. On success, Chat is returne
   "user_id": "4521191845180798"
 }
 ```
+
 Use this method to get Chat Member user public profile. On success, ChatMember is returned.
 
 | Field   | Type   | Required | Description                                                     |
@@ -2366,12 +2383,12 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
 
-
-
 ## Get Chat Administrators
+
 ```javascript
- api.getChatAdministrators(chat.id);
+api.getChatAdministrators(chat.id);
 ```
+
 ```json
 {
   "method": "getChatAdministrators",
@@ -2379,6 +2396,7 @@ Use this method to get Chat Member user public profile. On success, ChatMember i
   "chat_id": "4522291356145774"
 }
 ```
+
 Use this method to get Chat Administrators. On success, [ChatAdministrators](#chat-administrators-2) message will received .
 
 | Field   | Type   | Required | Description                             |
@@ -2386,9 +2404,8 @@ Use this method to get Chat Administrators. On success, [ChatAdministrators](#ch
 | method  | String | Yes      | "getChatAdministrators"                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel. |
 
-
-
 ## Ban Chat Member
+
 ```json
 {
   "method": "banChatMember",
@@ -2398,6 +2415,7 @@ Use this method to get Chat Administrators. On success, [ChatAdministrators](#ch
   "user_id": "90089584758972053"
 }
 ```
+
 Use this method to ban a Chat Member from accessing Chat. On success, ChatMember is returned with status "banned". Ban is a black list, user will not be able to join Chat again.
 
 | Field   | Type   | Required | Description                                                     |
@@ -2405,8 +2423,6 @@ Use this method to ban a Chat Member from accessing Chat. On success, ChatMember
 | method  | String | Yes      | "banChatMember"                                                 |
 | chat_id | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | user_id | String | Yes      | Unique identifier for this user member.                         |
-
-
 
 ## Unban Chat Member
 
@@ -2474,6 +2490,15 @@ Use this method to set Chat Group or Channel information. On success, chat is re
 
 ## Add Blacklist
 
+```javascript
+let users = [];
+
+users.push("111133");
+users.push("222223");
+
+api.addBlackList(incomingMsg.chat.id, users);
+```
+
 Use this method to add black list.
 
 | Field  | Type            | Required | Description                                       |
@@ -2493,6 +2518,21 @@ Use this method to add black list.
 ```
 
 ## Add Whitelist
+
+```javascript
+let tagsList = [];
+tagsList.push("1");
+tagsList.push("2");
+
+let whiteListUsersArray = [];
+let whiteListUser = new WhiteListUser();
+whiteListUser.signup_user = "3636526";
+whiteListUser.tags = tagsList;
+
+whiteListUsersArray.push(WhiteListUser);
+
+api.addWhiteList(incomingMsg.chat.id, whiteListUsersArray);
+```
 
 Use this method to add white list.
 
@@ -2520,6 +2560,24 @@ Use this method to add white list.
 
 ## Add Blacklist Patterns
 
+```javascript
+let dataList = [];
+
+let data = new Data();
+data.pattern = "44444*";
+data.example = "44444444";
+
+dataList.push(data);
+
+let data2 = new Data();
+data2.pattern = "222*";
+data2.example = "222222222";
+
+dataList.push(data2);
+
+api.addBlackListPatterns(chat.id, dataList);
+```
+
 Use this method to add black list patterns:
 
 | Field  | Type                   | Required | Description                             |
@@ -2528,33 +2586,41 @@ Use this method to add black list patterns:
 | chat   | Chat                   | Yes      | Unique identifier for Group or Channel. |
 | data   | Array of [Data](#data) | yes      | Add Array of Data                       |
 
-```JSON
+```json
 {
+  "method": "addBlacklistPatterns",
 
-"method": "addBlacklistPatterns",
+  "data": [
+    {
+      "pattern": "44444*",
 
-"data": [{
+      "example": "44444444"
+    },
 
-"pattern": "44444\*",
+    {
+      "pattern": "222*",
 
-"example": "44444444"
+      "example": "222222222"
+    }
+  ],
 
-},
-
-{
-
-"pattern": "222\*",
-
-"example": "222222222"
-
-}],
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
 ```
 
 ## AddWhitelistPatterns
+
+```javascript
+let dataList = [];
+
+let data = new Data();
+data.pattern = "4444*";
+data.example = "444444";
+
+dataList.push(data);
+
+api.addWhitelistPatterns(incomingMsg.chat.id, dataList);
+```
 
 Use this method to add white list.patterns:
 
@@ -2588,6 +2654,13 @@ Use this method to add white list.patterns:
 
 ## Delete Blacklist
 
+```javascript
+let users = [];
+users.push("111133");
+
+api.deleteBlackList(incomingMsg.chat.id, users);
+```
+
 Use this method to delete black list:
 
 | Field  | Type            | Required | Description                                       |
@@ -2596,20 +2669,24 @@ Use this method to delete black list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-```JSON
+```json
 {
+  "method": "deleteBlacklist",
 
-"method": "deleteBlacklist",
+  "users": ["111133"],
 
-"users": ["111133"],
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
-
 ```
 
 ## Delete Whitelist
+
+```javascript
+let users = [];
+users.push("111133");
+
+api.deleteWhiteList(incomingMsg.getChat().getId(), users);
+```
 
 Use this method to delete white list:
 
@@ -2619,19 +2696,23 @@ Use this method to delete white list:
 | chat   | Chat            | Yes      | Unique identifier for Group or Channel.           |
 | users  | Array of String | yes      | Add list of users (mobile or Email) to black list |
 
-```JSON
+```json
 {
+  "method": "deleteWhitelist",
 
-"method": "deleteWhitelist",
+  "users": ["111133"],
 
-"users": ["111133"],
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
 ```
 
 ## Delete Blacklist Pattern
+
+```javascript
+let pattern = [];
+pattern.push("222*");
+api.deleteBlackListPatterns(incomingMsg.chat.id, pattern);
+```
 
 Use this method to delete black list pattern:
 
@@ -2641,19 +2722,23 @@ Use this method to delete black list pattern:
 | chat    | Chat            | Yes      | Unique identifier for Group or Channel. |
 | pattern | Array of String | yes      | Add list of pattern                     |
 
-```JSON
+```json
 {
+  "method": "deleteBlacklistPatterns",
 
-"method": "deleteBlacklistPatterns",
+  "pattern": ["222*"],
 
-"pattern": ["222\*"],
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
 ```
 
 ## Delete Whitelist Pattern
+
+```javascript
+let pattern = [];
+pattern.push("5555*");
+api.deleteWhiteListPatterns(incomingMsg.chat.id, pattern);
+```
 
 Use this method to delete white list pattern:
 
@@ -2701,6 +2786,10 @@ Use this message to recall existing Message sent .
 
 ## Get Blacklist
 
+```javascript
+api.getBlackList(incomingMsg.chat.id);
+```
+
 Use this method to get black list. On success, blacklist is returned.
 
 | Field     | Type   | Required | Description                                                     |
@@ -2709,13 +2798,11 @@ Use this method to get black list. On success, blacklist is returned.
 | chat_id   | String | Yes      | Unique identifier for Group or Channel where member belongs to. |
 | page_size | String |
 
-```JSON
+```json
 {
+  "method": "getBlacklist",
 
-"method": "getBlacklist",
-
-"chat_id": "90090684293612221"
-
+  "chat_id": "90090684293612221"
 }
 ```
 
@@ -2768,6 +2855,10 @@ Use this method to set Bot Profile. On success, myProfile is returned.
 ```
 
 ## Get My Profiles
+
+```javascript
+api.getMyProfiles();
+```
 
 Use this method to get Bot Profile. On success, myProfile is returned.
 
