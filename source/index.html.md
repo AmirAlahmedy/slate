@@ -2124,8 +2124,6 @@ Use this message to update existing Message sent. On success, the sent Message i
 | inline_menu | Array of Menu | Optional    | Inline menu object to hold menus. Previous menu will be dropped and replaced by the updated one.If both inline_menu and menu_ref is defined. Priority for inline_menu unless menu_ref is set to empty String . |
 
 ## Set Chat Menu
-
-Use this message to set normal keypad menus "Chat Menu". This message will overwrite the existing Chat Menus. If bot wants to update specific item in the Chat Menus, bot must send the entire menus again to the target chat. On success, setChatMenu_ack will be returned.
 ```java
  // SEND CHAT MENU
 else if (incomingMsg.getText().toLowerCase().equals("chatmenu")) {
